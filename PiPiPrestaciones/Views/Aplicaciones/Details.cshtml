@@ -1,0 +1,50 @@
+﻿@model PiPiPrestaciones.Models.Aplicacion
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Aplicacion</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.VersionId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VersionId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastModification)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastModification)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreateAt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreateAt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreateBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreateBy)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.AplicacionId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

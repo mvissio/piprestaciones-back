@@ -72,6 +72,12 @@ namespace PiPiPrestaciones.Controllers
             }
             return View(agenda);
         }
+        [HttpGet]
+        public JsonResult Algo() {
+
+            return Json("Hola", JsonRequestBehavior.AllowGet);
+        }
+
 
         // POST: Agenda/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 

@@ -231,6 +231,7 @@
     <Compile Include="Controllers\AgendaController.cs" />
     <Compile Include="Controllers\AplicacionesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MenusController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -253,6 +254,7 @@
     <Compile Include="Models\Agenda.cs" />
     <Compile Include="Models\Aplicacion.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Menu.cs" />
     <Compile Include="Models\PantallaAplicacion.cs" />
     <Compile Include="Models\PiPiPrestacionesDBContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -379,6 +381,11 @@
     <Content Include="Views\Agenda\Details.cshtml" />
     <Content Include="Views\Agenda\Edit.cshtml" />
     <Content Include="Views\Agenda\Index.cshtml" />
+    <Content Include="Views\Menus\Create.cshtml" />
+    <Content Include="Views\Menus\Delete.cshtml" />
+    <Content Include="Views\Menus\Details.cshtml" />
+    <Content Include="Views\Menus\Edit.cshtml" />
+    <Content Include="Views\Menus\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

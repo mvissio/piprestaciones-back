@@ -16,6 +16,6 @@ namespace PiPiPrestaciones.Models
         public DbSet<Aplicacion> Aplicacion { get; set; }
         public DbSet<PantallaAplicacion> PantallaAplicacion { get; set; }
 
-
+        public System.Data.Entity.DbSet<PiPiPrestaciones.Models.Menu> Menus { get; set; }
     }
 }

@@ -43,22 +43,38 @@ namespace PiPiPrestaciones.Controllers
 
         [HttpGet]
         public JsonResult GetMenu() {
-            var Menu = new Menu();
+            Menu menu = new Menu();
+            Menu menu2 = new Menu();
 
-            Menu.MenuId = 1.ToString();
-            Menu.CssModelMenu = new CssModelMenu();
-            Menu.CssModelMenu.BorderSize = 2;
-            Menu.CssModelMenu.ColorBack = "#990000";
-            Menu.CssModelMenu.ColorText = "#FFFFFF";
-            Menu.CssModelMenu.FontFamily = "Arial";
-            Menu.Icon = "md-done-all";
-            Menu.Order = 1;
-            Menu.Status = true;
-            Menu.TitleMenu = "Boton";
-            Menu.Type = "Agenda"; //Ex --> Agenda abre patalla agenda ...
+            menu.MenuId = 1.ToString();
+            menu.CssModelMenu = new CssModelMenu();
+            menu.CssModelMenu.BorderSize = 2;
+            menu.CssModelMenu.ColorBack = "#990000";
+            menu.CssModelMenu.ColorText = "#FFFFFF";
+            menu.CssModelMenu.FontFamily = "Arial";
+            menu.Icon = "md-done-all";
+            menu.Order = 1;
+            menu.Status = true;
+            menu.TitleMenu = "Boton";
+            menu.Type = "agenda"; //Ex --> Agenda abre patalla agenda ...
 
+            menu2.MenuId = 1.ToString();
+            menu2.CssModelMenu = new CssModelMenu();
+            menu2.CssModelMenu.BorderSize = 2;
+            menu2.CssModelMenu.ColorBack = "#990000";
+            menu2.CssModelMenu.ColorText = "#FFFFFF";
+            menu2.CssModelMenu.FontFamily = "Arial";
+            menu2.Icon = "md-done-all";
+            menu2.Order = 2;
+            menu2.Status = true;
+            menu2.TitleMenu = "Boton";
+            menu2.Type = "programa"; //Ex --> Agenda abre patalla agenda ...
 
-            return Json(Menu, JsonRequestBehavior.AllowGet);
+            List<Menu> listMenu = new List<Menu>();
+            listMenu.Add(menu);
+            listMenu.Add(menu2);
+
+            return Json(listMenu, JsonRequestBehavior.AllowGet);
         }
 
 

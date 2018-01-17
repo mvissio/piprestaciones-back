@@ -9,10 +9,11 @@
     @Styles.Render("~/Content/css")
     
     
-    
+ @Scripts.Render("~/bundles/jquery/js")
     @Scripts.Render("~/bundles/modernizr")
+   @Scripts.Render("~/bundles/bootstrap/js")
     @Scripts.Render("~/bundles/materialize/js")
-
+    
 
 
 </head>
@@ -44,8 +45,8 @@
     </div>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+    @*@Scripts.Render("~/bundles/jquery")*@
+    @*@Scripts.Render("~/bundles/bootstrap")*@
     @RenderSection("scripts", required: false)
 </body>
 </html>

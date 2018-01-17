@@ -15,3 +15,13 @@ select,
 textarea {
     /*max-width: 280px;*/
 }
+
+
+.tabs-title {
+background-color:cyan;
+color:white;
+padding-bottom:1em;
+padding-top:1em;
+text-align:center;
+
+}

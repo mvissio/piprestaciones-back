@@ -60,11 +60,16 @@ namespace PiPiPrestaciones.Controllers
         }
 
         // POST: api/ApiMenus
-        public void Post([FromBody]string value)
+        //public void Post([FromBody]string value)
+        //{
+
+        //}
+
+        public void Post(Menu menu)
         {
 
-        }
 
+        }
         // PUT: api/ApiMenus/5
         public void Put(int id, [FromBody]string value)
         {

@@ -46,14 +46,15 @@ namespace PiPiPrestaciones.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Aplicacion aplicacion)
+        public ActionResult Create(AplicacionCreateView aplicacion)
         {
-            if (ModelState.IsValid)
-            {
-                db.Aplicacion.Add(aplicacion);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+            //var app = new
+            //if (ModelState.IsValid)
+            //{
+            //    db.Aplicacion.Add(aplicacion);
+            //    db.SaveChanges();
+            //    return RedirectToAction("Index");
+            //}
 
             return View(aplicacion);
         }

@@ -1,0 +1,27 @@
+﻿@model IEnumerable<PiPiPrestaciones.Models.PantallaEstatica>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.PantallaEstaticaId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.PantallaEstaticaId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.PantallaEstaticaId })
+        </td>
+    </tr>
+}
+
+</table>

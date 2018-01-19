@@ -1,129 +1,21 @@
-﻿@model PiPiPrestaciones.Models.AplicacionCreateView
+﻿
+<div id="buscador-ion" class="row">
+  
+    <div class="input-field">
 
-@{
-    ViewBag.Title = "Incorporar Aplicación";
-}
-
-
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
+        <i class="material-icons prefix">search</i>
+        <input id="icon_prefix" type="text" >
+      
+      
+    </div>
     
-    <div class="form-horizontal">
-        <h4 class="tabs-title">Incorporar Aplicación</h4>
-        <hr />
+    
 
 
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
-            <div class="col s12">
-                <ul class="tabs">
-                    <li class="tab col s3"><a class="active" href="#test1">Configuración general</a></li>
-                    <li class="tab col s3"><a  href="#test2">Test 2</a></li>
-                    <li class="tab col s3 "><a href="#test3">Disabled Tab</a></li>
-                    <li class="tab col s3"><a href="#test4">Test 4</a></li>
-                </ul>
-            </div>
-        <div class="row">
-            <div id="test1" class="col s12 ">
-                <h4 class="tabs-title">Configuración general</h4>
-                <div class="row">
-                    <div class="input-field col s6">
-                        @Html.EditorFor(model => model.Titulo)
-                        @Html.LabelFor(model => model.Titulo)
-                    </div>
-
-                    <div class="col s6">
-                        <p>
-                            <input type="checkbox" id="App-Independiente" name="" />
-                            <label for="App-Independiente">App independiente</label>
-                        </p>
-                        <div hidden>
-                            @Html.HiddenFor(model => model.AppIndependiente)
-                        </div>
-                    </div> 
-                </div>
-
-                                                     
-               <br />
-                @*@Html.EditorFor(model => model.Titulo, new { htmlAttributes = new { @class = "form-control" } })*@
-               <div class="row">
-                   <div class=" col s6">
-                       <select id="select-idioma" class="form-control">
-                           <option value="" disabled selected>Selecciona un idioma</option>
-                           <option value="Español">Español</option>
-                           <option value="Inglés">Inglés</option>
-                           <option value="Portugués">Portugués</option>
-                       </select>
-                       @Html.HiddenFor(model => model.Idioma)
-                       
-                   </div>  
-                   <div class="col s6">
-                       <p>
-                           <input type="checkbox" id="Lenguaje-PorDefecto" name="" />
-                           <label for="Lenguaje-PorDefecto">¿Lenguaje por defecto?</label>
-                       </p>
-                       <i>
-                           Mostrar este idioma para usuarios que tengan el celular en una configuración distinta de español, inglés o portugués.
-                       </i>
-                       <div hidden>
-                           @Html.HiddenFor(model => model.LenguajePorDefecto)
-                       </div>
-                   </div>
-               </div>
-                
-                    <div class="row">
-                        <div class="input-field col s6">
-                            @Html.LabelFor(model => model.AdminUser)
-                            @Html.EditorFor(model => model.AdminUser)
-                        </div>
-                        <div class="input-field col s6">
-
-                            @Html.LabelFor(model => model.AdminPasword)
-                            @Html.EditorFor(model => model.AdminPasword)
-                        </div>
-                    </div>        
-               
-                <div class="row">
-                    <div class="input-field col s6">
-                        @Html.LabelFor(model => model.ClaveApp)
-                        @Html.EditorFor(model => model.ClaveApp)
-                    </div>
-                    <div class="input-field col s6">
-
-                        @Html.LabelFor(model => model.ApiKey)
-                        @Html.EditorFor(model => model.ApiKey)
-                    </div>
-                </div>   
+</div>
 
 
-                <div class="row">
-                    <div class="input-field col s6">
-                        @Html.LabelFor(model => model.Canal)
-                        @Html.EditorFor(model => model.Canal)
-                    </div>
-                    <div class="input-field col s6">
-
-                        @Html.LabelFor(model => model.HashTagTwiter)
-                        @Html.EditorFor(model => model.HashTagTwiter)
-                    </div>
-                </div>   
-
-                @*@Html.EditorFor(model => model.Titulo, new { htmlAttributes = new { @class = "form-control" } })*@
-             
-           
-            </div>
-            <div id="test2" class="col s12">
-            @*<ul id="icons">*@
-
-                @*<div class="col s1">
-                    <p>
-                        <input type="radio" id="icon-1" name="" />
-                        <i for="icon-1" class="col s3 icon-ionic ion-arrow-right-a"></i>
-                    </p>
-                   
-                </div>*@ 
-<div class="row">
+<div class="row iconos">
 
     <div class="col s3 icon-ionic ion-ionic" data-pack="default" data-tags="badass, framework, sexy, hawt"></div>
     <div class="col s3 icon-ionic ion-arrow-right-a" data-pack="default" data-tags=""></div>
@@ -875,151 +767,22 @@
     <div class="col s3 icon-ionic ion-social-euro-outline" data-pack="social" data-tags="currency, trade, money, europe"></div>
 
 </div>
-   
-</div>
-            <div id="test3" class="col s12">
 
-         
-
-
-
-            </div>
-            <div id="test4" class="col s12">Test 4</div>
-      
-        
-        </div>
-
-        
-
-
-       
-
-       @*<div class="row">
-           <div class="col s6">
-
-
-
-
-
-               @Html.LabelFor(model => model.NombreAplicacion, htmlAttributes: new { @class = "control-label col-md-2" })
-               @Html.EditorFor(model => model.NombreAplicacion, new { htmlAttributes = new { @class = "form-control" } })
-               @Html.ValidationMessageFor(model => model.NombreAplicacion, "", new { @class = "text-danger" })
-           </div>
-
-       </div>*@
-        
-        
-
-
-
-        @*<div class="form-group">
-            @Html.LabelFor(model => model.VersionId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.VersionId, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.VersionId, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
-
-        @*<div class="form-group">
-            @Html.LabelFor(model => model.LastModification, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.LastModification, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.LastModification, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.CreateAt, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CreateAt, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CreateAt, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.CreateBy, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CreateBy, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CreateBy, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="waves-effect btn btn-primary" />
-            </div>
-        </div>
-    </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
 <style>
-    .icon-ionic {
-    font-size:32px;
-    padding-top:0.5em;
+    .iconos {
+        height: 25em;
+        overflow: scroll;
     }
 
+    .icon-ionic {
+        font-size: 32px;
+        padding-top: 0.5em;
+    }
+
+    #buscador-ion {
+        padding-top:1em;
+    position:relative;
+    top:0;
+    }
 
 </style>
-<script>
-    $(document).ready(function () {
-        
-        $("#App-Independiente").click(function () {
-            debugger;
-            var val = $(this).val();
-
-            if (val == "on") {
-                $("#AppIndependiente").val(true);
-            } else {
-
-                $("#AppIndependiente").val(false);
-            }
-           
-        });
-
-        $("#Lenguaje-PorDefecto").click(function () {
-            debugger;
-            var val = $(this).val();
-
-            if (val == "on") {
-                $("#LenguajePorDefecto").val(true);
-            } else {
-
-                $("#LenguajePorDefecto").val(false);
-            }
-
-        });
-
-        $("#select-idioma").on("change", function () {
-
-            var val = $(this).val();
-            if (val != "") {
-                $("#Idioma").val(val);
-            }
-           
-
-        });
-
-        $(".icon-ionic").click(function () {
-            var icon = $(this);
-            var iconClass = icon.attr("class").split(" ")
-            //icon.removeClass("col");
-            //icon.removeClass("s3");
-            //icon.removeClass("icon-ionic");
-
-            
-
-            alert(iconClass[3])
-
-        })
-
-    });
-  
-
-</script>

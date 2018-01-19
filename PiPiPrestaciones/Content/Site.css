@@ -19,9 +19,11 @@ textarea {
 
 .tabs-title {
 background-color:cyan;
+/*background-image:url("");
+background-repeat:no-repeat;*/
 color:white;
-padding-bottom:1em;
-padding-top:1em;
+padding-bottom:0.5em;
+padding-top:0.5em;
 text-align:center;
 
 }

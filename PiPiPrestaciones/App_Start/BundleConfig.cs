@@ -14,6 +14,12 @@ namespace PiPiPrestaciones
             bundles.Add(new ScriptBundle("~/bundles/colorpicker/js").Include(
                        "~/Scripts/colorpicker/bootstrap-colorpicker.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/ace/js").Include(
+                      "~/Scripts/ace.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/markdown/js").Include(
+                      "~/Scripts/markdown/bootstrap-markdown-editor.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                       "~/Scripts/jquery.validate.*"));
 
@@ -38,7 +44,11 @@ namespace PiPiPrestaciones
                 "~/Content/colorpicker/bootstrap-colorpicker.css"));
 
             bundles.Add(new StyleBundle("~/bundles/bootstrap/css").Include(
-               "~/Content/bootstrap.css"));
+               "~/Content/bootstrap.css", "~/Content/bootstrap.min.css"));
+
+            bundles.Add(new StyleBundle("~/bundles/markdown/css").Include(
+              "~/Content/markdown/bootstrap-markdown-editor.css"));
+
 
             bundles.Add(new StyleBundle("~/Content/css").Include(                     
                       "~/Content/site.css"));

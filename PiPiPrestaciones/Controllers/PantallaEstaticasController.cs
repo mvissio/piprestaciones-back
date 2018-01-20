@@ -46,14 +46,14 @@ namespace PiPiPrestaciones.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PantallaEstaticaId")] PantallaEstatica pantallaEstatica)
+        public ActionResult Create(PantallaEstatica pantallaEstatica)
         {
-            if (ModelState.IsValid)
-            {
-                db.PantallaEstaticas.Add(pantallaEstatica);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+            //if (ModelState.IsValid)
+            //{
+            //    //db.PantallaEstaticas.Add(pantallaEstatica);
+            //    //db.SaveChanges();
+            //    return RedirectToAction("Index");
+            //}
 
             return View(pantallaEstatica);
         }

@@ -14,26 +14,39 @@
     
 
     <div id="ion-icons" class="row">
-        <div class="col s6">
+        <div class="col s6 ">
             <div class="row">
-                <div class="input-field">
+                <div class="input-field col s6">
                     @Html.LabelFor(model => model.Titulo)
                     @Html.EditorFor(model => model.Titulo)
                 </div>
-               
+               <div class=" input-field col s6 ">
+                  <div class="col s8">
+                      @Html.LabelFor(model => model.BackGroundColor)
+                      @Html.EditorFor(model => model.BackGroundColor)
+                  </div>
+                
+                   @*<input id="mycp" type="text" class="input-field" />
+                   <label for="first_name">First Name</label>*@
+                  <div class="col s4">
+                      <div class="btn-floating" id="seleccion-color"></div>
+                  </div>
+                
+                   
+               </div>
             </div>
             @Html.HiddenFor(model => model.Icono)
 
-            <div class="row">
-                <div class="col s1">
-                    <div id="icono-seleccionado"></div>
+            @*<div class="row">
+                <div class="col s1 ">
+                   <a class="btn-floating  light-blue white-text"><i id="icono-seleccionado"></i></a>
                 </div>
                <div class="col s9">
-                   <label class="lb-icon-sel"> Icono seleccionado </label>
+                   <label class="lb-icon-sel control-label">Icono seleccionado </label>
                </div>
                 
-                <div class="col s1 right"><i id="eliminar-icon" class="material-icons">delete</i></div>
-            </div>
+                <div class="col s1 right"><a class=" blue-grey btn-floating "><i id="eliminar-icon" class="tiny material-icons">close</i></a></div>
+            </div>*@
 
 
             @Html.Partial("_SelectorIonIcons")
@@ -60,10 +73,15 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+@Scripts.Render("~/bundles/colorpicker/js")
+@Styles.Render("~/bundles/colorpicker/css")
+
 }
 
 <style>
     #ion-icons {
+        position:relative;
+       
         /*height: 25em;
         overflow: scroll;*/
     }
@@ -74,8 +92,12 @@
     }
 
     .lb-icon-sel {
-        font-size:14px;
+        /*font-size:14px;*/
         margin-left: 2em;
+    }
+    #seleccion-color {
+    background-color:white;
+    
     }
 </style>
 
@@ -94,12 +116,12 @@
             iconSel.removeAttr("class")
 
             iconSel.addClass(iconClass[3]);
-          
+
 
         });
 
         $(".icon-ionic").hover(function () {
-            $(this).css("cursor","pointer")
+            $(this).css("cursor", "pointer")
             var icon = $(this).attr('data-tags');
             $(this).attr('title', icon)
             $(this).attr('data-toggle', 'tooltip')
@@ -115,7 +137,23 @@
 
         $("#eliminar-icon").click(function () {
             var iconSel = $("#icono-seleccionado")
+            $("#Icono").val("");
             iconSel.removeAttr("class")
+
+        });
+
+        $('#BackGroundColor').colorpicker();
+
+        $("#BackGroundColor").on("change", function () {
+
+            debugger;
+            var backGround = $(this).val()
+            $("#seleccion-color").css("background-color", backGround);
+
+        });
+
+        $("#seleccion-color").click(function () {
+            $('#BackGroundColor').colorpicker();
         });
         //$('[data-toggle="tooltip"]').tooltip(); 
     });

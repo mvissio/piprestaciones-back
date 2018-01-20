@@ -1,5 +1,5 @@
 ﻿
-<div id="buscador-ion" class="row">
+<div id="buscador-ion" class="row" hidden>
   
     <div class="input-field">
 
@@ -14,8 +14,33 @@
 
 </div>
 
+@*<div class="row">
+    <div class="col s1 ">
+        <a class="btn-floating  light-blue white-text"><i id="icono-seleccionado"></i></a>
+    </div>
+    <div class="col s9">
+        <label class="lb-icon-sel control-label">Icono seleccionado </label>
+    </div>
+
+    <div class="col s1 right"><a class=" blue-grey btn-floating "><i id="eliminar-icon" class="tiny material-icons">close</i></a></div>
+</div>*@
+
+@*<div id="container-icon-sel">
+    <div>
+        <a class="btn-floating btn-large cyan pulse"><i id="icono-seleccionado"></i></a>
+    </div>
+
+</div>*@
 
 <div class="row iconos">
+
+    <div id="container-icon-sel" class="sticky">
+        <div>
+            <a class="btn-floating btn-large cyan pulse"><i id="icono-seleccionado"></i></a>
+            <div id="eliminar-icon" class="red-text" ><i class="material-icons tiny">close</i></div>
+        </div>
+
+    </div>
 
     <div class="col s3 icon-ionic ion-ionic" data-pack="default" data-tags="badass, framework, sexy, hawt"></div>
     <div class="col s3 icon-ionic ion-arrow-right-a" data-pack="default" data-tags=""></div>
@@ -772,6 +797,7 @@
     .iconos {
         height: 25em;
         overflow: scroll;
+        position:relative;
     }
 
     .icon-ionic {
@@ -784,5 +810,44 @@
     position:relative;
     top:0;
     }
+    #container-icon-sel{
+        position:sticky ;
+        top:0;
+        left:10em;
+
+    }
+    .sticky{}
+
+    #eliminar-icon {
+    font-weight:bold;
+    cursor:pointer;
+   margin-left:3em;
+    }
 
 </style>
+
+<script>
+
+    //$(function () { // document ready
+
+    //    if (!!$('.sticky').offset()) { // make sure ".sticky" element exists
+
+    //        var stickyTop = $('.sticky').offset().top; // returns number 
+
+    //        $(window).scroll(function () { // scroll event
+
+    //            var windowTop = $(window).scrollTop(); // returns number 
+
+    //            if (stickyTop < windowTop) {
+    //                $('.sticky').css({ position: 'fixed', top: 0 });
+    //            } else {
+    //                $('.sticky').css('position', 'static');
+    //            }
+
+    //        });
+
+    //    }
+
+    //});
+
+</script>

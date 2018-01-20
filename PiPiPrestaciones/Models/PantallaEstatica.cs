@@ -16,6 +16,9 @@ namespace PiPiPrestaciones.Models
 
         public string Icono { get; set; }
 
+        [Display(Name = "Fondo color")]
+        public string BackGroundColor { get; set; }
+
         public virtual List<ItemPantallaEstatica> Items { get; set; }
 
 

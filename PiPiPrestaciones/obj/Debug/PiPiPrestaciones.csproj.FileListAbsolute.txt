@@ -164,3 +164,4 @@ C:\Users\Matías\Source\Repos\piprestaciones-back\PiPiPrestaciones\obj\Debug\PiP
 C:\Users\Matías\Source\Repos\piprestaciones-back\PiPiPrestaciones\obj\Debug\PiPiPrestaciones.csproj.CoreCompileInputs.cache
 C:\Users\Matías\Source\Repos\piprestaciones-back\PiPiPrestaciones\obj\Debug\PiPiPrestaciones.dll
 C:\Users\Matías\Source\Repos\piprestaciones-back\PiPiPrestaciones\obj\Debug\PiPiPrestaciones.pdb
+C:\Users\Matías\Source\Repos\piprestaciones-back\PiPiPrestaciones\obj\Debug\PiPiPrestaciones.Properties.Resources.resources

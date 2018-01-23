@@ -1,0 +1,173 @@
+﻿
+
+@*<div class="col l6 offset-l2" id="dropZone">
+  Arrastre aquí las imagenes que desee subir
+</div>*@
+
+
+<style>
+    #dropZone {
+        /*border-radius: 5px;
+        border: 2px solid #ccc;
+        background-color: #eee;
+        width: 250px;
+        padding: 50px 0;
+        text-align: center;
+        font-size: 18px;
+        color: #555;*/
+        /*margin: 50px auto;*/
+        /*margin:50px;*/
+    }
+
+        #dropZone.hover {
+            /*border-color: #aaa;
+            background-color: #ddd;*/
+        }
+
+        #dropZone.error {
+            border-color: #f00;
+            background-color: #faa;
+        }
+</style>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+
+
+    var dropZone;
+    var Reload;
+        // Initializes the dropZone
+        $(document).ready(function () {
+            dropZone = $('.CodeMirror');
+            //dropZone.removeClass('error');
+            Reload = function (id) {
+
+                 @*$("#_Documentos").load('@Url.Action("ListDocumentos","Documentos")' + '?ContratoId=' + id);*@
+            }
+
+
+
+
+
+
+            // Check if window.FileReader exists to make
+            // sure the browser supports file uploads
+            if (typeof(window.FileReader) == 'undefined') {
+                dropZone.text('Browser Not Supported!');
+                dropZone.addClass('error');
+                return;
+            }
+
+            // Add a nice drag effect
+            dropZone[0].ondragover = function () {
+                dropZone.addClass('hover');
+                return false;
+            };
+
+            // Remove the drag effect when stopping our drag
+            dropZone[0].ondragend = function () {
+                dropZone.removeClass('hover');
+                return false;
+            };
+
+            // The drop event handles the file sending
+            dropZone[0].ondrop = function(event) {
+                // Stop the browser from opening the file in the window
+                event.preventDefault();
+                dropZone.removeClass('hover');
+
+                // Get the file and the file reader
+                var file = event.dataTransfer.files[0];
+
+               @* if(file.size > @maxRequestLength {
+                            dropZone.text('File Too Large!');
+                        dropZone.addClass('error');
+                        return false;*@
+            //    // Validate file size
+            //    if(file.size > <%=maxRequestLength%>) {
+            //        dropZone.text('File Too Large!');
+            //    dropZone.addClass('error');
+            //    return false;
+            //}
+
+            // Send the file
+
+            var xhr = new XMLHttpRequest();
+        //    xhr.upload.addEventListener('progress', uploadProgress, false);
+            xhr.onreadystatechange = stateChange;
+            xhr.open('POST',' @Url.Action("HandleFileUpload","Images")', true);
+            xhr.setRequestHeader('X-FILE-NAME', file.name);
+
+            xhr.send(file);
+
+        };
+        });
+
+        // Show the upload progress
+        function uploadProgress(event) {
+            var percent = parseInt(event.loaded / event.total * 100);
+            $('#dropZone').text('Subiendo: ' + percent + '%');
+        }
+
+        // Show upload complete or upload failed depending on result
+        function stateChange(event) {
+            if (event.target.readyState == 4) {
+                if (event.target.status == 200) {
+                   
+                    //var xhr = event.target.xhr;
+                    var response = $.parseJSON(this.responseText);
+
+                    var path = response.path
+
+
+
+                    Materialize.toast('Archivo subido exitósamente!' + response.path, 4000)
+                    //$('#dropZone').text('Archivo subido exitósamente!');
+                    //debugger;
+                    //var id = $("#IdContrato").val();
+
+                    //Reload(id);
+
+                    //setTimeout(function () {
+
+
+                    //    window.location.reload();
+
+                    //    //$("#_Documentos").focus();
+                    //}, 1000);
+                    //setTimeout(function () {
+
+
+                    //    $("#menu-0").click();
+
+                    //    //$("#_Documentos").focus();
+                    //}, 1000);
+                }
+                else {
+                    dropZone.text('Ocurrio un fallo al subir el archivo!');
+                    dropZone.addClass('error');
+                }
+            }
+        }
+
+
+
+
+
+
+
+
+    });
+
+
+
+        //window.onload = fun;
+        //function fun() {
+        //    $.post("Home/handleFileUpload", {}, function (response) {
+        //        alert("hi");
+        //    })
+
+
+
+</script>

@@ -36,7 +36,6 @@ namespace PiPiPrestaciones
                           "~/Scripts/materialize/materialize.js",
                          "~/Scripts/materialize/materialize.min.js"));
 
-
             bundles.Add(new StyleBundle("~/bundles/materialize/css").Include(
                  "~/Content/materialize/css/materialize.css"));
 

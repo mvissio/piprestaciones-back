@@ -257,12 +257,19 @@
     <Compile Include="Models\Aplicacion.cs" />
     <Compile Include="Models\CssStyle.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Controllers\ImagesController.cs" />
+    <Compile Include="Models\Image.cs" />
     <Compile Include="Models\ItemPantallaEstatica.cs" />
     <Compile Include="Models\Menu.cs" />
     <Compile Include="Models\PantallaAplicacion.cs" />
     <Compile Include="Models\PantallaEstatica.cs" />
     <Compile Include="Models\PiPiPrestacionesDBContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Startup.cs" />
@@ -281,6 +288,8 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <None Include="Resources\brand.png" />
+    <None Include="Resources\banner.jpg" />
     <Content Include="Scripts\ace.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -415,9 +424,12 @@
     <Content Include="Views\PantallaEstaticas\Edit.cshtml" />
     <Content Include="Views\PantallaEstaticas\Index.cshtml" />
     <Content Include="Views\PantallaEstaticas\_SelectorIonIcons.cshtml" />
+    <Content Include="Views\Shared\_UploadImage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Images\" />
+    <Folder Include="Views\Images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -440,6 +452,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801121729597_updateAplication.resx">
       <DependentUpon>201801121729597_updateAplication.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

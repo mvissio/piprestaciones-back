@@ -123,5 +123,20 @@ namespace PiPiPrestaciones.Controllers
             }
             base.Dispose(disposing);
         }
+
+        [HttpGet]
+        public JsonResult GetStaticPages(int idPage)
+        {
+            List<StaticPage> staticPageList = new List<StaticPage>();
+            StaticPage staticPage1 = new StaticPage();
+            staticPage1.PageId = 1;
+            staticPage1.PageTitle = "Pagina 1";
+            staticPage1.StaticContentList = new List<StaticContent>();
+            staticPage1.CssStaticPage = new CssStaticPage();
+            staticPageList.Add(staticPage1);
+
+
+            return Json(staticPageList, JsonRequestBehavior.AllowGet);
+        }
     }
 }

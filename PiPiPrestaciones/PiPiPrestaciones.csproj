@@ -255,15 +255,20 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Agenda.cs" />
     <Compile Include="Models\Aplicacion.cs" />
+    <Compile Include="Models\Menus\CssModelMenu.cs" />
+    <Compile Include="Models\Static\CssStaticContent.cs" />
+    <Compile Include="Models\Static\CssStaticPage.cs" />
     <Compile Include="Models\CssStyle.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Controllers\ImagesController.cs" />
     <Compile Include="Models\Image.cs" />
     <Compile Include="Models\ItemPantallaEstatica.cs" />
-    <Compile Include="Models\Menu.cs" />
+    <Compile Include="Models\Menus\Menu.cs" />
     <Compile Include="Models\PantallaAplicacion.cs" />
     <Compile Include="Models\PantallaEstatica.cs" />
     <Compile Include="Models\PiPiPrestacionesDBContext.cs" />
+    <Compile Include="Models\Static\StaticContent.cs" />
+    <Compile Include="Models\Static\StaticPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -425,6 +430,7 @@
     <Content Include="Views\PantallaEstaticas\Index.cshtml" />
     <Content Include="Views\PantallaEstaticas\_SelectorIonIcons.cshtml" />
     <Content Include="Views\Shared\_UploadImage.cshtml" />
+    <Content Include="Views\PantallaEstaticas\ListPages.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

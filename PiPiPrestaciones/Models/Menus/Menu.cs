@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PiPiPrestaciones.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -27,22 +28,6 @@ namespace PiPiPrestaciones.Models
 
 
 
-
-    }
-//    CssModelMenu{
-//fontFamily:string;
-//colorText:string;
-//colorBack:string;
-//borderSize:int;
-    public class CssModelMenu {
-
-        public string FontFamily { get; set; }
-
-        public string ColorText { get; set; }
-
-        public string ColorBack { get; set; }
-
-        public int BorderSize { get; set; }
 
     }
 }

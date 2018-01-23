@@ -56,7 +56,7 @@ namespace PiPiPrestaciones.Controllers
             menu.Order = 1;
             menu.Status = true;
             menu.TitleMenu = "Boton";
-            menu.Type = "agenda"; //Ex --> Agenda abre patalla agenda ...
+            menu.Type = "estatica"; //Ex --> Agenda abre patalla agenda ...
 
             menu2.MenuId = 1.ToString();
             menu2.CssModelMenu = new CssModelMenu();

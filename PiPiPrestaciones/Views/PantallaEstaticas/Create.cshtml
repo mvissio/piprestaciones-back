@@ -234,6 +234,9 @@
                 return false;
             };
 
+
+
+
             // The drop event handles the file sending
             dropZone[0].ondrop = function(event) {
                 // Stop the browser from opening the file in the window
@@ -264,7 +267,11 @@
 
             xhr.send(file);
 
-        };
+            };
+
+            
+
+
         });
 
         // Show the upload progress
@@ -288,27 +295,8 @@
                     //const $codemirror = $('.CodeMirror').nextAll('textarea');
                     //$codemirror.val("[](http://"+ path +")");
 
-                    Materialize.toast('Archivo subido exitósamente!' + response.path, 4000)
-                    //$('#dropZone').text('Archivo subido exitósamente!');
-                    //debugger;
-                    //var id = $("#IdContrato").val();
-
-                    //Reload(id);
-
-                    //setTimeout(function () {
-
-
-                    //    window.location.reload();
-
-                    //    //$("#_Documentos").focus();
-                    //}, 1000);
-                    //setTimeout(function () {
-
-
-                    //    $("#menu-0").click();
-
-                    //    //$("#_Documentos").focus();
-                    //}, 1000);
+                    Materialize.toast('Archivo subido exitósamente!' + '<br />' + response.path, 4000)
+                    
                 }
                 else {
                     dropZone.text('Ocurrio un fallo al subir el archivo!');

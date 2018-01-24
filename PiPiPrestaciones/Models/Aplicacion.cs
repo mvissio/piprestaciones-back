@@ -78,9 +78,7 @@ namespace PiPiPrestaciones.Models
 
         [Display(Name = "VersionId")]
         public int? VersionId { get; set; }
-
-       
-      
+     
         [Display(AutoGenerateField = false,Name = "Última modiicación")]
         public DateTime? LastModification { get; set; }
 

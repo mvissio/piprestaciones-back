@@ -10,6 +10,7 @@ namespace PiPiPrestaciones.Models
     public class PantallaEstatica
     {
         [Key]
+
         public int PantallaEstaticaId { get; set; }
 
         public string Titulo { get; set; }
@@ -21,7 +22,6 @@ namespace PiPiPrestaciones.Models
 
         public virtual List<ItemPantallaEstatica> Items { get; set; }
 
+        }
 
-
-    }
-}
+ }

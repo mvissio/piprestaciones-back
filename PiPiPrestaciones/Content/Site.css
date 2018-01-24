@@ -18,12 +18,17 @@ textarea {
 
 
 .tabs-title {
-background-color:cyan;
-/*background-image:url("");
+   background-color: rgba(171,166,166, 0.9);
+    
+    /*background-image:url("");
 background-repeat:no-repeat;*/
-color:white;
-padding-bottom:0.5em;
-padding-top:0.5em;
-text-align:center;
+    color: white;
+  
+    text-align: center;
+}
 
+.container {
+    /*padding-top:4em;*/
+    width: 90%;
+    max-width: unset;
 }

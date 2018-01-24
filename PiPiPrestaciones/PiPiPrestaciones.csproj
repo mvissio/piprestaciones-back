@@ -234,6 +234,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MenusController.cs" />
     <Compile Include="Controllers\PantallaEstaticasController.cs" />
+    <Compile Include="Controllers\StaticPagesController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -429,8 +430,14 @@
     <Content Include="Views\PantallaEstaticas\Edit.cshtml" />
     <Content Include="Views\PantallaEstaticas\Index.cshtml" />
     <Content Include="Views\PantallaEstaticas\_SelectorIonIcons.cshtml" />
-    <Content Include="Views\Shared\_UploadImage.cshtml" />
+    <Content Include="Views\Shared\_MarkDownEditor.cshtml" />
     <Content Include="Views\PantallaEstaticas\ListPages.cshtml" />
+    <Content Include="Views\StaticPages\Create.cshtml" />
+    <Content Include="Views\StaticPages\Delete.cshtml" />
+    <Content Include="Views\StaticPages\Details.cshtml" />
+    <Content Include="Views\StaticPages\Edit.cshtml" />
+    <Content Include="Views\StaticPages\Index.cshtml" />
+    <Content Include="Views\Shared\_SelectorIonIcons.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

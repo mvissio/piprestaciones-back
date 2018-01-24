@@ -16,6 +16,8 @@ namespace PiPiPrestaciones.Models
 
         public string  Contenido { get; set; }
 
+        public int Orden { get; set; }
+
         public virtual CssStyle CssStyle { get; set; }
 
 

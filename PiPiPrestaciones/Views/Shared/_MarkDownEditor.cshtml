@@ -1,8 +1,7 @@
 ﻿
 
-@*<div class="col l6 offset-l2" id="dropZone">
-  Arrastre aquí las imagenes que desee subir
-</div>*@
+ 
+<textarea name="text" id="myMDE"></textarea>
 
 
 <style>
@@ -32,11 +31,13 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
+        var simplemde = new SimpleMDE({
+            element: document.getElementById("myMDE")
+        });
 
 
-
-    var dropZone;
-    var Reload;
+         var dropZone;
+         var Reload;
         // Initializes the dropZone
         $(document).ready(function () {
             dropZone = $('.CodeMirror');
@@ -45,10 +46,6 @@
 
                  @*$("#_Documentos").load('@Url.Action("ListDocumentos","Documentos")' + '?ContratoId=' + id);*@
             }
-
-
-
-
 
 
             // Check if window.FileReader exists to make
@@ -70,6 +67,9 @@
                 dropZone.removeClass('hover');
                 return false;
             };
+
+
+
 
             // The drop event handles the file sending
             dropZone[0].ondrop = function(event) {
@@ -96,12 +96,16 @@
             var xhr = new XMLHttpRequest();
         //    xhr.upload.addEventListener('progress', uploadProgress, false);
             xhr.onreadystatechange = stateChange;
-            xhr.open('POST',' @Url.Action("HandleFileUpload","Images")', true);
+            xhr.open('POST','@Url.Action("HandleFileUpload","Images")', true);
             xhr.setRequestHeader('X-FILE-NAME', file.name);
 
             xhr.send(file);
 
-        };
+            };
+
+            
+
+
         });
 
         // Show the upload progress
@@ -114,35 +118,19 @@
         function stateChange(event) {
             if (event.target.readyState == 4) {
                 if (event.target.status == 200) {
-                   
+
                     //var xhr = event.target.xhr;
                     var response = $.parseJSON(this.responseText);
 
                     var path = response.path
+                   // ![](http://)
+                    var mdeVal = simplemde.value()
+                    simplemde.value(mdeVal + "\n" + "![](" + path + ")")
+                    //const $codemirror = $('.CodeMirror').nextAll('textarea');
+                    //$codemirror.val("[](http://"+ path +")");
 
+                    Materialize.toast('Archivo subido exitósamente!' + '<br />' + response.path, 4000)
 
-
-                    Materialize.toast('Archivo subido exitósamente!' + response.path, 4000)
-                    //$('#dropZone').text('Archivo subido exitósamente!');
-                    //debugger;
-                    //var id = $("#IdContrato").val();
-
-                    //Reload(id);
-
-                    //setTimeout(function () {
-
-
-                    //    window.location.reload();
-
-                    //    //$("#_Documentos").focus();
-                    //}, 1000);
-                    //setTimeout(function () {
-
-
-                    //    $("#menu-0").click();
-
-                    //    //$("#_Documentos").focus();
-                    //}, 1000);
                 }
                 else {
                     dropZone.text('Ocurrio un fallo al subir el archivo!');

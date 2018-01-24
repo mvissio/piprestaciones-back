@@ -1,0 +1,218 @@
+﻿@model PiPiPrestaciones.Models.StaticPage
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h4>PantallaEstatica</h4>
+<hr />
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div id="ion-icons" class="row">
+        <div class="col s5 ">
+            <div class="row">
+                <div class="input-field col s6">
+                    @Html.LabelFor(model => model.PageTitle)
+                    @Html.EditorFor(model => model.PageTitle)
+                </div>
+                <div class=" input-field col s6 ">
+                    <div class="col s8">
+                        @Html.LabelFor(model => model.CssStaticPage.BackGroundColor)
+                        @Html.EditorFor(model => model.CssStaticPage.BackGroundColor)
+                    </div>
+
+                    @*<input id="mycp" type="text" class="input-field" />
+                        <label for="first_name">First Name</label>*@
+                    <div class="col s4">
+                        <div class="btn-floating" id="seleccion-color"></div>
+                    </div>
+
+
+                </div>
+            </div>
+            @Html.HiddenFor(model => model.CssStaticPage.Icon)
+
+
+            @*<div class="row">
+                    <div class="col s1 ">
+                       <a class="btn-floating  light-blue white-text"><i id="icono-seleccionado"></i></a>
+                    </div>
+                   <div class="col s9">
+                       <label class="lb-icon-sel control-label">Icono seleccionado </label>
+                   </div>
+
+                    <div class="col s1 right"><a class=" blue-grey btn-floating "><i id="eliminar-icon" class="tiny material-icons">close</i></a></div>
+                </div>*@
+
+
+            @Html.Partial("_SelectorIonIcons")
+        </div>
+        
+        <div class="col s6" id="static-content-item">
+           <div class="row">
+               <h5>Elementos de pantalla estatica</h5>
+           </div>
+            <div class="row">
+
+                <label class="control-label"> Agregar elemento a pantalla estatica</label>
+
+
+                @*<select class="form-control col s8">
+                    <option value="0">Título</option>
+                    <option value="1">Texto/ Imágenes</option>
+                    <option value="2">Botón</option>
+                </select>*@
+                <div class="col s4">
+                    <a class="btn-floating right"><i class="material-icons">add</i></a>
+                </div>
+            </div>
+            <div class="row" >
+
+                <div id="mark-down-editor">
+                    @*<textarea name="text" id="myCd"></textarea>*@
+
+                    @Html.Partial("_MarkDownEditor")
+                </div>
+
+
+                @*<div>
+                @Html.Partial("_UploadImage")
+            </div>*@
+
+            </div>
+           
+
+        </div>
+
+    </div>
+
+    
+    <div class="form-horizontal">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+<link rel="stylesheet" href="http://lab.lepture.com/editor/editor.css" />
+<script type="text/javascript" src="http://lab.lepture.com/editor/editor.js"></script>
+<script type="text/javascript" src="http://lab.lepture.com/editor/marked.js"></script>
+
+
+@section Scripts {
+    @*@Scripts.Render("~/bundles/jqueryval")*@
+    @Scripts.Render("~/bundles/colorpicker/js")
+  
+    @Styles.Render("~/bundles/colorpicker/css")
+    
+    @Styles.Render("~/bundles/colorpicker/css")
+    @*@Styles.Render("~/bundles/markdown/css")*@
+
+}
+
+<style>
+    #static-content-item {
+     margin-left:8.33%;
+    }
+
+    .container {
+        /*width: 100%;*/
+    }
+
+    #ion-icons {
+        position: relative;
+        /*height: 25em;
+        overflow: scroll;*/
+    }
+
+    #icono-seleccionado {
+        font-size: 32px;
+        margin-right: 1em;
+    }
+
+    .lb-icon-sel {
+        /*font-size:14px;*/
+        margin-left: 2em;
+    }
+
+    #seleccion-color {
+        background-color: white;
+    }
+
+    .fa fa-picture-o {
+        display: none;
+    }
+
+    #BackGroundColor {
+        cursor: pointer;
+    }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+<script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+
+<script>
+
+    $(document).ready(function () {
+
+
+        $(".icon-ionic").click(function () {
+            var icon = $(this);
+            var iconClass = icon.attr("class").split(" ")
+            //icon.removeClass("col");
+            //icon.removeClass("s3");
+            //icon.removeClass("icon-ionic");
+
+            $("#Icon").val(iconClass[3]);
+            var iconSel = $("#icono-seleccionado")
+            iconSel.removeAttr("class")
+
+            iconSel.addClass(iconClass[3]);
+
+
+        });
+
+        $(".icon-ionic").hover(function () {
+            $(this).css("cursor", "pointer")
+            var icon = $(this).attr('data-tags');
+            $(this).attr('title', icon)
+            $(this).attr('data-toggle', 'tooltip')
+
+
+        })
+
+        $("#eliminar-icon").click(function () {
+            var iconSel = $("#icono-seleccionado")
+            $("#Icon").val("");
+            iconSel.removeAttr("class")
+
+        });
+
+        $('#CssStaticPage_BackGroundColor').colorpicker();
+
+        $("#CssStaticPage_BackGroundColor").on("change", function () {
+
+            debugger;
+            var backGround = $(this).val()
+            $("#seleccion-color").css("background-color", backGround);
+
+        });
+
+        $("#seleccion-color").click(function () {
+            $('#CssStaticPage_BackGroundColor').focus();
+        });
+
+
+
+
+    });
+   
+</script>

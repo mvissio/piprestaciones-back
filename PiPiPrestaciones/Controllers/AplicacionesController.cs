@@ -126,5 +126,14 @@ namespace PiPiPrestaciones.Controllers
             }
             base.Dispose(disposing);
         }
+
+
+        public ActionResult AddMenu(string type, int order) {
+            var menu = new Menu();
+            menu.Order = order;
+            menu.Type = type;
+
+            return PartialView("_AddMenu", menu);
+        }
     }
 }

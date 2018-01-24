@@ -114,8 +114,61 @@
              
            
             </div>
-            <div id="test2" class="col s12">
+            <div id="test2" class="row container-menu">
             
+                <div class=" input-field row ">
+                    <div class="col s3">
+                        @Html.LabelFor(model => model.CssAplicacion.BackGroundColor)
+                        @Html.EditorFor(model => model.CssAplicacion.BackGroundColor)
+                    </div>
+
+                    @*<input id="mycp" type="text" class="input-field" />
+            <label for="first_name">First Name</label>*@
+                    <div class="col s2">
+                        <div class="btn-floating" id="seleccion-color"></div>
+                    </div>
+
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col s3">
+                        <div class=" col s8">
+                            <a class='dropdown-button btn' href='#' data-activates='dropdown1'>
+                                Agregar accion al menu principal
+                            </a>
+                            <!-- Dropdown Structure -->
+                            <ul id='dropdown1' class='dropdown-content'>
+                                <li><a class="sel-accion" data-name="Agenda"><i class="material-icons">label outline</i>Agenda</a></li>
+                                <li><a class="sel-accion" data-name="Favoritos"><i class="material-icons">label outline</i>Favoritos</a></li>
+                                <li><a class="sel-accion" data-name="Alojamientos"><i class="material-icons">label outline</i>Alojamientos</a></li>
+                                <li><a class="sel-accion" data-name="Mapa"><i class="material-icons">label outline</i>Mapa</a></li>
+                                <li><a class="sel-accion" data-name="Exposición"><i class="material-icons">label outline</i>Exposición</a></li>
+                                <li><a class="sel-accion" data-name="Formulario"><i class="material-icons">label outline</i>Formulario</a></li>
+                                <li><a class="sel-accion" data-name="Certificado"><i class="material-icons">label outline</i>Certificado</a></li>
+                                <li><a class="sel-accion" data-name="Link"><i class="material-icons">label outline</i>Link</a></li>
+                                <li><a class="sel-accion" data-name="Noticias"><i class="material-icons">label outline</i>Noticias</a></li>
+                                <li><a class="sel-accion" data-name="Paginas"><i class="material-icons">label outline</i>Paginas</a></li>
+                            </ul>
+
+                        </div>
+                       
+                    </div>
+
+                    <div id="acciones-agregadas"  class="col s3 offset-s1">
+                        <div id="status-bar"></div>
+                        <div id="title-app" align="center" class="col s12">title
+                        </div>
+                        
+                        
+
+                    </div>
+                   
+
+                </div>
+               
+
     
     @*<ul id="icons">*@
 
@@ -143,79 +196,58 @@
         
         </div>
 
-        
-
-
-       
-
-       @*<div class="row">
-           <div class="col s6">
-
-
-
-
-
-               @Html.LabelFor(model => model.NombreAplicacion, htmlAttributes: new { @class = "control-label col-md-2" })
-               @Html.EditorFor(model => model.NombreAplicacion, new { htmlAttributes = new { @class = "form-control" } })
-               @Html.ValidationMessageFor(model => model.NombreAplicacion, "", new { @class = "text-danger" })
-           </div>
-
-       </div>*@
-        
-        
-
-
-
-        @*<div class="form-group">
-            @Html.LabelFor(model => model.VersionId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.VersionId, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.VersionId, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
-
-        @*<div class="form-group">
-            @Html.LabelFor(model => model.LastModification, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.LastModification, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.LastModification, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.CreateAt, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CreateAt, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CreateAt, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.CreateBy, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CreateBy, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CreateBy, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
+       <label hidden id="index" >0</label>
 
         <div class="form-group">
             <div class="col-md-offset-10 col-md-2">
                 @*<input type="submit" value="Create" class="waves-effect btn btn-primary" />*@
-                <button type="submit" class="waves-effect btn-large" ><i class="material-icons right">save</i> Guardar</button>
+                <button type="submit" class="waves-effect btn-large" ><i class="material-icons right">done</i> Guardar</button>
             </div>
         </div>
     </div>
 }
-
+<label hidden id="index">0</label>
 <div>
- 
     @Html.ActionLink("Back to List", "Index")
 </div>
 
+@*<input hidden name='Menus[i].Type' value='' data-id='i' />
+<input hidden name='Menus[i].Order' value='' data-id='i' />
+<a class="btn blue lighten-3"></a>*@
+
+
 @section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+    @*@Scripts.Render("~/bundles/jqueryval")*@
+    @Scripts.Render("~/bundles/colorpicker/js")
+    @Styles.Render("~/bundles/colorpicker/css")
 }
 <style>
+    #status-bar {
+        background-image: url(~/Resources/android-statusbar.png);
+        background-repeat:no-repeat;
+        width:100%;
+        height:auto;
+
+    }
+
+    #title-app {
+        background-size: cover;
+        margin-left:0;
+        margin-right:0;
+
+       
+        background-color: black;
+        color: white;
+        font-size: 32px;
+        height: 1.5em;
+        padding-bottom: 1em;
+       
+        margin-bottom: 1em;
+    }
+    .container-menu {
+    margin-top:3em;
+    
+    }
     .icon-ionic {
     font-size:32px;
     padding-top:0.5em;
@@ -237,11 +269,39 @@
             color: rgba(171,166,166, 0.9);
             text-decoration: none;
         }
+    .sel-accion {
+    background-color:black;
+    }
+
+    #acciones-agregadas {
+        height: 40em;
+       
+        overflow: scroll;
+        position: relative;
+    }
 
 </style>
 <script>
     $(document).ready(function () {
-        
+
+        $('#CssAplicacion_BackGroundColor').colorpicker();
+
+        $("#CssAplicacion_BackGroundColor").on("change", function () {
+
+            debugger;
+            var backGround = $(this).val()
+            $("#seleccion-color").css("background-color", backGround);
+            $("#acciones-agregadas").css("background-color", backGround);
+
+        });
+
+        $("#seleccion-color").click(function () {
+            $('#CssAplicacion_BackGroundColor').focus();
+        });
+
+
+
+
         $("#App-Independiente").click(function () {
             debugger;
             var val = $(this).val();
@@ -252,7 +312,7 @@
 
                 $("#AppIndependiente").val(false);
             }
-           
+
         });
 
         $("#Lenguaje-PorDefecto").click(function () {
@@ -274,24 +334,41 @@
             if (val != "") {
                 $("#Idioma").val(val);
             }
-           
+
+
+        });
+        $(".sel-accion").click(function () {
+            debugger;
+            var n_id = Number($("#index").html());
+            var i = $("#index").html();
+            var type = $(this).attr("data-name");
+
+            //var htmlApend = "<tr>" +
+            //    "<input hidden name= 'Menus[" + i + "].Type' value= '" + type + "' data-id='" + i + "' />" +
+            //    "<input hidden name= 'Menus[" + i + "].Order' value='" + i + "' data-id='" + i + "' />" +
+            //    "<a class='btn blue lighten-3'>" + type + "</a>" +
+            //    "</tr>";
+            //$("#table-acciones").append(htmlApend);
+            n_id += 1
+            var data = {
+                order: i,
+                type:type
+            }
+            $.ajax({
+            url: '@Url.Action("AddMenu", "Aplicaciones")',
+            cache: false,
+            data:data,
+            success: function (html) { $("#acciones-agregadas").append(html); }
+             });
+
+
+            $("#index").html(n_id);
+
 
         });
 
-        $(".icon-ionic").click(function () {
-            var icon = $(this);
-            var iconClass = icon.attr("class").split(" ")
-            //icon.removeClass("col");
-            //icon.removeClass("s3");
-            //icon.removeClass("icon-ionic");
-
-            
-
-            alert(iconClass[3])
-
-        })
 
     });
-  
+
 
 </script>

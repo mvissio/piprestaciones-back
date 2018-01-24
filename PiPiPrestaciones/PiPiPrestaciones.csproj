@@ -255,7 +255,8 @@
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Agenda.cs" />
-    <Compile Include="Models\Aplicacion.cs" />
+    <Compile Include="Models\Aplicacion\Aplicacion.cs" />
+    <Compile Include="Models\Aplicacion\CssAplicacion.cs" />
     <Compile Include="Models\Menus\CssModelMenu.cs" />
     <Compile Include="Models\Static\CssStaticContent.cs" />
     <Compile Include="Models\Static\CssStaticPage.cs" />
@@ -296,6 +297,7 @@
     <Content Include="Global.asax" />
     <None Include="Resources\brand.png" />
     <None Include="Resources\banner.jpg" />
+    <None Include="Resources\android-statusbar.png" />
     <Content Include="Scripts\ace.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -438,6 +440,7 @@
     <Content Include="Views\StaticPages\Edit.cshtml" />
     <Content Include="Views\StaticPages\Index.cshtml" />
     <Content Include="Views\Shared\_SelectorIonIcons.cshtml" />
+    <Content Include="Views\Aplicaciones\_AddMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,17 @@
+﻿@model PiPiPrestaciones.Models.Menu
+
+
+<div class="row" align="center">
+    <div hidden>
+        @Html.TextBox("Menus[" + Model.Order + "].Type", Model.Type)
+        @Html.TextBox("Menus[" + Model.Order + "].Order", Model.Order)
+    </div> 
+        <a class="btn btn-preview  blue lighten-3" data-order="@Model.Order">@Model.Type</a>
+</div>
+
+<style>
+    .btn-preview {
+    width:90%;
+
+    }
+</style>

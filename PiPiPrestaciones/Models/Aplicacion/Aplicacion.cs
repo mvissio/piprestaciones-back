@@ -87,8 +87,9 @@ namespace PiPiPrestaciones.Models
 
         public string HashTagTwiter { get; set; }
 
-      
+        public CssAplicacion CssAplicacion { get; set; }
 
+        public virtual List<Menu> Menus { get; set; }
 
         [Display(Name = "VersionId")]
         public int? VersionId { get; set; }

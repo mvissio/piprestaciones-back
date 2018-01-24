@@ -9,7 +9,7 @@ using System.ComponentModel.DataAnnotations;
 namespace PiPiPrestaciones.Models
 {
     [Table("Aplicacion")]
-    public class Aplicacion 
+    public class Aplicacion
     {
         [Key]
         [Column("AplicacionId")]
@@ -35,6 +35,20 @@ namespace PiPiPrestaciones.Models
         [Display(Name = "CreateBy")]
         public string CreateBy { get; set; }
 
+        public override bool Equals(object obj)
+        {
+            return base.Equals(obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return base.ToString();
+        }
     }
 
 

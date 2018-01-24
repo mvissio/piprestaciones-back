@@ -6,7 +6,9 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+
 using PiPiPrestaciones.Models;
+using System.Xml.Linq;
 
 namespace PiPiPrestaciones.Controllers
 {
@@ -111,7 +113,7 @@ namespace PiPiPrestaciones.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Aplicacion aplicacion = db.Aplicacion.Find(id);
-            db.Aplicacion.Remove(aplicacion);
+            //db.Aplicacion.Remove(aplicacion);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

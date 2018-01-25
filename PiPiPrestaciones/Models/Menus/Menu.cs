@@ -11,9 +11,10 @@ namespace PiPiPrestaciones.Models
     public class Menu
     {
         [Key]
-       // [Column("MenuId")]
+        // [Column("MenuId")]
         public string MenuId { get; set; }
 
+        [Display(Name ="Título")]
         public string TitleMenu { get; set; }
 
         public bool Status { get; set; }

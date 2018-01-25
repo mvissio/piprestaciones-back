@@ -5,8 +5,15 @@
     <div hidden>
         @Html.TextBox("Menus[" + Model.Order + "].Type", Model.Type)
         @Html.TextBox("Menus[" + Model.Order + "].Order", Model.Order)
+        @Html.TextBox("Menus[" + Model.Order + "].TitleMenu", "")
+        @Html.TextBox("Menus[" + Model.Order + "].Icon", "")
+        @Html.TextBox("Menus[" + Model.Order + "].CssModelMenu.ColorBack", "")
+        @Html.TextBox("Menus[" + Model.Order + "].CssModelMenu.ColorText", "")
+        @Html.TextBox("Menus[" + Model.Order + "].CssModelMenu.ImageBack", "")
+
+
     </div> 
-        <a class="btn btn-preview  blue lighten-3" data-order="@Model.Order">@Model.Type</a>
+        <a class="btn btn-preview  blue lighten-3 modal-trigger" href="#modal1"  data-order="@Model.Order" data-type="@Model.Type" id="btn-preview-@Model.Order">@Model.Type</a>
 </div>
 
 <style>
@@ -15,3 +22,35 @@
 
     }
 </style>
+
+<script>
+    $(document).ready(function () {
+        $(".btn-preview").click(function () {
+
+            debugger;
+            $('.modal').modal()
+            //$('.modal').modal({
+            //    dismissible: true, // Modal can be dismissed by clicking outside of the modal
+            //    opacity: .5, // Opacity of modal background
+            //    inDuration: 300, // Transition in duration
+            //    outDuration: 200, // Transition out duration
+            //    startingTop: '4%', // Starting top style attribute
+            //    endingTop: '10%', // Ending top style attribute
+            //    ready: function (modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
+            //        alert("Ready");
+            //        console.log(modal, trigger);
+            //    },
+            //    complete: function () { alert('Closed'); } // Callback for Modal close
+            //}
+            //);
+
+
+            //$(".modal").("open");
+
+
+        });
+    }
+
+    
+
+</script>

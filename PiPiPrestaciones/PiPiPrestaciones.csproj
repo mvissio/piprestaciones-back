@@ -441,6 +441,7 @@
     <Content Include="Views\StaticPages\Index.cshtml" />
     <Content Include="Views\Shared\_SelectorIonIcons.cshtml" />
     <Content Include="Views\Aplicaciones\_AddMenu.cshtml" />
+    <Content Include="Views\Aplicaciones\_EditAccionMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

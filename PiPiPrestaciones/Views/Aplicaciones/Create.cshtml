@@ -20,8 +20,8 @@
                 <ul class="tabs">
                     <li class="tab col s3"><a class="active" href="#test1">Configuración general</a></li>
                     <li class="tab col s3"><a  href="#test2">Definir estilos</a></li>
-                    <li class="tab col s3 "><a href="#test3">Disabled Tab</a></li>
-                    <li class="tab col s3"><a href="#test4">Test 4</a></li>
+                    @*<li class="tab col s3 "><a href="#test3">Disabled Tab</a></li>
+                    <li class="tab col s3"><a href="#test4">Test 4</a></li>*@
                 </ul>
             </div>
         <br />
@@ -205,7 +205,20 @@
             </div>
         </div>
     </div>
+
+  
+
 }
+
+<div id="modal1" class="modal modal-fixed-footer">
+    <div class="modal-content">
+        @Html.Partial("_EditAccionMenu")
+    </div>
+    <div class="modal-footer">
+        <a class="modal-action modal-close waves-effect waves-green btn-flat material-icons "> done</a>
+    </div>
+</div>
+
 <label hidden id="index">0</label>
 <div>
     @Html.ActionLink("Back to List", "Index")
@@ -283,7 +296,7 @@
 </style>
 <script>
     $(document).ready(function () {
-
+        //$('.modal').modal();
         $('#CssAplicacion_BackGroundColor').colorpicker();
 
         $("#CssAplicacion_BackGroundColor").on("change", function () {
@@ -367,6 +380,31 @@
 
         });
 
+
+        $(".btn-preview").click(function () {
+
+            debugger;
+            $('.modal').modal("show")
+            //$('.modal').modal({
+            //    dismissible: true, // Modal can be dismissed by clicking outside of the modal
+            //    opacity: .5, // Opacity of modal background
+            //    inDuration: 300, // Transition in duration
+            //    outDuration: 200, // Transition out duration
+            //    startingTop: '4%', // Starting top style attribute
+            //    endingTop: '10%', // Ending top style attribute
+            //    ready: function (modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
+            //        alert("Ready");
+            //        console.log(modal, trigger);
+            //    },
+            //    complete: function () { alert('Closed'); } // Callback for Modal close
+            //}
+            //);
+
+         
+            //$(".modal").("open");
+
+
+        });
 
     });
 

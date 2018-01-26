@@ -159,8 +159,10 @@
                     <div id="acciones-agregadas"  class="col s3 offset-s1">
                         <div id="status-bar"></div>
                         <div id="title-app" align="center" class="col s12">title
+
+                            
                         </div>
-                        
+                      
                         
 
                     </div>
@@ -210,6 +212,9 @@
 
 }
 
+<button id="show-modal" hidden data-target="modal1" class="btn show-modal modal-trigger">Modal</button>
+ 
+
 <div id="modal1" class="modal modal-fixed-footer">
     <div class="modal-content">
         @Html.Partial("_EditAccionMenu")
@@ -242,7 +247,11 @@
         height:auto;
 
     }
-
+    .show-modal {
+    }
+    .btn-preview {
+    
+    }
     #title-app {
         background-size: cover;
         margin-left:0;
@@ -297,6 +306,9 @@
 <script>
     $(document).ready(function () {
         //$('.modal').modal();
+
+       
+
         $('#CssAplicacion_BackGroundColor').colorpicker();
 
         $("#CssAplicacion_BackGroundColor").on("change", function () {
@@ -350,6 +362,27 @@
 
 
         });
+        $(".btn-preview").click(function () {
+            $("#show-modal").click();
+        });
+
+        $("#show-modal").click(function () {
+            debugger;
+            $('#modal1').modal({
+                dismissible: false, // Modal can be dismissed by clicking outside of the modal
+                opacity: .5, // Opacity of modal background
+                inDuration: 300, // Transition in duration
+                outDuration: 200, // Transition out duration
+                startingTop: '4%', // Starting top style attribute
+                endingTop: '10%', // Ending top style attribute
+                ready: function (modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
+                   
+                },
+                complete: function () {  } // Callback for Modal close
+            }
+            );
+        });
+
         $(".sel-accion").click(function () {
             debugger;
             var n_id = Number($("#index").html());
@@ -381,30 +414,7 @@
         });
 
 
-        $(".btn-preview").click(function () {
-
-            debugger;
-            $('.modal').modal("show")
-            //$('.modal').modal({
-            //    dismissible: true, // Modal can be dismissed by clicking outside of the modal
-            //    opacity: .5, // Opacity of modal background
-            //    inDuration: 300, // Transition in duration
-            //    outDuration: 200, // Transition out duration
-            //    startingTop: '4%', // Starting top style attribute
-            //    endingTop: '10%', // Ending top style attribute
-            //    ready: function (modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
-            //        alert("Ready");
-            //        console.log(modal, trigger);
-            //    },
-            //    complete: function () { alert('Closed'); } // Callback for Modal close
-            //}
-            //);
-
-         
-            //$(".modal").("open");
-
-
-        });
+       
 
     });
 

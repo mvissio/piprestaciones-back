@@ -1,8 +1,14 @@
 ﻿
 
 <div align="center">
+    <br />
+    <button class="cancel-modal btn-floating right red"><i class="material-icons">clear</i></button>
+  
+   
     <div class="row">
-        <h3></h3>
+        <h3>
+
+        </h3>
     </div>
     <div class="row">
         <div class="col s6">
@@ -26,3 +32,14 @@
    </div>
 
 </div>
+
+<script>
+    $(document).ready(function () {
+        $(".cancel-modal").click(function () {
+            
+            $('#modal1').modal('close');
+        });
+
+    });
+
+</script>

@@ -32,3 +32,9 @@ background-repeat:no-repeat;*/
     width: 90%;
     max-width: unset;
 }
+
+.cancel-modal {
+position:sticky;
+right:0;
+top:0;
+}

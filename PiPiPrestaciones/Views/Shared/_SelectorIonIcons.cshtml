@@ -828,26 +828,43 @@
 
 <script>
 
-    //$(function () { // document ready
 
-    //    if (!!$('.sticky').offset()) { // make sure ".sticky" element exists
 
-    //        var stickyTop = $('.sticky').offset().top; // returns number 
+    $(function () { // document ready
 
-    //        $(window).scroll(function () { // scroll event
 
-    //            var windowTop = $(window).scrollTop(); // returns number 
+        $(".icon-ionic").click(function () {
+            var icon = $(this);
+            var iconClass = icon.attr("class").split(" ")
+            //icon.removeClass("col");
+            //icon.removeClass("s3");
+            //icon.removeClass("icon-ionic");
 
-    //            if (stickyTop < windowTop) {
-    //                $('.sticky').css({ position: 'fixed', top: 0 });
-    //            } else {
-    //                $('.sticky').css('position', 'static');
-    //            }
+          
+            var iconSel = $("#icono-seleccionado")
+            iconSel.removeAttr("class")
 
-    //        });
+            iconSel.addClass(iconClass[3]);
 
-    //    }
 
-    //});
+        });
+
+        $(".icon-ionic").hover(function () {
+            $(this).css("cursor", "pointer")
+            var icon = $(this).attr('data-tags');
+            $(this).attr('title', icon)
+            $(this).attr('data-toggle', 'tooltip')
+
+
+        })
+
+        $("#eliminar-icon").click(function () {
+            var iconSel = $("#icono-seleccionado")
+           
+            iconSel.removeAttr("class")
+
+        });
+
+    });
 
 </script>

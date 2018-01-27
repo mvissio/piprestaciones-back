@@ -442,6 +442,7 @@
     <Content Include="Views\Shared\_SelectorIonIcons.cshtml" />
     <Content Include="Views\Aplicaciones\_AddMenu.cshtml" />
     <Content Include="Views\Aplicaciones\_EditAccionMenu.cshtml" />
+    <Content Include="Views\Shared\_DropZone.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

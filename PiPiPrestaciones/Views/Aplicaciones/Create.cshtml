@@ -20,8 +20,8 @@
                 <ul class="tabs">
                     <li class="tab col s3"><a class="active" href="#test1">Configuración general</a></li>
                     <li class="tab col s3"><a  href="#test2">Definir estilos</a></li>
-                    @*<li class="tab col s3 "><a href="#test3">Disabled Tab</a></li>
-                    <li class="tab col s3"><a href="#test4">Test 4</a></li>*@
+                    <li class="tab col s3 "><a href="#test3">Disabled Tab</a></li>
+                    <li class="tab col s3"><a href="#test4">Test 4</a></li>
                 </ul>
             </div>
         <br />
@@ -134,41 +134,62 @@
                 <div class="row">
 
                     <div class="col s3">
-                        <div class=" col s8">
-                            <a class='dropdown-button btn' href='#' data-activates='dropdown1'>
+                        <div class="row">
+                            <h5>Agregar elementos al menú principal</h5>
+                            @*<a class='dropdown-button btn' href='#' data-activates='dropdown1'>
                                 Agregar accion al menu principal
-                            </a>
+                            </a>*@
                             <!-- Dropdown Structure -->
-                            <ul id='dropdown1' class='dropdown-content'>
-                                <li><a class="sel-accion" data-name="Agenda"><i class="material-icons">label outline</i>Agenda</a></li>
-                                <li><a class="sel-accion" data-name="Favoritos"><i class="material-icons">label outline</i>Favoritos</a></li>
-                                <li><a class="sel-accion" data-name="Alojamientos"><i class="material-icons">label outline</i>Alojamientos</a></li>
-                                <li><a class="sel-accion" data-name="Mapa"><i class="material-icons">label outline</i>Mapa</a></li>
-                                <li><a class="sel-accion" data-name="Exposición"><i class="material-icons">label outline</i>Exposición</a></li>
-                                <li><a class="sel-accion" data-name="Formulario"><i class="material-icons">label outline</i>Formulario</a></li>
-                                <li><a class="sel-accion" data-name="Certificado"><i class="material-icons">label outline</i>Certificado</a></li>
-                                <li><a class="sel-accion" data-name="Link"><i class="material-icons">label outline</i>Link</a></li>
-                                <li><a class="sel-accion" data-name="Noticias"><i class="material-icons">label outline</i>Noticias</a></li>
-                                <li><a class="sel-accion" data-name="Paginas"><i class="material-icons">label outline</i>Paginas</a></li>
-                            </ul>
+
+                           
+                                <a class="sel-accion btn" data-enable="true" data-name="Agenda"><i class="material-icons left">label outline</i>Agenda</a>
+                                <a class="sel-accion btn" data-enable="true" data-name="Favoritos"><i class="material-icons left">label outline</i>Favoritos</a>
+                                <a class="sel-accion btn" data-enable="true" data-name="Alojamientos"><i class="material-icons left">label outline</i>Alojamientos</a>
+                                <a class="sel-accion btn" data-name="Mapa"><i class="material-icons left">label outline</i>Mapa</a>
+                                <a class="sel-accion btn" data-enable="true" data-name="Exposición"><i class="material-icons left">label outline</i>Exposición</a>
+                                <a class="sel-accion btn" data-enable="true" data-name="Formulario"><i class="material-icons left">label outline</i>Formulario</a>
+                                <a class="sel-accion btn" data-enable="true" data-name="Certificado"><i class="material-icons left">label outline</i>Certificado</a>
+                                <a class="sel-accion btn" data-enable="true" data-name="Link"><i class="material-icons left">label outline</i>Link</a>
+                                <a class="sel-accion btn" data-enable="true" data-name="Noticias"><i class="material-icons left">label outline</i>Noticias</a>
+                                <a class="sel-accion btn" data-enable="true" data-name="Paginas"><i class="material-icons left">label outline</i>Paginas</a>
+                           
+
+                            @*<ul id='dropdown1' >
+                                <li><a class="sel-accion btn" data-name="Agenda"><i class="material-icons left">label outline</i>Agenda</a></li>
+                                <li><a class="sel-accion btn" data-name="Favoritos"><i class="material-icons left">label outline</i>Favoritos</a></li>
+                                <li><a class="sel-accion btn" data-name="Alojamientos"><i class="material-icons left">label outline</i>Alojamientos</a></li>
+                                <li><a class="sel-accion btn" data-name="Mapa"><i class="material-icons left">label outline</i>Mapa</a></li>
+                                <li><a class="sel-accion btn" data-name="Exposición"><i class="material-icons left">label outline</i>Exposición</a></li>
+                                <li><a class="sel-accion btn" data-name="Formulario"><i class="material-icons left">label outline</i>Formulario</a></li>
+                                <li><a class="sel-accion btn" data-name="Certificado"><i class="material-icons left">label outline</i>Certificado</a></li>
+                                <li><a class="sel-accion btn" data-name="Link"><i class="material-icons left">label outline</i>Link</a></li>
+                                <li><a class="sel-accion btn" data-name="Noticias"><i class="material-icons left">label outline</i>Noticias</a></li>
+                                <li><a class="sel-accion btn" data-name="Paginas"><i class="material-icons left">label outline</i>Paginas</a></li>
+                            </ul>*@
 
                         </div>
                        
                     </div>
 
-                    <div   class="col s3 offset-s1">
-                        <div id="acciones-agregadas">
-                            <div id="status-bar"></div>
-                            <div id="title-app" align="center">
-                                title
+                    <div class="col s8 offset-s1" align="center">
+
+                        <div class="col s5 offset-s3">
+                            <div id="acciones-agregadas">
+                                <div id="status-bar"></div>
+                                <div id="title-app" align="center">
+                                    title
+                                </div>
+
                             </div>
 
+
+
+
                         </div>
-                       
-                      
-                        
 
                     </div>
+
+                    
                    
 
                 </div>
@@ -191,7 +212,7 @@
 </div>
             <div id="test3" class="col s12">
 
-         
+            
 
 
 
@@ -214,8 +235,9 @@
   
 
 }
-
-<button id="show-modal" hidden data-target="modal1" class="btn show-modal modal-trigger">Modal</button>
+<div hidden>
+    <button id="show-modal" data-target="modal1" class="btn show-modal modal-trigger">Modal</button>
+</div>
  
 
 <div id="modal1" class="modal modal-fixed-footer">
@@ -223,7 +245,10 @@
         @Html.Partial("_EditAccionMenu")
     </div>
     <div class="modal-footer">
-        <a class="modal-action modal-close waves-effect waves-green btn-flat material-icons "> done</a>
+        <a id="edit-menu-done" 
+           data-type=""
+           data-order=""
+           class="modal-action waves-effect waves-green btn-flat material-icons "> done</a>
     </div>
 </div>
 
@@ -243,11 +268,13 @@
     @Styles.Render("~/bundles/colorpicker/css")
 }
 <style>
+   
     #status-bar {
-        background-image: url(~/Resources/android-statusbar.png);
+        background-image: url(../../Resources/android-statusbar.png);
         background-repeat:no-repeat;
+        background-size:contain;
         width:100%;
-        height:auto;
+        height:2em;
 
     }
     .show-modal {
@@ -265,9 +292,9 @@
         color: white;
         font-size: 32px;
         height: 1.5em;
-        padding-bottom: 1em;
+        padding-bottom: 0.5em;
        
-        margin-bottom: 1em;
+        margin-bottom: 0.5em;
     }
     .container-menu {
     margin-top:3em;
@@ -295,8 +322,14 @@
             text-decoration: none;
         }
     .sel-accion {
-    background-color:black;
+        background-color: rgb(73, 27, 27); /*rgba(73, 27, 27, 0.78)*/
+        width: 100%;
+        border-radius:unset;
     }
+        .sel-accion:hover {
+            background-color: rgba(73, 27, 27, 0.70);
+            color:white;    
+        }
 
     #acciones-agregadas {
         height: 40em;
@@ -310,7 +343,7 @@
     $(document).ready(function () {
         //$('.modal').modal();
 
-       
+
 
         $('#CssAplicacion_BackGroundColor').colorpicker();
 
@@ -365,30 +398,17 @@
 
 
         });
-        $(".btn-preview").click(function () {
-            $("#show-modal").click();
-        });
 
-        $("#show-modal").click(function () {
-            debugger;
-            $('#modal1').modal({
-                dismissible: false, // Modal can be dismissed by clicking outside of the modal
-                opacity: .5, // Opacity of modal background
-                inDuration: 300, // Transition in duration
-                outDuration: 200, // Transition out duration
-                startingTop: '4%', // Starting top style attribute
-                endingTop: '10%', // Ending top style attribute
-                ready: function (modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
-                   
-                },
-                complete: function () {  } // Callback for Modal close
-            }
-            );
-        });
+
+        //Region Seleccionar menu
 
         $(".sel-accion").click(function () {
             debugger;
-            var n_id = Number($("#index").html());
+            var enable = $(this).attr("data-enable");
+
+            if (enable == "true") {
+
+                 var n_id = Number($("#index").html());
             var i = $("#index").html();
             var type = $(this).attr("data-name");
 
@@ -413,11 +433,91 @@
 
             $("#index").html(n_id);
 
+            $(this).attr("data-enable", "false");
+
+            }
+
+
+
 
         });
 
 
-       
+
+        //$(".btn-preview").click(function () {
+        //    debugger;
+        //    var order = $(this).attr("data-order");
+        //    var type = $(this).attr("data-type");
+        //    $("#edit-menu-done").attr("data-order", order)
+        //    $("#edit-menu-done").attr("data-type", type)
+        //    $("#show-modal").click();
+        //});
+
+        $("#show-modal").click(function () {
+            debugger;
+            $('#modal1').modal({
+                dismissible: false, // Modal can be dismissed by clicking outside of the modal
+                opacity: .5, // Opacity of modal background
+                inDuration: 300, // Transition in duration
+                outDuration: 200, // Transition out duration
+                startingTop: '4%', // Starting top style attribute
+                endingTop: '10%', // Ending top style attribute
+                ready: function (modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
+
+                },
+                complete: function () { } // Callback for Modal close
+            }
+            );
+        });
+
+        $("#edit-menu-done").click(function () {
+
+            debugger;
+            //Recupero inputs del  modal
+            var order = $(this).attr("data-order");
+            var type = $(this).attr("data-type");
+            var titleMenu = $("#titulo-edit-menu").val();
+            var backColor = $("#backColor-edit-menu").val();
+            var icon = $("#icon-edit-menu").val();
+            var backimage = $("#dropZone").attr("data-result");
+            if (titleMenu == "") {
+                titleMenu = type;
+            }
+
+            // Guardo en las variables de backend
+            $("#Menus_" + order + "__" + "TitleMenu").val(titleMenu);
+            $("#Menus_" + order + "__" + "Icon").val(icon);
+            $("#Menus_" + order + "__" + "CssModelMenu_ColorBack").val(backColor);
+            $("#Menus_" + order + "__" + "CssModelMenu_ImageBack").val(backimage);
+
+            //Seteo los atributos al preview
+
+            var btnPreview = $("#btn-preview-" + order);
+
+            btnPreview.css("background-color",  backColor);
+
+         // cosas para la imagen de fondo
+            btnPreview.css("background-position", "center");
+            btnPreview.css("background-size", "contain");
+            btnPreview.css("background-image", "url(../" + backimage + ")");
+            btnPreview.css("background-repeat", "no-repeat");
+
+            var htmlIcon = "<i class='" + icon + " left'></i>" + titleMenu;
+            //btnPreview.append(htmlIcon)
+            btnPreview.html(htmlIcon);
+
+          //Guardo las modificaciones en el atributo data-  de html
+           btnPreview.attr("data-title",titleMenu);
+           btnPreview.attr("data-ionicon",icon);
+           btnPreview.attr("data-colorback",backColor);
+           btnPreview.attr("data-imageback",backimage);
+
+            //Cierro el modal
+            $('#modal1').modal('close');
+
+
+        });
+
 
     });
 

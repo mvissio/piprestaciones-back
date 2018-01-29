@@ -10,24 +10,24 @@ using PiPiPrestaciones.Models;
 
 namespace PiPiPrestaciones.Controllers
 {
-    public class StaticPagesController : Controller
+    public class MapsController : Controller
     {
         private PiPiPrestacionesDBContext db = new PiPiPrestacionesDBContext();
-        private static List<StaticPage> staticPageList= new List<StaticPage>();
 
+        private static List<Map> mapList = new List<Map>();
 
         [HttpGet]
-        public JsonResult GetStaticPage(int IdPage)
+        public JsonResult GetMaps()
         {
-            return Json(staticPageList.Where(s => s.PageId == IdPage).FirstOrDefault(), JsonRequestBehavior.AllowGet);
+            return Json(mapList, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
-        public JsonResult PostStaticPage(StaticPage staticPage)
+        public JsonResult PostMap(Map map)
         {
             try
             {
-                staticPageList.Add(staticPage);
+                mapList.Add(map);
                 return Json(HttpStatusCode.Accepted);
             }
             catch (Exception)
@@ -36,15 +36,15 @@ namespace PiPiPrestaciones.Controllers
             }
         }
 
-        [HttpPost]
-        public JsonResult PostStaticList(List<StaticPage> staticPages)
+        public JsonResult PostMapList(List<Map> mapLst)
         {
             try
             {
-                staticPages.ForEach(staticPage =>
-                {
-                    staticPageList.Add(staticPage);
-                });
+                mapLst.ForEach(
+                    map => {
+                        mapList.Add(map);
+                        }
+                );
                 return Json(HttpStatusCode.Accepted);
             }
             catch (Exception)
@@ -54,113 +54,103 @@ namespace PiPiPrestaciones.Controllers
         }
 
 
-
-
-
-
-
-
-
-
-
-
-        // GET: StaticPages
+        // GET: Maps
         public ActionResult Index()
         {
-            return View(db.StaticPages.ToList());
+            return View(db.Maps.ToList());
         }
 
-        // GET: StaticPages/Details/5
+        // GET: Maps/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            StaticPage staticPage = db.StaticPages.Find(id);
-            if (staticPage == null)
+            Map map = db.Maps.Find(id);
+            if (map == null)
             {
                 return HttpNotFound();
             }
-            return View(staticPage);
+            return View(map);
         }
 
-        // GET: StaticPages/Create
+        // GET: Maps/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: StaticPages/Create
+        // POST: Maps/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PageId,PageTitle")] StaticPage staticPage)
+        public ActionResult Create([Bind(Include = "MapId,Lat,Lng,Zoom,IsMap,BorderColor, BorederSize")] Map map)
         {
             if (ModelState.IsValid)
             {
-                db.StaticPages.Add(staticPage);
+                db.Maps.Add(map);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(staticPage);
+            return View(map);
         }
 
-        // GET: StaticPages/Edit/5
+        // GET: Maps/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            StaticPage staticPage = db.StaticPages.Find(id);
-            if (staticPage == null)
+            Map map = db.Maps.Find(id);
+            if (map == null)
             {
                 return HttpNotFound();
             }
-            return View(staticPage);
+            return View(map);
         }
 
-        // POST: StaticPages/Edit/5
+        // POST: Maps/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PageId,PageTitle")] StaticPage staticPage)
+        public ActionResult Edit([Bind(Include = "MapId,Lat,Lng,Zoom,IsMap")] Map map)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(staticPage).State = EntityState.Modified;
+                db.Entry(map).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(staticPage);
+            return View(map);
         }
 
-        // GET: StaticPages/Delete/5
+        // GET: Maps/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            StaticPage staticPage = db.StaticPages.Find(id);
-            if (staticPage == null)
+            Map map = db.Maps.Find(id);
+            if (map == null)
             {
                 return HttpNotFound();
             }
-            return View(staticPage);
+            return View(map);
         }
 
-        // POST: StaticPages/Delete/5
+        // POST: Maps/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            StaticPage staticPage = db.StaticPages.Find(id);
-            db.StaticPages.Remove(staticPage);
+            Map map = db.Maps.Find(id);
+            db.Maps.Remove(map);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

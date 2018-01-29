@@ -349,7 +349,7 @@
 
         $("#CssAplicacion_BackGroundColor").on("change", function () {
 
-            debugger;
+            //debugger;
             var backGround = $(this).val()
             $("#seleccion-color").css("background-color", backGround);
             $("#acciones-agregadas").css("background-color", backGround);
@@ -364,7 +364,7 @@
 
 
         $("#App-Independiente").click(function () {
-            debugger;
+            //debugger;
             var val = $(this).val();
 
             if (val == "on") {
@@ -377,7 +377,7 @@
         });
 
         $("#Lenguaje-PorDefecto").click(function () {
-            debugger;
+            //debugger;
             var val = $(this).val();
 
             if (val == "on") {
@@ -403,7 +403,7 @@
         //Region Seleccionar menu
 
         $(".sel-accion").click(function () {
-            debugger;
+            //debugger;
             var enable = $(this).attr("data-enable");
 
             if (enable == "true") {
@@ -454,7 +454,7 @@
         //});
 
         $("#show-modal").click(function () {
-            debugger;
+            //debugger;
             $('#modal1').modal({
                 dismissible: false, // Modal can be dismissed by clicking outside of the modal
                 opacity: .5, // Opacity of modal background
@@ -472,7 +472,7 @@
 
         $("#edit-menu-done").click(function () {
 
-            debugger;
+            //debugger;
             //Recupero inputs del  modal
             var order = $(this).attr("data-order");
             var type = $(this).attr("data-type");

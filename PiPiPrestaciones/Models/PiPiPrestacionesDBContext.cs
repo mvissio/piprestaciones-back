@@ -23,5 +23,7 @@ namespace PiPiPrestaciones.Models
         public System.Data.Entity.DbSet<PiPiPrestaciones.Models.PantallaEstatica> PantallaEstaticas { get; set; }
 
         public System.Data.Entity.DbSet<PiPiPrestaciones.Models.StaticPage> StaticPages { get; set; }
+
+        public System.Data.Entity.DbSet<PiPiPrestaciones.Models.Map> Maps { get; set; }
     }
 }

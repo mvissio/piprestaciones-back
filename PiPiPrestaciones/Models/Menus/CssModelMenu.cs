@@ -21,7 +21,8 @@ namespace PiPiPrestaciones.Models
         public int BorderSize { get; set; }
 
         public string ImageBack { get; set; }
-      
+
+        public string ColorIcon { get; set; }
 
     }
 }

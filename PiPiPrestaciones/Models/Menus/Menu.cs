@@ -26,9 +26,5 @@ namespace PiPiPrestaciones.Models
         public string Icon { get; set; }
 
         public CssModelMenu CssModelMenu { get; set; }
-
-
-
-
     }
 }

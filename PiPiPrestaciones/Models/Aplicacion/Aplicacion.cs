@@ -15,40 +15,99 @@ namespace PiPiPrestaciones.Models
         [Column("AplicacionId")]
         public int AplicacionId { get; set; }
 
-        [Column("NombreAplicacion")]
-        [Display(Name = "Nombre Aplicación")]
-        public string NombreAplicacion { get; set; }
 
-        [Column("VersionId")]
-        [Display(Name = "VersionId")]
-        public int? VersionId { get; set; }
+        [Display(Name = "Título")]
+        [Column("Titulo")]
+        public string Titulo { get; set; }
 
-        [Column("LastModification")]
-        [Display(Name = "Última modiicación")]
+        [Column("AppIndependiente")]
+        [Display(Name = "App independiente")]
+        public bool AppIndependiente { get; set; }
+
+        [Column("Idioma")]
+        public string Idioma { get; set; }
+
+        [Column("LenguajePorDefecto")]
+        public bool LenguajePorDefecto { get; set; }
+
+        [Column("ClaveApp")]
+        public string ClaveApp { get; set; }
+
+        [Column("AdminUser")]
+        public string AdminUser { get; set; }
+
+        [Column("AdminPasword")]
+        [DataType(DataType.Password)]
+        public string AdminPasword { get; set; }
+
+        [Column("ApiKey")]
+        public string ApiKey { get; set; }
+
+        [Column("Canal")]
+        public string Canal { get; set; }
+
+        [Column("UrlImagenN")]
+        public string UrlImagenN { get; set; }
+
+        [Column("UrlImagen2")]
+        public string UrlImagen2 { get; set; }
+
+        [Column("UrlImagen1")]
+        public string UrlImagen1 { get; set; }
+
+        [Column("HashTagTwiter")]
+        public string HashTagTwiter { get; set; }
+
+        [Column("CssAplicacionId")]
+        public int? CssAplicacionId { get; set; }
+
+        [ForeignKey("CssAplicacionId")]
+        public virtual CssModel CssAplicacion { get; set; }
+
+        public virtual List<Menu> Menus { get; set; }
+
+        [Display(AutoGenerateField = false,Name = "VersionId")]
+        public string VersionId { get; set; }
+
+        [Display(AutoGenerateField = false, Name = "Última modiicación")]
         public DateTime? LastModification { get; set; }
 
-        [Column("CreateAt")]
-        [Display(Name = "CreateAt")]
+
+        [Display(AutoGenerateField = false, Name = "CreateAt")]
         public DateTime CreateAt { get; set; }
 
-        [Column("CreateBy")]
-        [Display(Name = "CreateBy")]
+
+        [Display(AutoGenerateField = false, Name = "CreateBy")]
         public string CreateBy { get; set; }
 
-        public override bool Equals(object obj)
-        {
-            return base.Equals(obj);
+        public Aplicacion() { }
+
+        public Aplicacion(AplicacionCreateView a) {
+            this.AdminPasword = a.AdminPasword;
+            this.AdminUser = a.AdminUser;
+            this.ApiKey = a.ApiKey;
+            this.AppIndependiente = a.AppIndependiente;
+            this.Canal = a.Canal;
+            this.ClaveApp = a.ClaveApp;
+            this.CreateAt = DateTime.Now;
+            this.CssAplicacion = a.CssAplicacion;
+            this.HashTagTwiter = a.HashTagTwiter;
+            this.Idioma = a.Idioma;
+            this.LenguajePorDefecto = a.LenguajePorDefecto;
+            this.Titulo = a.Titulo;
+            this.UrlImagen1 = a.UrlImagen1;
+            this.UrlImagen2 = a.UrlImagen2;
+            this.UrlImagenN = a.UrlImagenN;
+            var guid = Guid.NewGuid();
+            this.VersionId = guid.ToString();
+            this.LastModification = DateTime.Now;
+            this.CssAplicacion = new CssModel();
+            this.CssAplicacion.ColorBack = a.CssAplicacion.ColorBack;
+           
+
+
         }
 
-        public override int GetHashCode()
-        {
-            return base.GetHashCode();
-        }
-
-        public override string ToString()
-        {
-            return base.ToString();
-        }
     }
 
 
@@ -87,12 +146,12 @@ namespace PiPiPrestaciones.Models
 
         public string HashTagTwiter { get; set; }
 
-        public CssAplicacion CssAplicacion { get; set; }
+        public CssModel CssAplicacion { get; set; }
 
         public virtual List<Menu> Menus { get; set; }
 
         [Display(Name = "VersionId")]
-        public int? VersionId { get; set; }
+        public string VersionId { get; set; }
      
         [Display(AutoGenerateField = false,Name = "Última modiicación")]
         public DateTime? LastModification { get; set; }

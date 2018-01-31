@@ -10,7 +10,7 @@ using PiPiPrestaciones.Models;
 
 namespace PiPiPrestaciones.Controllers
 {
-    public class StaticPagesController : Controller
+    public class StaticPageController : Controller
     {
         private PiPiPrestacionesDBContext db = new PiPiPrestacionesDBContext();
         private static List<StaticPage> staticPageList= new List<StaticPage>();
@@ -19,7 +19,7 @@ namespace PiPiPrestaciones.Controllers
         [HttpGet]
         public JsonResult GetStaticPage(int IdPage)
         {
-            return Json(staticPageList.Where(s => s.PageId == IdPage).FirstOrDefault(), JsonRequestBehavior.AllowGet);
+            return Json(staticPageList.Where(s => s.StaticPageId == IdPage).FirstOrDefault(), JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
@@ -64,20 +64,20 @@ namespace PiPiPrestaciones.Controllers
 
 
 
-        // GET: StaticPages
+        // GET: StaticPage
         public ActionResult Index()
         {
-            return View(db.StaticPages.ToList());
+            return View(db.StaticPage.ToList());
         }
 
-        // GET: StaticPages/Details/5
+        // GET: StaticPage/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            StaticPage staticPage = db.StaticPages.Find(id);
+            StaticPage staticPage = db.StaticPage.Find(id);
             if (staticPage == null)
             {
                 return HttpNotFound();
@@ -85,13 +85,13 @@ namespace PiPiPrestaciones.Controllers
             return View(staticPage);
         }
 
-        // GET: StaticPages/Create
+        // GET: StaticPage/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: StaticPages/Create
+        // POST: StaticPage/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -100,7 +100,7 @@ namespace PiPiPrestaciones.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.StaticPages.Add(staticPage);
+                db.StaticPage.Add(staticPage);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -108,14 +108,14 @@ namespace PiPiPrestaciones.Controllers
             return View(staticPage);
         }
 
-        // GET: StaticPages/Edit/5
+        // GET: StaticPage/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            StaticPage staticPage = db.StaticPages.Find(id);
+            StaticPage staticPage = db.StaticPage.Find(id);
             if (staticPage == null)
             {
                 return HttpNotFound();
@@ -123,7 +123,7 @@ namespace PiPiPrestaciones.Controllers
             return View(staticPage);
         }
 
-        // POST: StaticPages/Edit/5
+        // POST: StaticPage/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -139,14 +139,14 @@ namespace PiPiPrestaciones.Controllers
             return View(staticPage);
         }
 
-        // GET: StaticPages/Delete/5
+        // GET: StaticPage/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            StaticPage staticPage = db.StaticPages.Find(id);
+            StaticPage staticPage = db.StaticPage.Find(id);
             if (staticPage == null)
             {
                 return HttpNotFound();
@@ -154,13 +154,13 @@ namespace PiPiPrestaciones.Controllers
             return View(staticPage);
         }
 
-        // POST: StaticPages/Delete/5
+        // POST: StaticPage/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            StaticPage staticPage = db.StaticPages.Find(id);
-            db.StaticPages.Remove(staticPage);
+            StaticPage staticPage = db.StaticPage.Find(id);
+            db.StaticPage.Remove(staticPage);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

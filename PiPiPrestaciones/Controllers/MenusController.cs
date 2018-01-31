@@ -10,25 +10,25 @@ using PiPiPrestaciones.Models;
 
 namespace PiPiPrestaciones.Controllers
 {
-    public class MenusController : Controller
+    public class MenuController : Controller
     {
         private PiPiPrestacionesDBContext db = new PiPiPrestacionesDBContext();
         private static List<Menu> menuList = new List<Menu>();
 
-        // GET: Menus
+        // GET: Menu
         public ActionResult Index()
         {
-            return View(db.Menus.ToList());
+            return View(db.Menu.ToList());
         }
 
-        // GET: Menus/Details/5
+        // GET: Menu/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Menu menu = db.Menus.Find(id);
+            Menu menu = db.Menu.Find(id);
             if (menu == null)
             {
                 return HttpNotFound();
@@ -36,7 +36,7 @@ namespace PiPiPrestaciones.Controllers
             return View(menu);
         }
 
-        // GET: Menus/Create
+        // GET: Menu/Create
         public ActionResult Create()
         {
             return View();
@@ -78,7 +78,7 @@ namespace PiPiPrestaciones.Controllers
             }
         }
 
-        // POST: Menus/Create
+        // POST: Menu/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -87,7 +87,7 @@ namespace PiPiPrestaciones.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Menus.Add(menu);
+                db.Menu.Add(menu);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -95,14 +95,14 @@ namespace PiPiPrestaciones.Controllers
             return View(menu);
         }
 
-        // GET: Menus/Edit/5
+        // GET: Menu/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Menu menu = db.Menus.Find(id);
+            Menu menu = db.Menu.Find(id);
             if (menu == null)
             {
                 return HttpNotFound();
@@ -110,7 +110,7 @@ namespace PiPiPrestaciones.Controllers
             return View(menu);
         }
 
-        // POST: Menus/Edit/5
+        // POST: Menu/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -126,14 +126,14 @@ namespace PiPiPrestaciones.Controllers
             return View(menu);
         }
 
-        // GET: Menus/Delete/5
+        // GET: Menu/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Menu menu = db.Menus.Find(id);
+            Menu menu = db.Menu.Find(id);
             if (menu == null)
             {
                 return HttpNotFound();
@@ -141,13 +141,13 @@ namespace PiPiPrestaciones.Controllers
             return View(menu);
         }
 
-        // POST: Menus/Delete/5
+        // POST: Menu/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            Menu menu = db.Menus.Find(id);
-            db.Menus.Remove(menu);
+            Menu menu = db.Menu.Find(id);
+            db.Menu.Remove(menu);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

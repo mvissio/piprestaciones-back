@@ -228,48 +228,34 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\AgendaController.cs" />
     <Compile Include="Controllers\ApiMenusController.cs" />
     <Compile Include="Controllers\AplicacionesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MapsController.cs" />
     <Compile Include="Controllers\MenusController.cs" />
-    <Compile Include="Controllers\PantallaEstaticasController.cs" />
     <Compile Include="Controllers\StaticPagesController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201801120211475_InsertUserLoginTables.cs" />
-    <Compile Include="Migrations\201801120211475_InsertUserLoginTables.Designer.cs">
-      <DependentUpon>201801120211475_InsertUserLoginTables.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801120215441_InsertTablesAplicacionAgenda.cs" />
-    <Compile Include="Migrations\201801120215441_InsertTablesAplicacionAgenda.Designer.cs">
-      <DependentUpon>201801120215441_InsertTablesAplicacionAgenda.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801121729597_updateAplication.cs" />
-    <Compile Include="Migrations\201801121729597_updateAplication.Designer.cs">
-      <DependentUpon>201801121729597_updateAplication.cs</DependentUpon>
+    <Compile Include="Migrations\201801310004341_Dominio.cs" />
+    <Compile Include="Migrations\201801310004341_Dominio.Designer.cs">
+      <DependentUpon>201801310004341_Dominio.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Agenda.cs" />
     <Compile Include="Models\Aplicacion\Aplicacion.cs" />
-    <Compile Include="Models\Aplicacion\CssAplicacion.cs" />
-    <Compile Include="Models\map.cs" />
+    <Compile Include="Models\Css\CssModel.cs" />
+    <Compile Include="Models\Map.cs" />
     <Compile Include="Models\Menus\CssModelMenu.cs" />
+    <Compile Include="Models\Menus\Type.cs" />
     <Compile Include="Models\Static\CssStaticContent.cs" />
     <Compile Include="Models\Static\CssStaticPage.cs" />
-    <Compile Include="Models\CssStyle.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Controllers\ImagesController.cs" />
     <Compile Include="Models\Image.cs" />
-    <Compile Include="Models\ItemPantallaEstatica.cs" />
     <Compile Include="Models\Menus\Menu.cs" />
-    <Compile Include="Models\PantallaAplicacion.cs" />
-    <Compile Include="Models\PantallaEstatica.cs" />
     <Compile Include="Models\PiPiPrestacionesDBContext.cs" />
     <Compile Include="Models\Static\StaticContent.cs" />
     <Compile Include="Models\Static\StaticPage.cs" />
@@ -418,24 +404,12 @@
     <Content Include="Views\Aplicaciones\Details.cshtml" />
     <Content Include="Views\Aplicaciones\Edit.cshtml" />
     <Content Include="Views\Aplicaciones\Index.cshtml" />
-    <Content Include="Views\Agenda\Create.cshtml" />
-    <Content Include="Views\Agenda\Delete.cshtml" />
-    <Content Include="Views\Agenda\Details.cshtml" />
-    <Content Include="Views\Agenda\Edit.cshtml" />
-    <Content Include="Views\Agenda\Index.cshtml" />
     <Content Include="Views\Menus\Create.cshtml" />
     <Content Include="Views\Menus\Delete.cshtml" />
     <Content Include="Views\Menus\Details.cshtml" />
     <Content Include="Views\Menus\Edit.cshtml" />
     <Content Include="Views\Menus\Index.cshtml" />
-    <Content Include="Views\PantallaEstaticas\Create.cshtml" />
-    <Content Include="Views\PantallaEstaticas\Delete.cshtml" />
-    <Content Include="Views\PantallaEstaticas\Details.cshtml" />
-    <Content Include="Views\PantallaEstaticas\Edit.cshtml" />
-    <Content Include="Views\PantallaEstaticas\Index.cshtml" />
-    <Content Include="Views\PantallaEstaticas\_SelectorIonIcons.cshtml" />
     <Content Include="Views\Shared\_MarkDownEditor.cshtml" />
-    <Content Include="Views\PantallaEstaticas\ListPages.cshtml" />
     <Content Include="Views\StaticPages\Create.cshtml" />
     <Content Include="Views\StaticPages\Delete.cshtml" />
     <Content Include="Views\StaticPages\Details.cshtml" />
@@ -449,8 +423,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Images\" />
-    <Folder Include="Models\App_LocalResources\" />
-    <Folder Include="Models\NewFolder1\" />
     <Folder Include="Views\Images\" />
   </ItemGroup>
   <ItemGroup>
@@ -466,14 +438,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201801120211475_InsertUserLoginTables.resx">
-      <DependentUpon>201801120211475_InsertUserLoginTables.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801120215441_InsertTablesAplicacionAgenda.resx">
-      <DependentUpon>201801120215441_InsertTablesAplicacionAgenda.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801121729597_updateAplication.resx">
-      <DependentUpon>201801121729597_updateAplication.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201801310004341_Dominio.resx">
+      <DependentUpon>201801310004341_Dominio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

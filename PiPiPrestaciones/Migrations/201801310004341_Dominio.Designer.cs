@@ -7,13 +7,13 @@ namespace PiPiPrestaciones.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class InsertTablesAplicacionAgenda : IMigrationMetadata
+    public sealed partial class Dominio : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InsertTablesAplicacionAgenda));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Dominio));
         
         string IMigrationMetadata.Id
         {
-            get { return "201801120215441_InsertTablesAplicacionAgenda"; }
+            get { return "201801310004341_Dominio"; }
         }
         
         string IMigrationMetadata.Source

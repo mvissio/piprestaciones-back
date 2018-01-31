@@ -9,21 +9,21 @@ namespace PiPiPrestaciones.Models
 {
     public class PiPiPrestacionesDBContext: DbContext
     {
-        public PiPiPrestacionesDBContext() : base("DefaultConnection")
+        public PiPiPrestacionesDBContext() : base("PiPrestaciones")
         {
         }
 
-        public DbSet<Agenda> Agenda { get; set; }
+     
         //public DbSet<Aplicacion> Aplicacion { get; set; }
         public DbSet <Aplicacion> Aplicacion { get; set; }
-        public DbSet<PantallaAplicacion> PantallaAplicacion { get; set; }
+        public DbSet<Menu> Menu { get; set; }
+        public DbSet<CssModel> CssModel { get; set; }
+        public DbSet<Type> Type { get; set; }
+        public DbSet<StaticPage> StaticPage { get; set; }
+        public DbSet<StaticContent> StaticContent { get; set; }
+        public DbSet<Map> Map { get; set; }
 
-        public System.Data.Entity.DbSet<PiPiPrestaciones.Models.Menu> Menus { get; set; }
 
-        public System.Data.Entity.DbSet<PiPiPrestaciones.Models.PantallaEstatica> PantallaEstaticas { get; set; }
 
-        public System.Data.Entity.DbSet<PiPiPrestaciones.Models.StaticPage> StaticPages { get; set; }
-
-        public System.Data.Entity.DbSet<PiPiPrestaciones.Models.Map> Maps { get; set; }
     }
 }

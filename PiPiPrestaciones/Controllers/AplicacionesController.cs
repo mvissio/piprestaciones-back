@@ -50,13 +50,41 @@ namespace PiPiPrestaciones.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(AplicacionCreateView aplicacion)
         {
-            //var app = new
-            //if (ModelState.IsValid)
-            //{
-            //    db.Aplicacion.Add(aplicacion);
-            //    db.SaveChanges();
-            //    return RedirectToAction("Index");
-            //}
+            var app = new Aplicacion(aplicacion);
+
+            if (ModelState.IsValid)
+            {
+
+
+                db.Aplicacion.Add(app);
+
+                var order = 0;
+                foreach (var item in aplicacion.Menus) {
+                    var menu = new Menu();
+                    var cssItemMenu = new CssModel();
+                    cssItemMenu.BorderSize = item.CssModelItemMenu.BorderSize;
+                    cssItemMenu.ColorBack = item.CssModelItemMenu.ColorBack;
+                    cssItemMenu.ColorIcon = item.CssModelItemMenu.ColorIcon;
+                    cssItemMenu.ColorText = item.CssModelItemMenu.ColorText;
+                    cssItemMenu.FontFamily = item.CssModelItemMenu.FontFamily;
+                    db.CssModel.Add(cssItemMenu);
+
+                    menu.CssModelItemMenu = cssItemMenu;
+                    menu.Aplicacion = app;
+                    menu.Icon = item.Icon;
+                    menu.Order = order;
+                    menu.Status = true;
+                    menu.TitleMenu = item.TitleMenu;
+                    menu.Type = item.Type;
+
+                    db.Menu.Add(menu);
+
+
+                }
+
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
 
             return View(aplicacion);
         }

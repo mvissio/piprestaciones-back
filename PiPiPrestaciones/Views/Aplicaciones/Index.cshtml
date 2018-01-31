@@ -4,42 +4,44 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<div class="row">
+    <div class="col s4">
+        <h4>Aplicaciones</h4>
+    </div>
+    <div class="col s3 offset-s5">
+        <a class="btn btn-large blue darken-4 white-text" href="@Url.Action("Create","Aplicaciones")"><i class="left material-icons">add</i> Incorporar Aplicación</a>  
+    </div>
+</div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
+
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Titulo)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.VersionId)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.LastModification)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreateAt)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreateBy)
-        </th>
+        
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
+            @Html.DisplayFor(modelItem => item.Titulo)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.VersionId)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.LastModification)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreateAt)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreateBy)
-        </td>
+       
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.AplicacionId }) |
             @Html.ActionLink("Details", "Details", new { id=item.AplicacionId }) |

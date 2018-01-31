@@ -118,8 +118,8 @@
             
                 <div class=" input-field row ">
                     <div class="col s3">
-                        @Html.LabelFor(model => model.CssAplicacion.BackGroundColor)
-                        @Html.EditorFor(model => model.CssAplicacion.BackGroundColor)
+                        @Html.LabelFor(model => model.CssAplicacion.ColorBack)
+                        @Html.EditorFor(model => model.CssAplicacion.ColorBack)
                     </div>
 
                     @*<input id="mycp" type="text" class="input-field" />
@@ -346,9 +346,9 @@
 
 
 
-        $('#CssAplicacion_BackGroundColor').colorpicker();
+        $('#CssAplicacion_ColorBack').colorpicker();
 
-        $("#CssAplicacion_BackGroundColor").on("change", function () {
+        $("#CssAplicacion_ColorBack").on("change", function () {
 
             //debugger;
             var backGround = $(this).val()
@@ -358,7 +358,7 @@
         });
 
         $("#seleccion-color").click(function () {
-            $('#CssAplicacion_BackGroundColor').focus();
+            $('#CssAplicacion_ColorBack').focus();
         });
 
 
@@ -488,8 +488,8 @@
             // Guardo en las variables de backend
             $("#Menus_" + order + "__" + "TitleMenu").val(titleMenu);
             $("#Menus_" + order + "__" + "Icon").val(icon);
-            $("#Menus_" + order + "__" + "CssModelMenu_ColorBack").val(backColor);
-            $("#Menus_" + order + "__" + "CssModelMenu_ImageBack").val(backimage);
+            $("#Menus_" + order + "__" + "CssModelItemMenu_ColorBack").val(backColor);
+            $("#Menus_" + order + "__" + "CssModelItemMenu_ImageBack").val(backimage);
 
             //Seteo los atributos al preview
 

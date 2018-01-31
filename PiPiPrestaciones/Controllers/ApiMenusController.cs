@@ -15,13 +15,23 @@ namespace PiPiPrestaciones.Controllers
         //{
         //    return new string[] { "value1", "value2" };
         //}
+        private PiPiPrestacionesDBContext db = new PiPiPrestacionesDBContext();
+
+        //[HttpGet]
+        //public List<Menu> GetAplicationMenu(int id) {
+        //    var menus = db.Menu.Where(m => m.AplicacionId == id).ToList();
+
+        //    return menus;
+
+
+        //}
 
         public List<Menu> Get() {
             Menu menu = new Menu();
             Menu menu2 = new Menu();
 
-            menu.MenuId = 1.ToString();
-            menu.CssModelMenu = new CssModelMenu();
+            menu.MenuId = 1;
+            menu.CssModelMenu = new CssModel();
             menu.CssModelMenu.BorderSize = 2;
             menu.CssModelMenu.ColorBack = "#990000";
             menu.CssModelMenu.ColorText = "#FFFFFF";
@@ -32,8 +42,8 @@ namespace PiPiPrestaciones.Controllers
             menu.TitleMenu = "Boton";
             menu.Type = "agenda"; //Ex --> Agenda abre patalla agenda ...
 
-            menu2.MenuId = 1.ToString();
-            menu2.CssModelMenu = new CssModelMenu();
+            menu2.MenuId = 2;
+            menu2.CssModelMenu = new CssModel();
             menu2.CssModelMenu.BorderSize = 2;
             menu2.CssModelMenu.ColorBack = "#990000";
             menu2.CssModelMenu.ColorText = "#FFFFFF";
@@ -54,9 +64,33 @@ namespace PiPiPrestaciones.Controllers
 
 
         // GET: api/ApiMenus/5
-        public string Get(int id)
+        public List<Menu> Get(int id)
         {
-            return "value";
+            var listMenus = db.Menu.Where(m => m.AplicacionId == id).ToList();
+            var menus = new List<Menu>();
+            foreach (var item in listMenus) {
+                var menu = new Menu();
+                var cssItemMenu = new CssModel();
+                cssItemMenu.CssModelId = item.CssModelItemMenu.CssModelId;
+                cssItemMenu.BorderSize = item.CssModelItemMenu.BorderSize;
+                cssItemMenu.ColorBack = item.CssModelItemMenu.ColorBack;
+                cssItemMenu.ColorIcon = item.CssModelItemMenu.ColorIcon;
+                cssItemMenu.ColorText = item.CssModelItemMenu.ColorText;
+                cssItemMenu.FontFamily = item.CssModelItemMenu.FontFamily;
+               
+
+                menu.CssModelItemMenu = cssItemMenu;
+                menu.AplicacionId = item.AplicacionId;
+                menu.Status = item.Status;
+                menu.Icon = item.Icon;
+                menu.Order = item.Order;               
+                menu.TitleMenu = item.TitleMenu;
+                menu.Type = item.Type;
+                menu.MenuId = item.MenuId;
+                menus.Add(menu);
+            }
+
+            return menus;
         }
 
         // POST: api/ApiMenus

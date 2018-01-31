@@ -10,14 +10,14 @@ using PiPiPrestaciones.Models;
 
 namespace PiPiPrestaciones.Controllers
 {
-    public class MapsController : Controller
+    public class MapController : Controller
     {
         private PiPiPrestacionesDBContext db = new PiPiPrestacionesDBContext();
 
         private static List<Map> mapList = new List<Map>();
 
         [HttpGet]
-        public JsonResult GetMaps()
+        public JsonResult GetMap()
         {
             return Json(mapList, JsonRequestBehavior.AllowGet);
         }
@@ -54,20 +54,20 @@ namespace PiPiPrestaciones.Controllers
         }
 
 
-        // GET: Maps
+        // GET: Map
         public ActionResult Index()
         {
-            return View(db.Maps.ToList());
+            return View(db.Map.ToList());
         }
 
-        // GET: Maps/Details/5
+        // GET: Map/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Map map = db.Maps.Find(id);
+            Map map = db.Map.Find(id);
             if (map == null)
             {
                 return HttpNotFound();
@@ -75,13 +75,13 @@ namespace PiPiPrestaciones.Controllers
             return View(map);
         }
 
-        // GET: Maps/Create
+        // GET: Map/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Maps/Create
+        // POST: Map/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -90,7 +90,7 @@ namespace PiPiPrestaciones.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Maps.Add(map);
+                db.Map.Add(map);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -98,14 +98,14 @@ namespace PiPiPrestaciones.Controllers
             return View(map);
         }
 
-        // GET: Maps/Edit/5
+        // GET: Map/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Map map = db.Maps.Find(id);
+            Map map = db.Map.Find(id);
             if (map == null)
             {
                 return HttpNotFound();
@@ -113,7 +113,7 @@ namespace PiPiPrestaciones.Controllers
             return View(map);
         }
 
-        // POST: Maps/Edit/5
+        // POST: Map/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -129,14 +129,14 @@ namespace PiPiPrestaciones.Controllers
             return View(map);
         }
 
-        // GET: Maps/Delete/5
+        // GET: Map/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Map map = db.Maps.Find(id);
+            Map map = db.Map.Find(id);
             if (map == null)
             {
                 return HttpNotFound();
@@ -144,13 +144,13 @@ namespace PiPiPrestaciones.Controllers
             return View(map);
         }
 
-        // POST: Maps/Delete/5
+        // POST: Map/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Map map = db.Maps.Find(id);
-            db.Maps.Remove(map);
+            Map map = db.Map.Find(id);
+            db.Map.Remove(map);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

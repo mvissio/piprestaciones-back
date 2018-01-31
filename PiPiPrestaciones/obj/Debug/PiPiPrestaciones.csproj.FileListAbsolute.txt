@@ -81,9 +81,6 @@ E:\Mis Cosas\PIPIPRESTACIONES\PiPiPrestaciones\PiPiPrestaciones\obj\Debug\PiPiPr
 E:\Mis Cosas\PIPIPRESTACIONES\PiPiPrestaciones\PiPiPrestaciones\obj\Debug\PiPiPrestaciones.csproj.GenerateResource.Cache
 E:\Mis Cosas\PIPIPRESTACIONES\PiPiPrestaciones\PiPiPrestaciones\obj\Debug\PiPiPrestaciones.Migrations.InsertTablesAplicacionAgenda.resources
 E:\Mis Cosas\PIPIPRESTACIONES\PiPiPrestaciones\PiPiPrestaciones\obj\Debug\PiPiPrestaciones.Migrations.updateAplication.resources
-C:\Users\Matías\Source\Repos\piprestaciones-back\PiPiPrestaciones\obj\Debug\PiPiPrestaciones.Migrations.InsertUserLoginTables.resources
-C:\Users\Matías\Source\Repos\piprestaciones-back\PiPiPrestaciones\obj\Debug\PiPiPrestaciones.Migrations.InsertTablesAplicacionAgenda.resources
-C:\Users\Matías\Source\Repos\piprestaciones-back\PiPiPrestaciones\obj\Debug\PiPiPrestaciones.Migrations.updateAplication.resources
 C:\Users\Matías\Source\Repos\piprestaciones-back\PiPiPrestaciones\obj\Debug\PiPiPrestaciones.Properties.Resources.resources
 C:\Users\Matías\Source\Repos\piprestaciones-back\PiPiPrestaciones\obj\Debug\PiPiPrestaciones.csproj.GenerateResource.Cache
 C:\Users\Matías\Source\Repos\piprestaciones-back\PiPiPrestaciones\obj\Debug\PiPiPrestaciones.csproj.CoreCompileInputs.cache
@@ -164,7 +161,6 @@ C:\Users\Matías\Source\Repos\piprestaciones-back\PiPiPrestaciones\bin\Microsoft
 C:\Users\Matías\Source\Repos\piprestaciones-back\PiPiPrestaciones\bin\Microsoft.AI.Web.xml
 C:\Users\Matías\Source\Repos\piprestaciones-back\PiPiPrestaciones\obj\Debug\PiPiPrestaciones.dll
 C:\Users\Matías\Source\Repos\piprestaciones-back\PiPiPrestaciones\obj\Debug\PiPiPrestaciones.pdb
-C:\Users\Matías\Source\Repos\piprestaciones-back\PiPiPrestaciones\obj\Debug\PiPiPrestaciones.csprojResolveAssemblyReference.cache
 C:\Users\mviss\source\repos\piprestaciones-back\PiPiPrestaciones\obj\Debug\PiPiPrestaciones.csprojResolveAssemblyReference.cache
 C:\Users\mviss\source\repos\piprestaciones-back\PiPiPrestaciones\obj\Debug\PiPiPrestaciones.Migrations.InsertUserLoginTables.resources
 C:\Users\mviss\source\repos\piprestaciones-back\PiPiPrestaciones\obj\Debug\PiPiPrestaciones.Migrations.InsertTablesAplicacionAgenda.resources
@@ -249,3 +245,5 @@ C:\Users\mviss\source\repos\piprestaciones-back\PiPiPrestaciones\bin\Microsoft.A
 C:\Users\mviss\source\repos\piprestaciones-back\PiPiPrestaciones\bin\Microsoft.AI.ServerTelemetryChannel.xml
 C:\Users\mviss\source\repos\piprestaciones-back\PiPiPrestaciones\bin\Microsoft.AI.WindowsServer.xml
 C:\Users\mviss\source\repos\piprestaciones-back\PiPiPrestaciones\bin\Microsoft.AI.Web.xml
+C:\Users\Matías\Source\Repos\piprestaciones-back\PiPiPrestaciones\obj\Debug\PiPiPrestaciones.Migrations.Dominio.resources
+C:\Users\Matías\Source\Repos\piprestaciones-back\PiPiPrestaciones\obj\Debug\PiPiPrestaciones.csprojResolveAssemblyReference.cache

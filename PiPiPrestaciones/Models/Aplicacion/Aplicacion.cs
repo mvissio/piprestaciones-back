@@ -148,7 +148,7 @@ namespace PiPiPrestaciones.Models
 
         public CssModel CssAplicacion { get; set; }
 
-        public virtual List<Menu> Menus { get; set; }
+        public virtual IEnumerable<Menu> Menus { get; set; }
 
         [Display(Name = "VersionId")]
         public string VersionId { get; set; }

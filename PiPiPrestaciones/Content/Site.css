@@ -1,4 +1,7 @@
-﻿body {
+﻿    
+
+
+body {
     padding-top: 50px;
     padding-bottom: 20px;
 }
@@ -40,4 +43,36 @@ top:0;
 }
 #content-page {
 margin-top:3em;
+}
+
+/*.btn-primary {
+    background-color: #0e68ce !important;
+}
+
+.btn-danger {
+    background-color: rgb(244,71,71);
+}
+    .btn-danger :hover {
+        background-color: rgba(244,71,71,0.8);
+    }
+    .btn-danger:after {
+        background-color: rgb(244,71,71);
+    }
+
+.btn-success {
+    background-color:#7fdb6a;
+}
+
+.btn-info {
+    background-color: #eedc31;
+}*/
+
+#nav-top {
+    background-color: #0e68ce !important;
+    color: white;
+    border-bottom: none;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+#nav-page-name {
+    color: white;
 }

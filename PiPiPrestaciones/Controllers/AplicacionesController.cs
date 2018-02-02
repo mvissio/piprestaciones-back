@@ -40,7 +40,9 @@ namespace PiPiPrestaciones.Controllers
         // GET: Aplicaciones/Create
         public ActionResult Create()
         {
-            return View();
+            AplicacionCreateView aplicacion = new AplicacionCreateView();
+            aplicacion.Menus = new List<Menu>();
+            return View(aplicacion);
         }
 
         // POST: Aplicaciones/Create
@@ -55,32 +57,43 @@ namespace PiPiPrestaciones.Controllers
             if (ModelState.IsValid)
             {
 
-
                 db.Aplicacion.Add(app);
 
                 var order = 0;
-                foreach (var item in aplicacion.Menus) {
-                    var menu = new Menu();
-                    var cssItemMenu = new CssModel();
-                    cssItemMenu.BorderSize = item.CssModelItemMenu.BorderSize;
-                    cssItemMenu.ColorBack = item.CssModelItemMenu.ColorBack;
-                    cssItemMenu.ColorIcon = item.CssModelItemMenu.ColorIcon;
-                    cssItemMenu.ColorText = item.CssModelItemMenu.ColorText;
-                    cssItemMenu.FontFamily = item.CssModelItemMenu.FontFamily;
-                    db.CssModel.Add(cssItemMenu);
 
-                    menu.CssModelItemMenu = cssItemMenu;
-                    menu.Aplicacion = app;
-                    menu.Icon = item.Icon;
-                    menu.Order = order;
-                    menu.Status = true;
-                    menu.TitleMenu = item.TitleMenu;
-                    menu.Type = item.Type;
+                if (aplicacion.Menus != null)
+                {
+                    foreach (var item in aplicacion.Menus)
+                    {
+                        if (item.Type != "") {
+                            var menu = new Menu();
+                            var cssItemMenu = new CssModel();
+                            cssItemMenu.BorderSize = item.CssModelItemMenu.BorderSize;
+                            cssItemMenu.ColorBack = item.CssModelItemMenu.ColorBack;
+                            cssItemMenu.ColorIcon = item.CssModelItemMenu.ColorIcon;
+                            cssItemMenu.ColorText = item.CssModelItemMenu.ColorText;
+                            cssItemMenu.FontFamily = item.CssModelItemMenu.FontFamily;
+                            db.CssModel.Add(cssItemMenu);
 
-                    db.Menu.Add(menu);
+                            menu.CssModelItemMenu = cssItemMenu;
+                            menu.Aplicacion = app;
+                            menu.Icon = item.Icon;
+                            menu.Order = order;
+                            menu.Status = true;
+                            menu.TitleMenu = item.TitleMenu;
+                            menu.Type = item.Type;
+
+                            db.Menu.Add(menu);
+                            order++;
+                        }
+                       
 
 
+                    }
                 }
+
+
+            
 
                 db.SaveChanges();
                 return RedirectToAction("Index");

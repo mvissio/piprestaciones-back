@@ -116,64 +116,55 @@
             </div>
             <div id="test2" class="row container-menu">
             
-                <div class=" input-field row ">
-                    <div class="col s3">
-                        @Html.LabelFor(model => model.CssAplicacion.ColorBack)
+                <div class="row">
+                    <div class="input-field col s4">
+                        @Html.LabelFor(model => model.CssAplicacion.ColorBack,"Color de Fondo de la app")
                         @Html.EditorFor(model => model.CssAplicacion.ColorBack)
                     </div>
 
                     @*<input id="mycp" type="text" class="input-field" />
             <label for="first_name">First Name</label>*@
-                    <div class="col s2">
+                    <div hidden class="col s2">
                         <div class="btn-floating" id="seleccion-color"></div>
                     </div>
-
-
                 </div>
 
                 <div class="row">
 
                     <div class="col s3">
-                        <div class="row">
-                            <h5>Agregar elementos al menú principal</h5>
+                        
+                       
+                        <div align="center">
+                            <p><label class="control-label">Agregar elementos al menú principal</label></p>
                             @*<a class='dropdown-button btn' href='#' data-activates='dropdown1'>
-                                Agregar accion al menu principal
-                            </a>*@
+            Agregar accion al menu principal
+        </a>*@
                             <!-- Dropdown Structure -->
+                            <div id="btn-type-list">
+                                <a class="sel-accion btn btn-primary" data-enable="true" id="btn-Agenda" data-name="Agenda"><i class="material-icons left">add</i>Agenda</a>
+                                <a class="sel-accion btn btn-primary" data-enable="true" id="btn-Favoritos" data-name="Favoritos"><i class="material-icons left">add</i>Favoritos</a>
+                                <a class="sel-accion btn btn-primary" data-enable="true" id="btn-Alojamientos" data-name="Alojamientos"><i class="material-icons left">add</i>Alojamientos</a>
+                                <a class="sel-accion btn btn-primary" data-enable="true" id="btn-Mapa" data-name="Mapa"><i class="material-icons left">add</i>Mapa</a>
+                                <a class="sel-accion btn btn-primary" data-enable="true" id="btn-Exposición" data-name="Exposición"><i class="material-icons left">add</i>Exposición</a>
+                                <a class="sel-accion btn btn-primary" data-enable="true" id="btn-Formulario" data-name="Formulario"><i class="material-icons left">add</i>Formulario</a>
+                                <a class="sel-accion btn btn-primary" data-enable="true" id="btn-Certificado" data-name="Certificado"><i class="material-icons left">add</i>Certificado</a>
+                                <a class="sel-accion btn btn-primary" data-enable="true" id="btn-Link" data-name="Link"><i class="material-icons left">add</i>Link</a>
+                                <a class="sel-accion btn btn-primary" data-enable="true" id="btn-Noticias" data-name="Noticias"><i class="material-icons left">add</i>Noticias</a>
+                                <a class="sel-accion btn btn-primary" data-enable="true" id="btn-Paginas" data-name="Paginas"><i class="material-icons left">add</i>Paginas</a>
+
+
+                            </div>
 
                            
-                                <a class="sel-accion btn" data-enable="true" data-name="Agenda"><i class="material-icons left">add</i>Agenda</a>
-                                <a class="sel-accion btn" data-enable="true" data-name="Favoritos"><i class="material-icons left">add</i>Favoritos</a>
-                                <a class="sel-accion btn" data-enable="true" data-name="Alojamientos"><i class="material-icons left">add</i>Alojamientos</a>
-                                <a class="sel-accion btn" data-enable="true" data-name="Mapa"><i class="material-icons left">add</i>Mapa</a>
-                                <a class="sel-accion btn" data-enable="true" data-name="Exposición"><i class="material-icons left">add</i>Exposición</a>
-                                <a class="sel-accion btn" data-enable="true" data-name="Formulario"><i class="material-icons left">add</i>Formulario</a>
-                                <a class="sel-accion btn" data-enable="true" data-name="Certificado"><i class="material-icons left">add</i>Certificado</a>
-                                <a class="sel-accion btn" data-enable="true" data-name="Link"><i class="material-icons left">add</i>Link</a>
-                                <a class="sel-accion btn" data-enable="true" data-name="Noticias"><i class="material-icons left">add</i>Noticias</a>
-                                <a class="sel-accion btn" data-enable="true" data-name="Paginas"><i class="material-icons left">add</i>Paginas</a>
-                           
-
-                            @*<ul id='dropdown1' >
-                                <li><a class="sel-accion btn" data-name="Agenda"><i class="material-icons left">label outline</i>Agenda</a></li>
-                                <li><a class="sel-accion btn" data-name="Favoritos"><i class="material-icons left">label outline</i>Favoritos</a></li>
-                                <li><a class="sel-accion btn" data-name="Alojamientos"><i class="material-icons left">label outline</i>Alojamientos</a></li>
-                                <li><a class="sel-accion btn" data-name="Mapa"><i class="material-icons left">label outline</i>Mapa</a></li>
-                                <li><a class="sel-accion btn" data-name="Exposición"><i class="material-icons left">label outline</i>Exposición</a></li>
-                                <li><a class="sel-accion btn" data-name="Formulario"><i class="material-icons left">label outline</i>Formulario</a></li>
-                                <li><a class="sel-accion btn" data-name="Certificado"><i class="material-icons left">label outline</i>Certificado</a></li>
-                                <li><a class="sel-accion btn" data-name="Link"><i class="material-icons left">label outline</i>Link</a></li>
-                                <li><a class="sel-accion btn" data-name="Noticias"><i class="material-icons left">label outline</i>Noticias</a></li>
-                                <li><a class="sel-accion btn" data-name="Paginas"><i class="material-icons left">label outline</i>Paginas</a></li>
-                            </ul>*@
 
                         </div>
+                           
                        
                     </div>
 
-                    <div class="col s8 offset-s1" align="center">
+                    <div class="col s3 offset-s1" align="center">
 
-                        <div class="col s5 offset-s3">
+                        <div>
                             <div id="acciones-agregadas">
                                 <div id="status-bar"></div>
                                 <div id="title-app" align="center">
@@ -189,7 +180,11 @@
 
                     </div>
 
-                    
+                    <div class="col s4 ofset-s1">
+
+                       
+
+                    </div>
                    
 
                 </div>
@@ -227,7 +222,7 @@
         <div class="form-group">
             <div class="col-md-offset-10 col-md-2">
                 @*<input type="submit" value="Create" class="waves-effect btn btn-primary" />*@
-                <button type="submit" class="waves-effect btn-large" ><i class="material-icons right">done</i> Guardar</button>
+                <button type="submit" class="waves-effect btn-large btn-success" ><i class="material-icons right">done</i> Guardar</button>
             </div>
         </div>
     </div>
@@ -297,7 +292,7 @@
         margin-bottom: 0.5em;
     }
     .container-menu {
-    margin-top:3em;
+    margin-top:1em;
     
     }
     .icon-ionic {
@@ -322,10 +317,10 @@
             text-decoration: none;
         }
     .sel-accion {
-        background-color: rgb(73, 27, 27); /*rgba(73, 27, 27, 0.78)*/
-        width: 60%;
-        border-radius:unset;
-       
+        /*background-color: rgb(73, 27, 27);*/ /*rgba(73, 27, 27, 0.78)*/
+        width: 80%;
+        /*border-radius: unset;*/
+        margin-top:1em;
     }
         .sel-accion:hover {
             background-color: rgba(73, 27, 27, 0.70);
@@ -334,11 +329,23 @@
 
     #acciones-agregadas {
         height: 40em;
-       
+         min-height:40em;
+         min-width:20em;
         overflow: scroll;
         position: relative;
     }
 
+    #btn-type-list {
+        height: 40em;
+        min-height: 40em;
+        min-width: 20em;
+       
+        
+        position: relative;
+    }
+    .container-menu{
+       
+    }
 </style>
 <script>
     $(document).ready(function () {

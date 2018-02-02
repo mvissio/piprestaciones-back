@@ -1,8 +1,9 @@
 ﻿@model PiPiPrestaciones.Models.Menu
 
 
-<div class="row" align="center" id="menu-@Model.Order">
+<div  align="center" id="menu-@Model.Order">
     <div hidden>
+
         @Html.TextBox("Menus[" + Model.Order + "].Type", Model.Type)
         @Html.TextBox("Menus[" + Model.Order + "].Order", Model.Order)
         @Html.TextBox("Menus[" + Model.Order + "].TitleMenu", "")
@@ -10,32 +11,65 @@
         @Html.TextBox("Menus[" + Model.Order + "].CssModelItemMenu.ColorBack", "")
         @Html.TextBox("Menus[" + Model.Order + "].CssModelItemMenu.ColorText", "")
         @Html.TextBox("Menus[" + Model.Order + "].CssModelItemMenu.ImageBack", "")
-
+        @Html.TextBox("Menus[" + Model.Order + "].CssModelMenu.ColorText", "")
+        @Html.TextBox("Menus[" + Model.Order + "].CssModelMenu.ColorBack", "")
+        @Html.TextBox("Menus[" + Model.Order + "].CssModelMenu.FontFamily", "")
 
     </div> 
-        <a class="btn btn-preview  modal-trigger"
-           data-target="modal1"  
+    <div id="preview-@Model.Order" class="btn-preview-container row">
+        <a class="btn btn-primary btn-preview  modal-trigger"
+           data-target="modal1"
            data-order="@Model.Order"
-           data-type="@Model.Type" 
+           data-type="@Model.Type"
            data-title=""
            data-ionicon=""
            data-colorback=""
            data-colortext=""
            data-imageback=""
-           id="btn-preview-@Model.Order">@Model.Type</a>
+           id="btn-preview-@Model.Order">
+            @Model.Type
+    </a>
+    <a class="btn-preview-close btn-floating tiny btn-danger"  data-type="@Model.Type" data-id="@Model.Order">
+        <i class="material-icons ">clear</i>
+    </a>  
+    </div>
+         
 </div>
 
 <style>
     .btn-preview {
     width:90%;
-    background-color:deepskyblue;
+   
     height:4em;
     padding-top:1em;
+    /*position:relative;*/
+    }
+    .btn-preview-close {
+    position:absolute;
+    right:5px;
+    bottom:-16px;
+   cursor:pointer;
+    
+    font-weight:bold;
+    }
+    .btn-preview-container {
+        position: relative;
     }
 </style>
 
 <script>
     $(document).ready(function () {
+        $(".btn-preview-close").click(function () {
+            debugger;
+            var id = $(this).attr("data-id");
+            var type = $(this).attr("data-type");
+       
+            $("#Menus_" + id + "__Type").val("");
+            $("#preview-" + id).remove();
+
+            $("#btn-" + type).attr("data-enable", "true");
+        });
+
         $(".btn-preview").click(function () {
             //debugger;
             var order = $(this).attr("data-order");

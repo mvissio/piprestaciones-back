@@ -1,5 +1,5 @@
 ﻿
-<div align="center">
+<div id="menu-edit" align="center">
     <br />
     <button class="cancel-modal btn-floating right red"><i class="material-icons">clear</i></button>
 
@@ -8,30 +8,56 @@
         <h3></h3>
     </div>
     <div class="row">
-        <div class="col s6">
+        <div class="col s4">
             <div class="input-field">
                 <label for="titulo-edit-menu">Texto del botón</label>
                 <input type="text" id="titulo-edit-menu" />
             </div>
         </div>
-        <div class="col s6">
-            <div class="input-field col s8">
-                <label for="backColor-edit-menu">Fondo del boton</label>
-                <input type="text" id="backColor-edit-menu" />
-            </div>
-            <div class="col s4">
-                <div class="btn-floating" id="seleccion-back-color"></div>
-            </div>
+        <div class="input-field col s4 container-color-picker">
+            <label for="backColor-button-menu">Fondo del boton</label>
+            <input type="text" id="backColor-button" data-id="button" class="color-picker" />
+            <div class="btn-floating prev-color" id="prev-button"></div>
+            
+          
         </div>
+
+        <div class="input-field col s4 container-color-picker">
+            <label for="backColor-edit-menu">Fondo del boton</label>
+            <input type="text" id="backColor-button-text" data-id="button-text"  class="color-picker"/>
+            <div class="btn-floating prev-color" id="prev-button-text"></div>
+
+
+        </div>
+
     </div>
+
+    <div class="row">
+
+        <div class="input-field col s5 container-color-picker">
+            <label for="backColor-button-menu">Color de fondo de las páginas</label>
+            <input type="text" id="backColor-page" data-id="page" class="color-picker" />
+            <div class="btn-floating prev-color" id="prev-page"></div>
+
+
+        </div>
+
+        <div class="input-field col s5 offset-s1 container-color-picker">
+            <label for="backColor-edit-menu">Color de Texto de las Páginas</label>
+            <input type="text" id="backColor-page-text" data-id="page-text" class="color-picker" />
+            <div class="btn-floating prev-color" id="prev-page-text"></div>
+        </div>
+
+    </div>
+
     <div class="row">
         <div class="col s6">
-            <h5>Seleccionar icono</h5>
+            <h5>Seleccionar icono del botón</h5>
             @Html.Partial("_SelectorIonIcons")
             <input type="text" hidden id="icon-edit-menu" />
         </div>
         <div class="col s6">
-            <h5>Arrastre aquí la imagen de fondo</h5>
+            <h5>Arrastre aquí imagen del boton <i> 200px x 50px</i></h5>
 
             @Html.Partial("_DropZone")
 
@@ -42,28 +68,51 @@
     </div>
 
 </div>
+<style>
+    .color-picker {
+    
+    }
+    .container-color-picker {
+    position:relative;
+    }
+    .prev-color {
+    position:absolute;
+    right:0px;
+    bottom:1em;
+    }
+</style>
 
 <script>
     $(document).ready(function () {
+
+        
+
         $(".cancel-modal").click(function () {
 
             $('#modal1').modal('close');
         });
 
 
-        $('#backColor-edit-menu').colorpicker();
 
-        $("#backColor-edit-menu").on("change", function () {
+        $('.color-picker').colorpicker();
+
+
+        
+
+        $(".color-picker").on("change", function () {
 
             //debugger;
             var backGround = $(this).val()
-            $("#seleccion-back-color").css("background-color", backGround);
+            var id = $(this).attr("data-id")
+            $("#prev-"+id).css("background-color", backGround);
             //$("#acciones-agregadas").css("background-color", backGround);
 
         });
 
-        $("#seleccion-back-color").click(function () {
-            $('#backColor-edit-menu').focus();
+        $(".prev-color").click(function () {
+            var idPrev = $(this).attr('id').replace("prev-","")
+         
+            $('#backColor-'+ idPrev).focus();
         });
 
         $(".icon-ionic").click(function () {

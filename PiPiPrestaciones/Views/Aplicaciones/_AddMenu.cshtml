@@ -23,8 +23,10 @@
            data-type="@Model.Type"
            data-title=""
            data-ionicon=""
-           data-colorback=""
-           data-colortext=""
+           data-buttonColor=""
+           data-buttonColorText=""
+           data-pageColor=""
+           data-pageColorText=""
            data-imageback=""
            id="btn-preview-@Model.Order">
             @Model.Type
@@ -76,12 +78,25 @@
             var type = $(this).attr("data-type");
             var title = $(this).attr("data-title");
             var ionicon = $(this).attr("data-ionicon");
-            var colorback = $(this).attr("data-colorback");
+            var buttonColor = $(this).attr("data-buttonColor");
+            var buttonColorText = $(this).attr("data-buttonColorText");
+            var pageColor = $(this).attr("data-pageColor");
+            var pageColorText = $(this).attr("data-pageColorText");
+
             var imageback = $(this).attr("data-imageback");
 
             $("#titulo-edit-menu").val(title);
-            $("#backColor-edit-menu").val(colorback);
-            $("#seleccion-back-color").css("background-color", colorback);
+
+            $("#backColor-button").val(buttonColor);
+            $("#prev-button").css("background-color", buttonColor);
+            $("#backColor-button-text").val(buttonColorText);
+
+            $("#prev-button-text").css("background-color", buttonColorText);
+            $("#backColor-page").val(pageColor);
+            $("#prev-page").css("background-color", pageColor);
+            $("#backColor-page-text").val(pageColorText);
+            $("#prev-button").css("background-color", pageColorText);
+
             $("#icon-edit-menu").val(ionicon);
             var iconSel = $("#icono-seleccionado")
             iconSel.removeAttr("class")

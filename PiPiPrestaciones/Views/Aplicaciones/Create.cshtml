@@ -237,7 +237,7 @@
 
 <div id="modal1" class="modal modal-fixed-footer">
     <div class="modal-content">
-        @Html.Partial("_EditAccionMenu")
+        @Html.Partial("_EditMenu")
     </div>
     <div class="modal-footer">
         <a id="edit-menu-done" 
@@ -485,7 +485,10 @@
             var order = $(this).attr("data-order");
             var type = $(this).attr("data-type");
             var titleMenu = $("#titulo-edit-menu").val();
-            var backColor = $("#backColor-edit-menu").val();
+            var buttonColor = $("#backColor-button").val();
+            var buttonTextColor = $("#backColor-button-text").val();
+            var pageColor = $("#backColor-page").val();
+            var pageColorText = $("#backColor-page-text").val();
             var icon = $("#icon-edit-menu").val();
             var backimage = $("#dropZone").attr("data-result");
             if (titleMenu == "") {
@@ -495,14 +498,18 @@
             // Guardo en las variables de backend
             $("#Menus_" + order + "__" + "TitleMenu").val(titleMenu);
             $("#Menus_" + order + "__" + "Icon").val(icon);
-            $("#Menus_" + order + "__" + "CssModelItemMenu_ColorBack").val(backColor);
+            $("#Menus_" + order + "__" + "CssModelItemMenu_ColorBack").val(buttonColor);
+            $("#Menus_" + order + "__" + "CssModelItemMenu_ColorText").val(buttonTextColor);
+            $("#Menus_" + order + "__" + "CssModelMenu_ColorBack").val(pageColor);
+            $("#Menus_" + order + "__" + "CssModelMenu_ColorText").val(pageColorText);
             $("#Menus_" + order + "__" + "CssModelItemMenu_ImageBack").val(backimage);
 
             //Seteo los atributos al preview
 
             var btnPreview = $("#btn-preview-" + order);
 
-            btnPreview.css("background-color",  backColor);
+            btnPreview.css("background-color", buttonColor);
+            btnPreview.css("color", buttonTextColor);
 
          // cosas para la imagen de fondo
             btnPreview.css("background-position", "center");
@@ -517,7 +524,10 @@
           //Guardo las modificaciones en el atributo data-  de html
            btnPreview.attr("data-title",titleMenu);
            btnPreview.attr("data-ionicon",icon);
-           btnPreview.attr("data-colorback",backColor);
+           btnPreview.attr("data-buttonColor", buttonColor);
+           btnPreview.attr("data-buttonColorText", buttonTextColor);
+           btnPreview.attr("data-pageColor", pageColor);
+           btnPreview.attr("data-pageColorText", pageColorText);
            btnPreview.attr("data-imageback",backimage);
 
             //Cierro el modal

@@ -235,6 +235,7 @@
     <Compile Include="Controllers\MapsController.cs" />
     <Compile Include="Controllers\MenusController.cs" />
     <Compile Include="Controllers\PantallaEstaticasController.cs" />
+    <Compile Include="Controllers\SpeackersController.cs" />
     <Compile Include="Controllers\StaticPagesController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -258,8 +259,10 @@
     <Compile Include="Models\Agenda.cs" />
     <Compile Include="Models\Aplicacion\Aplicacion.cs" />
     <Compile Include="Models\Aplicacion\CssAplicacion.cs" />
-    <Compile Include="Models\map.cs" />
+    <Compile Include="Models\Map\map.cs" />
     <Compile Include="Models\Menus\CssModelMenu.cs" />
+    <Compile Include="Models\Speacker\CssSpeacker.cs" />
+    <Compile Include="Models\Speacker\Speacker.cs" />
     <Compile Include="Models\Static\CssStaticContent.cs" />
     <Compile Include="Models\Static\CssStaticPage.cs" />
     <Compile Include="Models\CssStyle.cs" />
@@ -297,6 +300,7 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
     <None Include="Resources\brand.png" />
     <None Include="Resources\banner.jpg" />
     <None Include="Resources\android-statusbar.png" />
@@ -445,12 +449,16 @@
     <Content Include="Views\Aplicaciones\_AddMenu.cshtml" />
     <Content Include="Views\Aplicaciones\_EditAccionMenu.cshtml" />
     <Content Include="Views\Shared\_DropZone.cshtml" />
+    <Content Include="Views\Speackers\Create.cshtml" />
+    <Content Include="Views\Speackers\Delete.cshtml" />
+    <Content Include="Views\Speackers\Details.cshtml" />
+    <Content Include="Views\Speackers\Edit.cshtml" />
+    <Content Include="Views\Speackers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Images\" />
     <Folder Include="Models\App_LocalResources\" />
-    <Folder Include="Models\NewFolder1\" />
     <Folder Include="Views\Images\" />
   </ItemGroup>
   <ItemGroup>

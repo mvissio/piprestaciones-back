@@ -1,0 +1,58 @@
+﻿@model PiPiPrestaciones.Models.Speacker
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Speacker</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TitleModal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TitleModal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FullName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FullName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImageUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImageUrl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NationalityUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NationalityUrl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WebUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WebUrl)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

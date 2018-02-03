@@ -18,7 +18,8 @@ namespace PiPiPrestaciones
                       "~/Scripts/ace.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/markdown/js").Include(
-                      "~/Scripts/markdown/bootstrap-markdown-editor.js"));
+                      "~/Scripts/markdown/editormd.min.js",
+                      "~/lib/languages/en.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                       "~/Scripts/jquery.validate.*"));
@@ -46,7 +47,7 @@ namespace PiPiPrestaciones
                "~/Content/bootstrap.css", "~/Content/bootstrap.min.css"));
 
             bundles.Add(new StyleBundle("~/bundles/markdown/css").Include(
-              "~/Content/markdown/bootstrap-markdown-editor.css"));
+              "~/Content/markdown/editormd.min.css"));
 
 
             bundles.Add(new StyleBundle("~/Content/css").Include(                     

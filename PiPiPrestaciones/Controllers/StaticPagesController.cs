@@ -10,55 +10,10 @@ using PiPiPrestaciones.Models;
 
 namespace PiPiPrestaciones.Controllers
 {
-    public class StaticPageController : Controller
+    public class StaticPagesController : Controller
     {
         private PiPiPrestacionesDBContext db = new PiPiPrestacionesDBContext();
         private static List<StaticPage> staticPageList= new List<StaticPage>();
-
-
-        [HttpGet]
-        public JsonResult GetStaticPage(int IdPage)
-        {
-            return Json(staticPageList.Where(s => s.StaticPageId == IdPage).FirstOrDefault(), JsonRequestBehavior.AllowGet);
-        }
-
-        [HttpPost]
-        public JsonResult PostStaticPage(StaticPage staticPage)
-        {
-            try
-            {
-                staticPageList.Add(staticPage);
-                return Json(HttpStatusCode.Accepted);
-            }
-            catch (Exception)
-            {
-                return Json(HttpStatusCode.BadGateway);
-            }
-        }
-
-        [HttpPost]
-        public JsonResult PostStaticList(List<StaticPage> staticPages)
-        {
-            try
-            {
-                staticPages.ForEach(staticPage =>
-                {
-                    staticPageList.Add(staticPage);
-                });
-                return Json(HttpStatusCode.Accepted);
-            }
-            catch (Exception)
-            {
-                return Json(HttpStatusCode.BadGateway);
-            }
-        }
-
-
-
-
-
-
-
 
 
 

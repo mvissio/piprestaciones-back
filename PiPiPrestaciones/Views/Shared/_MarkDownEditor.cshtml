@@ -1,7 +1,11 @@
 ﻿
 
  
-<textarea name="text" id="myMDE"></textarea>
+<div id="editormd">
+    <textarea style="display:none;">### Hello Editor.md !</textarea>
+</div>
+
+<input hidden type="text" id="lib" value='@Url.Content("~/lib/")' />
 
 
 <style>
@@ -29,12 +33,26 @@
         }
 </style>
 
+@Styles.Render("~/bundles/markdown/css")
+
+
+@Scripts.Render("~/bundles/markdown/js")
+
 <script type="text/javascript">
     $(document).ready(function () {
-        var simplemde = new SimpleMDE({
-            element: document.getElementById("myMDE")
-        });
+        //var simplemde = new SimpleMDE({
+        //    element: document.getElementById("myMDE")
+        //});
 
+        $(function () {
+            debugger;
+            var lib ="../lib/";
+            alert(lib)
+            var editor = editormd("editormd", {
+                path:lib// Autoload modules mode, codemirror, marked... dependents libs path
+            });
+
+        });
 
          var dropZone;
          var Reload;
@@ -103,7 +121,7 @@
 
             };
 
-            
+
 
 
         });

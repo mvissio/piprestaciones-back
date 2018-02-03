@@ -6,9 +6,9 @@ using System.Net.Http;
 using System.Web.Http;
 using PiPiPrestaciones.Models;
 
-namespace PiPiPrestaciones.Controllers
+namespace PiPiPrestaciones.Controllers.Api
 {
-    public class ApiMenusController : ApiController
+    public class MenusController : ApiController
     {
         // GET: api/ApiMenus
         //public IEnumerable<string> Get()

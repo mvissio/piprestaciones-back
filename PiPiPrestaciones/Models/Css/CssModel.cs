@@ -32,5 +32,17 @@ namespace PiPiPrestaciones.Models
         [Column("ColorIcon")]
         public string ColorIcon { get; set; }
 
+
+        public CssModel() { }
+
+        public CssModel(CssModel css) {
+            this.BorderSize = (css.BorderSize != 0) ? css.BorderSize : 0;
+            this.ColorBack = css.ColorBack;
+            this.ColorIcon = css.ColorIcon;
+            this.ColorText = css.ColorText;
+            this.CssModelId = (css.CssModelId != 0) ? css.CssModelId : 0;
+            this.FontFamily = css.FontFamily;
+            this.ImageBack = css.ImageBack;
+        }
     }
 }

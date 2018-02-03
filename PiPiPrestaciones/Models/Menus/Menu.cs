@@ -47,5 +47,20 @@ namespace PiPiPrestaciones.Models
 
         [ForeignKey("AplicacionId")]
         public virtual Aplicacion Aplicacion { get; set; }
+
+
+        public Menu() { }
+
+        public Menu(Menu menu) {
+            this.AplicacionId = menu.AplicacionId;
+            this.CssModelItemMenu = (menu.CssModelItemMenu != null) ? new CssModel(menu.CssModelItemMenu) : null;
+            this.CssModelMenu= (menu.CssModelMenu != null) ? new CssModel(menu.CssModelMenu) : null;
+            this.Icon = menu.Icon;
+            this.MenuId = menu.MenuId;
+            this.Order = menu.Order;
+            this.Status = menu.Status;
+            this.TitleMenu = menu.TitleMenu;
+            this.Type = menu.Type;
+        }
     }
 }

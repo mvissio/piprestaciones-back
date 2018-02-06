@@ -2,7 +2,7 @@
 
  
 <div id="editormd">
-    <textarea style="display:none;">### Hello Editor.md !</textarea>
+    <textarea id="editor-md" style="display:none;">### Hello Editor.md !</textarea>
 </div>
 
 <input hidden type="text" id="lib" value='@Url.Content("~/lib/")' />
@@ -44,21 +44,19 @@
         //    element: document.getElementById("myMDE")
         //});
 
-        $(function () {
-            debugger;
-            var lib ="../lib/";
-            alert(lib)
-            var editor = editormd("editormd", {
-                path:lib// Autoload modules mode, codemirror, marked... dependents libs path
-            });
 
+        var editor = editormd("editormd", {
+            width: "90%",
+            height: 640,
+            path: "../lib/",
+            saveHTMLToTextarea: true // Autoload modules mode, codemirror, marked... dependents libs path
         });
 
          var dropZone;
          var Reload;
         // Initializes the dropZone
         $(document).ready(function () {
-            dropZone = $('.CodeMirror');
+            dropZone = $('#editormd');
             //dropZone.removeClass('error');
             Reload = function (id) {
 
@@ -142,8 +140,10 @@
 
                     var path = response.path
                    // ![](http://)
-                    var mdeVal = simplemde.value()
-                    simplemde.value(mdeVal + "\n" + "![](" + path + ")")
+                    var mdeVal = editor.getMarkdown();  
+
+
+                    editor.setMarkdown(mdeVal + "\n" + "![](" + path + ")")
                     //const $codemirror = $('.CodeMirror').nextAll('textarea');
                     //$codemirror.val("[](http://"+ path +")");
 

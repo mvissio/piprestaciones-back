@@ -3,7 +3,7 @@ namespace PiPiPrestaciones.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Dominio : DbMigration
+    public partial class GenerateDB : DbMigration
     {
         public override void Up()
         {
@@ -44,6 +44,7 @@ namespace PiPiPrestaciones.Migrations
                         ColorText = c.String(),
                         ColorBack = c.String(),
                         BorderSize = c.Int(),
+                        BorderColor = c.String(),
                         ImageBack = c.String(),
                         ColorIcon = c.String(),
                     })
@@ -75,17 +76,21 @@ namespace PiPiPrestaciones.Migrations
                 "dbo.Map",
                 c => new
                     {
-                        MapId = c.String(nullable: false, maxLength: 128),
+                        MapId = c.Int(nullable: false, identity: true),
                         Order = c.Int(),
                         Title = c.String(),
-                        Lat = c.Decimal(precision: 18, scale: 2),
-                        Lng = c.Decimal(precision: 18, scale: 2),
+                        Lat = c.String(),
+                        Lng = c.String(),
                         Zoom = c.Int(),
                         IsMap = c.Boolean(),
-                        BorderColor = c.String(),
-                        BorderSize = c.Int(),
+                        CssModelMapId = c.Int(),
+                        AplicacionId = c.Int(),
                     })
-                .PrimaryKey(t => t.MapId);
+                .PrimaryKey(t => t.MapId)
+                .ForeignKey("dbo.Aplicacion", t => t.AplicacionId)
+                .ForeignKey("dbo.CssModel", t => t.CssModelMapId)
+                .Index(t => t.CssModelMapId)
+                .Index(t => t.AplicacionId);
             
             CreateTable(
                 "dbo.StaticContent",
@@ -133,6 +138,8 @@ namespace PiPiPrestaciones.Migrations
             DropForeignKey("dbo.StaticContent", "StaticPage_StaticPageId", "dbo.StaticPage");
             DropForeignKey("dbo.StaticPage", "CssStaticPage_CssModelId", "dbo.CssModel");
             DropForeignKey("dbo.StaticContent", "cssStaticContentId", "dbo.CssModel");
+            DropForeignKey("dbo.Map", "CssModelMapId", "dbo.CssModel");
+            DropForeignKey("dbo.Map", "AplicacionId", "dbo.Aplicacion");
             DropForeignKey("dbo.Menu", "CssModelMenuId", "dbo.CssModel");
             DropForeignKey("dbo.Menu", "CssModelItemMenuId", "dbo.CssModel");
             DropForeignKey("dbo.Menu", "AplicacionId", "dbo.Aplicacion");
@@ -140,6 +147,8 @@ namespace PiPiPrestaciones.Migrations
             DropIndex("dbo.StaticPage", new[] { "CssStaticPage_CssModelId" });
             DropIndex("dbo.StaticContent", new[] { "StaticPage_StaticPageId" });
             DropIndex("dbo.StaticContent", new[] { "cssStaticContentId" });
+            DropIndex("dbo.Map", new[] { "AplicacionId" });
+            DropIndex("dbo.Map", new[] { "CssModelMapId" });
             DropIndex("dbo.Menu", new[] { "AplicacionId" });
             DropIndex("dbo.Menu", new[] { "CssModelItemMenuId" });
             DropIndex("dbo.Menu", new[] { "CssModelMenuId" });

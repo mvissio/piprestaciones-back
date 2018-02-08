@@ -26,6 +26,9 @@ namespace PiPiPrestaciones.Models
         [Column("BorderSize")]
         public int? BorderSize { get; set; }
 
+        [Column("BorderColor")]
+        public string BorderColor { get; set; }
+
         [Column("ImageBack")]
         public string ImageBack { get; set; }
 

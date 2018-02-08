@@ -1,0 +1,142 @@
+﻿@model List<PiPiPrestaciones.Models.Map>
+
+@{
+    var index = 1;
+
+ }
+
+
+<table class="table highlight">
+    <tr>
+        <th>
+           Título del mapa
+        </th>
+        <th>
+            Latitud
+        </th>
+        <th>
+           Longitud
+        </th>
+        <th>
+           Orden
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lng)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Order)
+            </td>
+
+            <td>
+                <div class="row">
+                   
+                    <div class="col s6">
+                        <div class="col s6">
+                            @if (index > 1)
+                            {
+
+                                <a class="btn-floating  blue-grey darken-3 btn-up-down-map" data-accion="subir" data-mapId="@item.MapId"> <i class="material-icons">arrow_upward</i></a>
+
+
+                            }
+                            else
+                            {
+
+                                <a class="btn-floating  blue-grey darken-3 "> <i class="material-icons">remove</i></a>
+                            }
+                        </div>
+                        <div class="col s6">
+                            @if (index < Model.Count())
+                            {
+
+                                <a class="btn-floating   blue-grey darken-3 btn-up-down-map" data-accion="bajar" data-mapId="@item.MapId"> <i class="material-icons">arrow_downward</i></a>
+
+
+                            }
+                            else
+                            {
+
+                                <a class="btn-floating  blue-grey darken-3 "> <i class="material-icons">remove</i></a>
+                            }
+                        </div>
+                    </div>
+                    
+                  
+
+                    <div class="col s6">
+                        <a class="btn-floating red btn-delete-map" data-mapId="@item.MapId"> <i class="material-icons">clear</i></a>
+
+                    </div>
+                  
+
+
+                </div>
+              
+
+            </td>
+        </tr>
+        index++;
+    }
+
+</table>
+
+
+<style>
+    .btn-delete-map {
+    
+    
+    }
+
+    .btn-up-down-map {
+    }
+</style>
+
+
+<script>
+    $(document).ready(function () {
+        $(".btn-delete-map").click(function () {
+            var mapId = Number($(this).attr("data-mapId"));
+            var data = { "id": mapId };
+            $.ajax({
+                url: '@Url.Action("Delete", "Maps")',
+                    cache: false,
+                    data: data,
+                    success: function (html) { $("#list-mapas").html(html); }
+                });
+
+
+        });
+
+        $(".btn-up-down-map").click(function () {
+
+            var mapId = Number($(this).attr("data-mapId"));
+            var accion = $(this).attr("data-accion");
+
+            var data = { "mapId": mapId , "accion":accion };
+             $.ajax({
+                     url: '@Url.Action("SubirBajarOrder", "Maps")',
+                    cache: false,
+                    data: data,
+                    success: function (html) { $("#list-mapas").html(html); }
+                });
+
+
+        });
+
+    });
+
+</script>

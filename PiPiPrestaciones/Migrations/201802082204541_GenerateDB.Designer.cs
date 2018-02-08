@@ -7,13 +7,13 @@ namespace PiPiPrestaciones.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class Dominio : IMigrationMetadata
+    public sealed partial class GenerateDB : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Dominio));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(GenerateDB));
         
         string IMigrationMetadata.Id
         {
-            get { return "201801310004341_Dominio"; }
+            get { return "201802082204541_GenerateDB"; }
         }
         
         string IMigrationMetadata.Source

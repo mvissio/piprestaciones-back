@@ -240,9 +240,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201801310004341_Dominio.cs" />
-    <Compile Include="Migrations\201801310004341_Dominio.Designer.cs">
-      <DependentUpon>201801310004341_Dominio.cs</DependentUpon>
+    <Compile Include="Migrations\201802082204541_GenerateDB.cs" />
+    <Compile Include="Migrations\201802082204541_GenerateDB.Designer.cs">
+      <DependentUpon>201802082204541_GenerateDB.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -289,7 +289,6 @@
     <Content Include="Global.asax" />
     <Content Include="Images\loading%402x.gif" />
     <Content Include="Images\loading%403x.gif" />
-    <Content Include="Images\loading.gif" />
     <Content Include="Images\logos\editormd-favicon-16x16.ico" />
     <Content Include="Images\logos\editormd-favicon-24x24.ico" />
     <Content Include="Images\logos\editormd-favicon-32x32.ico" />
@@ -796,9 +795,10 @@
     <Content Include="Views\StaticPages\Index.cshtml" />
     <Content Include="Views\Shared\_SelectorIonIcons.cshtml" />
     <Content Include="Views\Aplicaciones\_AddMenu.cshtml" />
-    <Content Include="Views\Aplicaciones\_EditAccionMenu.cshtml" />
     <Content Include="Views\Shared\_DropZone.cshtml" />
     <Content Include="Views\Aplicaciones\_EditMenu.cshtml" />
+    <Content Include="Views\Aplicaciones\_EditMapa.cshtml" />
+    <Content Include="Views\Shared\_ListMapas.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -809,8 +809,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201801310004341_Dominio.resx">
-      <DependentUpon>201801310004341_Dominio.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201802082204541_GenerateDB.resx">
+      <DependentUpon>201802082204541_GenerateDB.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

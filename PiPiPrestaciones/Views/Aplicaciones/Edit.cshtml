@@ -4,14 +4,46 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
-
+<h4>Edit</h4>
+<hr />
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
+
+    @Html.HiddenFor(model => model.AplicacionId);
+
+    <div class="row">
+        <div class="col s3">
+            @foreach (var item in Model.Menus)
+            {
+
+                <a class="btn btn-edit col s12"
+                   data-type="@item.Type"
+                   style="background-color:@item.CssModelItemMenu.ColorBack;
+                          color:@item.CssModelItemMenu.ColorText; "
+                   id="@item.Type+@item.MenuId">
+                    <i class="@item.Icon left"></i>@item.Type
+                </a>
+
+
+            }
+
+        </div>
+
+        <div id="menu-edit" class="col s9">
+
+        </div>
+
+    </div>
+       
+
+   
+
+   
+
+
+    @*<div class="form-horizontal">
         <h4>Aplicacion</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -54,7 +86,7 @@
                 <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </div>
-    </div>
+    </div>*@
 }
 
 <div>
@@ -63,4 +95,38 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/colorpicker/js")
+    @Styles.Render("~/bundles/colorpicker/css")
 }
+
+
+<style>
+    .btn-edit {
+    height: 100%;
+    border-radius:1em;
+    margin-bottom:1em;
+    }
+    #menu-edit{
+       position:relative;
+
+    }
+
+</style>
+
+<script>
+    $(document).ready(function () {
+        $(".btn-edit").click(function () {
+            var type = $(this).attr("data-type");
+            var data = { "type": type };
+
+            $.ajax({
+            url: '@Url.Action("GetEditMenu", "Aplicaciones")',
+            cache: false,
+            data:data,
+            success: function (html) { $("#menu-edit").html(html); }
+             });
+        });
+
+    });
+
+</script>

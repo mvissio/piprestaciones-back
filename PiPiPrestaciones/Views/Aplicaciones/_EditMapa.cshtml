@@ -1,0 +1,129 @@
+﻿
+<div class="row">
+
+    <div class="input-field col s4">
+        <input id="title" type="text" class="validate">
+        <label for="title">Título</label>
+    </div>
+    <div class="input-field col s2">
+        <input id="lat" type="text" class="validate">
+        <label for="lat">Latitud</label>
+    </div>
+    <div class="input-field col s2 ">
+        <input id="lng" type="text" class="validate">
+        <label for="lng">Longitud</label>
+    </div>
+    <div class="input-field col s2  container-color-picker">
+        <label for="borde-mapa">Color de Borde</label>
+        <input type="text" id="borde-mapa" class="color-picker" />
+        <div class="btn-floating prev-color" id="prev-borde-mapa"></div>
+    </div>
+    <div class="input-field col s2">
+        <a class="btn blue-top col s11 offset-s1" id="add-mapa"><i class="material-icons left">add</i> Agregar </a>
+    </div>  
+</div>
+ 
+<div class="row" align="center">
+    <div  id="list-mapas">
+
+
+    </div>
+
+
+</div>
+
+<style>
+    .color-picker {
+    }
+
+    .container-color-picker {
+        position: relative;
+    }
+
+    .prev-color {
+        position: absolute;
+        right: 0px;
+        bottom: 1em;
+    }
+    .blue-top {
+        background-color: #0e68ce !important;
+    }
+    #add-mapa {
+      
+        border-radius: 1em;
+        /*margin-bottom: 1em;*/
+        /*position: absolute;*/
+        /*right: 1em;*/
+       
+    }
+</style>
+
+<script>
+
+    var getMaps = function () {
+
+        var idApp = Number($("#AplicacionId").val());
+
+        var data = { "AplicacionId": idApp };
+
+         $.ajax({
+                     url: '@Url.Action("GetMaps", "Maps")',
+                     cache: false,
+                     data:data,
+                     success: function (html) { $("#list-mapas").html(html); }
+             });
+    }
+
+    $(document).ready(function () {
+        getMaps();
+
+        $('.color-picker').colorpicker();
+
+        $(".color-picker").on("change", function () {
+
+            //debugger;
+            var backGround = $(this).val()
+            var id = $(this).attr("id")
+            $("#prev-" + id).css("background-color", backGround);
+            //$("#acciones-agregadas").css("background-color", backGround);
+
+        });
+
+        $(".prev-color").click(function () {
+            var idPrev = $(this).attr('id').replace("prev-", "")
+
+            $('#backColor-' + idPrev).focus();
+        });
+
+
+        $("#add-mapa").click(function () {
+            debugger;
+            var idApp = Number($("#AplicacionId").val());
+            var title = $("#title").val();
+            var lat = $("#lat").val();
+            var lng = $("#lng").val()
+            var borde = $("#borde-mapa").val()
+
+            if (title != "" &&
+                lat != "" &&
+                lng != "") {
+                var data = { "AplicacionId": idApp, "Title": title, "Lat": lat, "Lng": lng, "CssModelMap": borde };
+
+                  $.ajax({
+                     url: '@Url.Action("AddMap", "Maps")',
+                    cache: false,
+                    data: data,
+                    success: function (html) { $("#list-mapas").html(html); }
+                });
+
+            } else {
+
+
+            }
+
+
+        });
+
+    });
+
+</script>

@@ -176,5 +176,12 @@ namespace PiPiPrestaciones.Controllers
 
             return PartialView("_AddMenu", menu);
         }
+
+        public ActionResult GetEditMenu(string type) {
+
+
+            return PartialView("_Edit" + type);
+
+        }
     }
 }

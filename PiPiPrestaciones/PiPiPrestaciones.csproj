@@ -249,6 +249,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Aplicacion\Aplicacion.cs" />
     <Compile Include="Models\Css\CssModel.cs" />
+    <Compile Include="Models\Disertante.cs" />
     <Compile Include="Models\Map.cs" />
     <Compile Include="Models\Menus\CssModelMenu.cs" />
     <Compile Include="Models\Menus\Type.cs" />

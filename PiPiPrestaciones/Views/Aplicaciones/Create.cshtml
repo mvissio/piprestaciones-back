@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Incorporar Aplicación";
+    var types = (List<PiPiPrestaciones.Models.Type>)ViewBag.Types;
 }
 
 
@@ -140,7 +141,15 @@
             Agregar accion al menu principal
         </a>*@
                             <!-- Dropdown Structure -->
-                            <div id="btn-type-list">
+
+                            @foreach (var item in types)
+                            {
+
+                                <a class="sel-accion btn btn-primary" data-enable="true" id="btn-@item.TypeName" data-name="@item.TypeName"><i class="material-icons left">add</i>@item.TypeName</a>
+
+                            }
+
+                            @*<div id="btn-type-list">
                                 <a class="sel-accion btn btn-primary" data-enable="true" id="btn-Agenda" data-name="Agenda"><i class="material-icons left">add</i>Agenda</a>
                                 <a class="sel-accion btn btn-primary" data-enable="true" id="btn-Favoritos" data-name="Favoritos"><i class="material-icons left">add</i>Favoritos</a>
                                 <a class="sel-accion btn btn-primary" data-enable="true" id="btn-Alojamientos" data-name="Alojamientos"><i class="material-icons left">add</i>Alojamientos</a>
@@ -153,7 +162,7 @@
                                 <a class="sel-accion btn btn-primary" data-enable="true" id="btn-Paginas" data-name="Paginas"><i class="material-icons left">add</i>Paginas</a>
 
 
-                            </div>
+                            </div>*@
 
                            
 
@@ -441,7 +450,10 @@
 
             $("#index").html(n_id);
 
-            $(this).attr("data-enable", "false");
+            if (type != "Paginas") {
+                $(this).attr("data-enable", "false");
+            }
+           
 
             }
 

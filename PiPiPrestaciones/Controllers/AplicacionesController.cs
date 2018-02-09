@@ -41,6 +41,23 @@ namespace PiPiPrestaciones.Controllers
         public ActionResult Create()
         {
             AplicacionCreateView aplicacion = new AplicacionCreateView();
+            var types = db.Type.Where(t => t.Status).ToList();
+            if (types == null )
+            {                 
+                    var type = new Models.Type();
+                    type.InflateType();
+                    types = db.Type.Where(t => t.Status).ToList();
+
+            }
+            else if( types.Count == 0) {
+                    var type = new Models.Type();
+                    type.InflateType();
+                    types = db.Type.Where(t => t.Status).ToList();
+            }
+           
+
+            ViewBag.Types = types;
+
             aplicacion.Menus = new List<Menu>();
             return View(aplicacion);
         }

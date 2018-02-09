@@ -25,7 +25,8 @@ namespace PiPiPrestaciones.Models
         public Type() { }
 
         public Type(string typeName, bool status) {
-
+            this.TypeName = typeName;
+            this.Status = status;
         }
 
         public void InflateType() {
@@ -39,6 +40,7 @@ namespace PiPiPrestaciones.Models
                      new Type("Formulario",true),
                       new Type("Certificado",true),
                        new Type("Link",true),
+                         new Type("Disertantes",true),
                         new Type("Noticias",true),
                          new Type("Paginas",true)
             };

@@ -244,6 +244,10 @@
     <Compile Include="Migrations\201802082204541_GenerateDB.Designer.cs">
       <DependentUpon>201802082204541_GenerateDB.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201802092157113_ModAplicacion.cs" />
+    <Compile Include="Migrations\201802092157113_ModAplicacion.Designer.cs">
+      <DependentUpon>201802092157113_ModAplicacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -812,6 +816,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201802082204541_GenerateDB.resx">
       <DependentUpon>201802082204541_GenerateDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802092157113_ModAplicacion.resx">
+      <DependentUpon>201802092157113_ModAplicacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

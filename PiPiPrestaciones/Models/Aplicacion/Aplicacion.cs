@@ -15,6 +15,8 @@ namespace PiPiPrestaciones.Models
         [Column("AplicacionId")]
         public int AplicacionId { get; set; }
 
+        [Column("Status")]
+        public bool Status { get; set; }
 
         [Display(Name = "Título")]
         [Column("Titulo")]

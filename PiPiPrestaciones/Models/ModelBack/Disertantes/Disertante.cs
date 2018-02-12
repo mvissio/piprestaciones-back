@@ -22,7 +22,9 @@ namespace PiPiPrestaciones.Models
         public string NationalityUrl { get; set; }
 
         public string WebUrl { get; set; }
-
+        public int? CssModelDisertanteId { get; set; }
+        [ForeignKey("CssModelDisertanteId")]
+        public virtual CssModel CssDisertante { get; set; }
 
         [Column("AplicacionId")]
         public int? AplicacionId { get; set; }

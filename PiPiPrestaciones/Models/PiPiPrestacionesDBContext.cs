@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using PiPiPrestaciones.Models;
+using PiPiPrestaciones.Models.ModelBack.Disertantes;
 
 namespace PiPiPrestaciones.Models
 {
@@ -22,8 +23,9 @@ namespace PiPiPrestaciones.Models
         public DbSet<StaticPage> StaticPage { get; set; }
         public DbSet<StaticContent> StaticContent { get; set; }
         public DbSet<Map> Map { get; set; }
-
-
-
+        public DbSet<Disertante> Disertante { get; set; }
+        public DbSet<DescripcionDisertante> DescripcionDisertante { get; set; }
+        public DbSet<Planimetry> Planimetry { get; set; }
+        public DbSet<DetailsPlanimetry> DetailsPlanimetry { get; set; }
     }
 }

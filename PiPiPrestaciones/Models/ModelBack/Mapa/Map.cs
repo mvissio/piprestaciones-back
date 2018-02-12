@@ -18,8 +18,6 @@ namespace PiPiPrestaciones.Models
         public string Lat { get; set; }
         public string Lng { get; set; }
         public int? Zoom { get; set; }
-        public bool? IsMap { get; set; }
-        public List<string> ImageList { get; set; }
 
         public int? CssModelMapId { get; set; }
         [ForeignKey("CssModelMapId")]
@@ -37,8 +35,6 @@ namespace PiPiPrestaciones.Models
 
             this.AplicacionId = map.AplicacionId;
             this.CssModelMap = new CssModel(map.CssModelMap);
-            this.ImageList = map.ImageList;
-            this.IsMap = true;
             this.Lat = map.Lat;
             this.Lng = map.Lng;
             this.Order = map.Order;

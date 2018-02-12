@@ -13,36 +13,18 @@ namespace PiPiPrestaciones.Controllers.Api
     {
         private PiPiPrestacionesDBContext db = new PiPiPrestacionesDBContext();
 
-        [HttpGet]
-        public Aplicacion GetAplicacion(int aplicacionId) {
-
-            var app_db = db.Aplicacion.Find(aplicacionId);
-            var app = new Aplicacion();
-            app.AplicacionId = app_db.AplicacionId;
-            app.CssAplicacion = new CssModel(app_db.CssAplicacion);
-            app.HashTagTwiter = app_db.HashTagTwiter;
-            app.Idioma = app_db.Idioma;
-            app.LastModification = app_db.LastModification;
-            app.LenguajePorDefecto = app_db.LenguajePorDefecto;
-            app.Menus = new List<Menu>();
-
-            foreach (var item in app_db.Menus) {
-                var menu = new Menu(item);
-                app.Menus.Add(menu);
+        [HttpGet()]
+        public Aplicacion Get(int aplicacionId)
+        {
+            try
+            {
+                return db.Aplicacion.Find(aplicacionId);
             }
-            app.Titulo = app_db.Titulo;
-            app.UrlImagen1 = app_db.UrlImagen1;
-            app.UrlImagen2 = app_db.UrlImagen2;
-            app.UrlImagenN = app_db.UrlImagenN;
-            app.VersionId = app_db.VersionId;
-
-            return (app);
+            catch (Exception)
+            {
+                throw;
+            }
         }
-
-
-
-
-
     }
 
 

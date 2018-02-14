@@ -7,11 +7,11 @@ using System.Web;
 
 namespace PiPiPrestaciones.Models
 {
-    [Table("DetaisPlanimetry")]
+    [Table("DetailsPlanimetry")]
     public class DetailsPlanimetry
     {
         [Key]
-        public int IdDetails { get; set; }
+        public int DetailsPlanimetryId { get; set; }
         public string TitleDetails { get; set; }
         public string DescriptionDetails { get; set; }
         public int? CssModelDetailsPlanimetryId { get; set; }

@@ -11,7 +11,7 @@ namespace PiPiPrestaciones.Models
     public class Planimetry
     {
         [Key]
-        public int IdPlanimery { get; set; }
+        public int PlanimetryId { get; set; }
         public string TitlePlanimetry { get; set; }
         public string FooterPlanimetry { get; set; }
         public string UrlImagePlanimetry { get; set; }

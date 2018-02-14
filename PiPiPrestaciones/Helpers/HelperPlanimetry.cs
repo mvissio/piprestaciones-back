@@ -19,7 +19,7 @@ namespace PiPiPrestaciones.Helpers
         public PlanimetryMob ConvertPlanimetryToPlanimetryMob(Planimetry planimetry, List<DetailsPlanimetry> detailsPlanimetryList)
         {
             PlanimetryMob planimetryMob = new PlanimetryMob();
-            planimetryMob.IdPlanimery = planimetry.IdPlanimery;
+            planimetryMob.IdPlanimery = planimetry.PlanimetryId;
             planimetryMob.TitlePlanimetry = planimetry.TitlePlanimetry;
             planimetryMob.UrlImagePlanimetry = planimetry.UrlImagePlanimetry;
             planimetryMob.FooterPlanimetry = planimetry.FooterPlanimetry;
@@ -32,7 +32,7 @@ namespace PiPiPrestaciones.Helpers
             foreach (DetailsPlanimetry detailsPlanimetry in detailsPlanimetryList)
             {
                 DetailsPlanimetryMob detailsPlanimetryMob = new DetailsPlanimetryMob();
-                detailsPlanimetryMob.IdDetails = detailsPlanimetry.IdDetails;
+                detailsPlanimetryMob.IdDetails = detailsPlanimetry.DetailsPlanimetryId;
                 detailsPlanimetryMob.TitleDetails = detailsPlanimetry.TitleDetails;
                 detailsPlanimetryMob.DescriptionDetails = detailsPlanimetry.DescriptionDetails;
                 detailsPlanimetryMobList.Add(detailsPlanimetryMob);

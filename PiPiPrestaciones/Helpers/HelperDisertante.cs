@@ -49,7 +49,7 @@ namespace PiPiPrestaciones.Helpers
             foreach (DescripcionDisertante detailsPlanimetry in detailsPlanimetryList)
             {
                 DescripcionDisertanteMob descDisertMob = new DescripcionDisertanteMob();
-                descDisertMob.IdDescription = detailsPlanimetry.IdDescription;
+                descDisertMob.IdDescription = detailsPlanimetry.DescripcionDisertanteId;
                 descDisertMob.TextDescription = detailsPlanimetry.TextDescription;
                 descDisertMob.TextAlingDescription = detailsPlanimetry.TextAlingDescription;
                 descDisertMob.OrderDescription = detailsPlanimetry.OrderDescription;

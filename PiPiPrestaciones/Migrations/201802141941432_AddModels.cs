@@ -8,17 +8,17 @@ namespace PiPiPrestaciones.Migrations
         public override void Up()
         {
             CreateTable(
-                "dbo.DescipcionDisertante",
+                "dbo.DescripcionDisertante",
                 c => new
                     {
-                        IdDescription = c.Int(nullable: false, identity: true),
+                        DescripcionDisertanteId = c.Int(nullable: false, identity: true),
                         TextDescription = c.String(),
                         ClassDescription = c.String(),
                         TextAlingDescription = c.String(),
                         OrderDescription = c.Int(nullable: false),
                         DisertanteId = c.Int(),
                     })
-                .PrimaryKey(t => t.IdDescription)
+                .PrimaryKey(t => t.DescripcionDisertanteId)
                 .ForeignKey("dbo.Disertante", t => t.DisertanteId)
                 .Index(t => t.DisertanteId);
             
@@ -42,16 +42,16 @@ namespace PiPiPrestaciones.Migrations
                 .Index(t => t.AplicacionId);
             
             CreateTable(
-                "dbo.DetaisPlanimetry",
+                "dbo.DetailsPlanimetry",
                 c => new
                     {
-                        IdDetails = c.Int(nullable: false, identity: true),
+                        DetailsPlanimetryId = c.Int(nullable: false, identity: true),
                         TitleDetails = c.String(),
                         DescriptionDetails = c.String(),
                         CssModelDetailsPlanimetryId = c.Int(),
                         PlanimetryId = c.Int(),
                     })
-                .PrimaryKey(t => t.IdDetails)
+                .PrimaryKey(t => t.DetailsPlanimetryId)
                 .ForeignKey("dbo.CssModel", t => t.CssModelDetailsPlanimetryId)
                 .ForeignKey("dbo.Planimetry", t => t.PlanimetryId)
                 .Index(t => t.CssModelDetailsPlanimetryId)
@@ -61,14 +61,14 @@ namespace PiPiPrestaciones.Migrations
                 "dbo.Planimetry",
                 c => new
                     {
-                        IdPlanimery = c.Int(nullable: false, identity: true),
+                        PlanimetryId = c.Int(nullable: false, identity: true),
                         TitlePlanimetry = c.String(),
                         FooterPlanimetry = c.String(),
                         UrlImagePlanimetry = c.String(),
                         CssModelPlanimetryId = c.Int(),
                         AplicacionId = c.Int(),
                     })
-                .PrimaryKey(t => t.IdPlanimery)
+                .PrimaryKey(t => t.PlanimetryId)
                 .ForeignKey("dbo.Aplicacion", t => t.AplicacionId)
                 .ForeignKey("dbo.CssModel", t => t.CssModelPlanimetryId)
                 .Index(t => t.CssModelPlanimetryId)
@@ -80,24 +80,24 @@ namespace PiPiPrestaciones.Migrations
         public override void Down()
         {
             AddColumn("dbo.Map", "IsMap", c => c.Boolean());
-            DropForeignKey("dbo.DetaisPlanimetry", "PlanimetryId", "dbo.Planimetry");
+            DropForeignKey("dbo.DetailsPlanimetry", "PlanimetryId", "dbo.Planimetry");
             DropForeignKey("dbo.Planimetry", "CssModelPlanimetryId", "dbo.CssModel");
             DropForeignKey("dbo.Planimetry", "AplicacionId", "dbo.Aplicacion");
-            DropForeignKey("dbo.DetaisPlanimetry", "CssModelDetailsPlanimetryId", "dbo.CssModel");
-            DropForeignKey("dbo.DescipcionDisertante", "DisertanteId", "dbo.Disertante");
+            DropForeignKey("dbo.DetailsPlanimetry", "CssModelDetailsPlanimetryId", "dbo.CssModel");
+            DropForeignKey("dbo.DescripcionDisertante", "DisertanteId", "dbo.Disertante");
             DropForeignKey("dbo.Disertante", "CssModelDisertanteId", "dbo.CssModel");
             DropForeignKey("dbo.Disertante", "AplicacionId", "dbo.Aplicacion");
             DropIndex("dbo.Planimetry", new[] { "AplicacionId" });
             DropIndex("dbo.Planimetry", new[] { "CssModelPlanimetryId" });
-            DropIndex("dbo.DetaisPlanimetry", new[] { "PlanimetryId" });
-            DropIndex("dbo.DetaisPlanimetry", new[] { "CssModelDetailsPlanimetryId" });
+            DropIndex("dbo.DetailsPlanimetry", new[] { "PlanimetryId" });
+            DropIndex("dbo.DetailsPlanimetry", new[] { "CssModelDetailsPlanimetryId" });
             DropIndex("dbo.Disertante", new[] { "AplicacionId" });
             DropIndex("dbo.Disertante", new[] { "CssModelDisertanteId" });
-            DropIndex("dbo.DescipcionDisertante", new[] { "DisertanteId" });
+            DropIndex("dbo.DescripcionDisertante", new[] { "DisertanteId" });
             DropTable("dbo.Planimetry");
-            DropTable("dbo.DetaisPlanimetry");
+            DropTable("dbo.DetailsPlanimetry");
             DropTable("dbo.Disertante");
-            DropTable("dbo.DescipcionDisertante");
+            DropTable("dbo.DescripcionDisertante");
         }
     }
 }

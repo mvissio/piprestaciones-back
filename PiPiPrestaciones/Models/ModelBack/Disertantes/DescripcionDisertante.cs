@@ -7,11 +7,11 @@ using System.Web;
 
 namespace PiPiPrestaciones.Models.ModelBack.Disertantes
 {
-    [Table("DescipcionDisertante")]
+    [Table("DescripcionDisertante")]
     public class DescripcionDisertante
     {
         [Key]
-        public int IdDescription { get; set; }
+        public int DescripcionDisertanteId { get; set; }
         public string TextDescription { get; set; }
         public string ClassDescription { get; set; }
         public string TextAlingDescription { get; set; }

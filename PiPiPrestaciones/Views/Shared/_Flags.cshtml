@@ -1,0 +1,26 @@
+﻿@model  PiPiPrestaciones.Helpers.HelperFlag
+
+
+<div class="row">
+@foreach (var item in Model.Flags)
+{
+    <div class="col l4">
+        <img class="flag-img" src="../../Resources/flags/@item" data-flag="@item" />
+    </div>
+    
+
+
+
+}
+
+</div>
+
+
+
+
+<style>
+    .flag-img {   
+        width:10em;
+        height:10em;    
+    }
+</style>

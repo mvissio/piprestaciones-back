@@ -13,7 +13,7 @@ namespace PiPiPrestaciones.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201802121709106_AddModels"; }
+            get { return "201802141941432_AddModels"; }
         }
         
         string IMigrationMetadata.Source

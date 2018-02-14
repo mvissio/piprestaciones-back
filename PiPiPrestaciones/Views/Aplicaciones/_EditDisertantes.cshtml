@@ -1,0 +1,101 @@
+﻿@model PiPiPrestaciones.Models.Disertante
+
+
+@using (Html.BeginForm("Create","Disertantes"))
+{
+<div class="row">
+
+    @Html.HiddenFor(model => model.DisertanteId)
+
+    <div class="col l3">
+
+        <div id="image-ds" class="grey lighten-1 white-text" style="position:relative">
+            <a class="btn-floating orange darken-3" id="edit-image-ds"><i class="material-icons tiny">edit</i></a>
+          @Html.HiddenFor(model => model.ImageUrl)
+            <a class="btn-floating btn-large orange darken-3 modal-open " id="edit-flag-ds"><i class="material-icons large">flag</i></a>
+        </div>
+
+    </div>
+
+    <div class="col l8 offset-l1">
+
+        <div class="input-field">
+            @Html.LabelFor(model => model.FullName, "Nombre y apellido")
+            @Html.EditorFor(model => model.FullName)
+        </div>
+        <div class="input-field">
+            @Html.LabelFor(model => model.Title, "Título")
+            @Html.EditorFor(model => model.Title)
+        </div>
+       
+        <div class="input-field">
+            @Html.LabelFor(model => model.WebUrl, "Web")
+            @Html.EditorFor(model => model.WebUrl)
+        </div>
+
+
+    </div>
+    
+
+</div>
+
+}
+
+<div id="flags" class="modal">
+
+
+</div>
+
+<style>
+    #edit-image-ds {
+    position:absolute;
+    right:0px;
+    top:0px;
+    }
+
+    #edit-flag-ds {
+        position: absolute;
+        right: 0px;
+        bottom: 0px;
+    }
+
+    #image-ds {
+    height:25em;
+    width:25em;
+    border-radius:100%;
+    
+    }
+</style>
+
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            url: '@Url.Action("GetFlags", "Disertantes")',
+            cache: false,
+            success: function (html) { $("#flags").append(html); }
+             });
+
+
+        $("#edit-flag-ds").click(function () {
+            debugger;
+
+
+            $('#flags').modal({
+                dismissible: false, // Modal can be dismissed by clicking outside of the modal
+                opacity: .5, // Opacity of modal background
+                inDuration: 300, // Transition in duration
+                outDuration: 200, // Transition out duration
+                startingTop: '4%', // Starting top style attribute
+                endingTop: '10%', // Ending top style attribute
+                ready: function (modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
+
+                },
+                complete: function () { } // Callback for Modal close
+            }
+            );
+        });
+
+    });
+
+
+</script>

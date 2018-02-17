@@ -9,35 +9,75 @@
 
     <div class="col l3">
 
-        <div id="image-ds" class="grey lighten-1 white-text" style="position:relative">
-            <a class="btn-floating orange darken-3" id="edit-image-ds"><i class="material-icons tiny">edit</i></a>
+        <div id="image-ds" class="grey lighten-1 col l12 white-text" style="position:relative">
+            @*<a class="btn-floating orange darken-3" id="edit-image-ds"><i class="material-icons tiny">edit</i></a>*@
           @Html.HiddenFor(model => model.ImageUrl)
-            <a class="btn-floating btn-large orange darken-3 modal-open " id="edit-flag-ds"><i class="material-icons large">flag</i></a>
+
+                
+            <a class="waves-effect waves-light btn modal-trigger  btn-floating btn-large orange darken-3 " 
+               href="#flags" id="edit-flag-ds"><i class="material-icons large">flag</i></a>
+
+            @Html.HiddenFor(model=> model.NationalityUrl)
         </div>
 
     </div>
 
-    <div class="col l8 offset-l1">
+    <div id="create-disertante" class="col l8 offset-l1">
 
         <div class="input-field">
             @Html.LabelFor(model => model.FullName, "Nombre y apellido")
-            @Html.EditorFor(model => model.FullName)
+            @Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @class = "validate" } })
         </div>
         <div class="input-field">
             @Html.LabelFor(model => model.Title, "Título")
-            @Html.EditorFor(model => model.Title)
+            @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "validate" } })
         </div>
        
         <div class="input-field">
             @Html.LabelFor(model => model.WebUrl, "Web")
             @Html.EditorFor(model => model.WebUrl)
         </div>
-
+        <div class="input-field  container-color-picker">
+            @Html.LabelFor(model => model.CssDisertante.ColorBack, "Color de Fondo" )
+            @Html.EditorFor(model => model.CssDisertante.ColorBack , new { htmlAttributes = new { @class = "color-picker",@id= "backColor-disertante" } })
+            <div class="btn-floating prev-color" id="prev-backColor-disertante"></div>
+            
+         
+           
+        </div>
 
     </div>
     
 
 </div>
+
+<div class="row">
+    <hr />
+    <div><label class="control-label">Descripcion Disertante</label>
+    <a class="btn-floating blue-top right"><i class="material-icons">add</i></a>
+    </div>
+    <br />
+
+    <div id="mark-down-editor" class="col l12">
+    
+        
+        @Html.Partial("_MarkDownEditor")
+    </div>
+
+    
+
+</div>
+
+    <div class="row" >
+        <p>
+            <label>Descripciones agregadas</label>
+        </p>
+        
+        <div id="desc-adds">
+
+        </div>
+
+    </div>
 
 }
 
@@ -47,8 +87,9 @@
 </div>
 
 <style>
+    
     #edit-image-ds {
-    position:absolute;
+    position:sticky;
     right:0px;
     top:0px;
     }
@@ -57,18 +98,64 @@
         position: absolute;
         right: 0px;
         bottom: 0px;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        
     }
 
     #image-ds {
     height:25em;
     width:25em;
     border-radius:100%;
-    
+    background-repeat:no-repeat;
+    background-size:25em;
+ 
+
     }
+
+
+    .CodeMirror-scroll {
+    z-index:20;
+    }
+
+    .al-center {
+        text-align:center;
+    }
+    .al-left {
+        text-align:left;
+    }
+    .al-right {
+        text-align: right;
+    }
+   
 </style>
 
 <script>
+    var dropZone;
+    var Reload;
+
     $(document).ready(function () {
+
+
+        $('.color-picker').colorpicker();
+
+        $(".color-picker").on("change", function () {
+
+            //debugger;
+            var backGround = $(this).val()
+            var id = $(this).attr("id")
+            $("#prev-" + id).css("background-color", backGround);
+            //$("#acciones-agregadas").css("background-color", backGround);
+
+        });
+
+        $(".prev-color").click(function () {
+            var idPrev = $(this).attr('id').replace("prev-", "")
+
+            $('#' + idPrev).focus();
+        });
+
+
         $.ajax({
             url: '@Url.Action("GetFlags", "Disertantes")',
             cache: false,
@@ -94,6 +181,150 @@
             }
             );
         });
+
+
+        //Alignment
+        $(".alignment").click(function () {
+
+            var al = $(this);
+            al.removeClass("darken-4");
+            al.addClass("darken-1");
+            var id = al.attr("id");
+            $(".editormd-preview-container").css("text-align",al.attr("data-al"));  
+            $(".editormd-preview-container p").css("text-align",  al.attr("data-al"));  
+         
+           
+
+                $(".CodeMirror-scroll").css("text-align", al.attr("data-al"));
+           
+        
+            //$("#box-aligment a").each(function () {
+            
+            //    if ($(this).attr("id") != id) {
+            //        $(this).removeClass("darken-1");
+            //      $(this).addClass("darken-4");
+            //    }
+            
+
+            //});
+
+
+
+        });
+
+        var alinearContenido = function (align) {
+
+            if (align == "left") {
+               // return "translate(0, 0)";
+                return "flex-start";
+            } else if (align=="center"){
+                //return "translate(50%, 0)";
+                return "center";
+            } else if (align == "right") {
+               // return "translate(100%, 0)";
+                return "flex-end";
+            }
+
+        }
+
+        // drop zone
+
+
+        dropZone = $('#image-ds');
+            //dropZone.removeClass('error');
+            Reload = function (id) {
+
+                 @*$("#_Documentos").load('@Url.Action("ListDocumentos","Documentos")' + '?ContratoId=' + id);*@
+            }
+
+
+            // Check if window.FileReader exists to make
+            // sure the browser supports file uploads
+            if (typeof(window.FileReader) == 'undefined') {
+                dropZone.text('Browser Not Supported!');
+                dropZone.addClass('error');
+                return;
+            }
+
+            // Add a nice drag effect
+            dropZone[0].ondragover = function () {
+                dropZone.addClass('hover');
+                return false;
+            };
+
+            // Remove the drag effect when stopping our drag
+            dropZone[0].ondragend = function () {
+                dropZone.removeClass('hover');
+                return false;
+            };
+
+
+
+
+            // The drop event handles the file sending
+            dropZone[0].ondrop = function(event) {
+                // Stop the browser from opening the file in the window
+                event.preventDefault();
+                dropZone.removeClass('hover');
+
+                // Get the file and the file reader
+                var file = event.dataTransfer.files[0];
+
+               @* if(file.size > @maxRequestLength {
+                            dropZone.text('File Too Large!');
+                        dropZone.addClass('error');
+                        return false;*@
+            //    // Validate file size
+            //    if(file.size > <%=maxRequestLength%>) {
+            //        dropZone.text('File Too Large!');
+            //    dropZone.addClass('error');
+            //    return false;
+            //}
+
+            // Send the file
+
+            var xhr = new XMLHttpRequest();
+        //    xhr.upload.addEventListener('progress', uploadProgress, false);
+            xhr.onreadystatechange = stateChange;
+            xhr.open('POST','@Url.Action("HandleFileUpload","Images")', true);
+            xhr.setRequestHeader('X-FILE-NAME', file.name);
+
+            xhr.send(file);
+
+            };
+
+            function uploadProgress(event) {
+                var percent = parseInt(event.loaded / event.total * 100);
+                $('#dropZone').text('Subiendo: ' + percent + '%');
+            }
+
+            // Show upload complete or upload failed depending on result
+            function stateChange(event) {
+                if (event.target.readyState == 4) {
+                    if (event.target.status == 200) {
+
+                        //var xhr = event.target.xhr;
+                        var response = $.parseJSON(this.responseText);
+
+                        var path = response.path
+                        $("#image-ds").css("background-image", "url('../" + path + "')");
+
+                        $("#ImageUrl").val(path);
+
+                        // ![](http://)
+
+                        //const $codemirror = $('.CodeMirror').nextAll('textarea');
+                        //$codemirror.val("[](http://"+ path +")");
+
+                        Materialize.toast('Archivo subido exitósamente!' + '<br />' + $("#dropZone").attr("data-result"), 4000)
+
+                    }
+                    else {
+                        dropZone.text('Ocurrio un fallo al subir el archivo!');
+                        dropZone.addClass('error');
+                    }
+                }
+            }
 
     });
 

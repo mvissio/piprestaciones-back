@@ -1,4 +1,5 @@
-﻿    
+﻿
+    
 
 
 body {
@@ -79,4 +80,17 @@ margin-top:3em;
 
 .blue-top {
     background-color: #0e68ce !important
+}
+
+.color-picker {
+}
+
+.container-color-picker {
+    position: relative;
+}
+
+.prev-color {
+    position: absolute;
+    right: 0px;
+    bottom: 1em;
 }

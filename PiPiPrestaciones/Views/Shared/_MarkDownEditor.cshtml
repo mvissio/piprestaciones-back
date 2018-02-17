@@ -2,13 +2,33 @@
 
  
 <div id="editormd">
+    <div class="col l3 " id="box-aligment">
+        <a id="al-left" data-al="left" class=" white alignment "><i class="material-icons small grey-text">format_align_left</i></a>
+        <a id="al-mid" data-al="center" class=" white alignment"><i class="material-icons small grey-text">format_align_center</i></a>
+        <a id="al-right" data-al="right" class=" white alignment"><i class="material-icons small grey-text">format_align_right</i></a>
+        @*<div class="col l3">
+         
+        </div>
+        <div class="col l3">
+        
+        </div>
+        <div class="col l3">
+          
+        </div>*@
+    </div>
+
+
     <textarea id="editor-md" style="display:none;">### Hello Editor.md !</textarea>
 </div>
 
-<input hidden type="text" id="lib" value='@Url.Content("~/lib/")' />
+
 
 
 <style>
+    .alignment {
+        padding-top:1em;
+        cursor:pointer;
+    }
     #dropZone {
         /*border-radius: 5px;
         border: 2px solid #ccc;
@@ -21,16 +41,26 @@
         /*margin: 50px auto;*/
         /*margin:50px;*/
     }
+    #editor-md {
+   position:relative;
 
-        #dropZone.hover {
-            /*border-color: #aaa;
+    }
+    #dropZone.hover {
+        /*border-color: #aaa;
             background-color: #ddd;*/
-        }
+    }
 
         #dropZone.error {
             border-color: #f00;
             background-color: #faa;
         }
+
+    #box-aligment {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        z-index: 100;
+    }
 </style>
 
 @Styles.Render("~/bundles/markdown/css")
@@ -47,15 +77,16 @@
 
         var editor = editormd("editormd", {
             width: "90%",
-            height: 640,
-            path: "../lib/",
+            height: "50em",
+            path: "../../lib/",
             toolbarIcons: function () {
                 // Or return editormd.toolbarModes[name]; // full, simple, mini
                 // Using "||" set icons align right.
-                return ["undo", "redo", "|", "bold", "hr", "|", "preview", "watch", "|", "fullscreen", "info", "testIcon", "testIcon2", "file", "faicon", "||", "watch", "fullscreen", "preview", "testIcon"]
+                return ["undo", "redo", "|", "bold", "hr", "|", "watch", "|", "h1","h2", "h3",  "h4", "h5","h6", "|"]
             },
             saveHTMLToTextarea: true // Autoload modules mode, codemirror, marked... dependents libs path
         });
+
 
          var dropZone;
          var Reload;
@@ -151,6 +182,9 @@
                     editor.setMarkdown(mdeVal + "\n" + "![](" + path + ")")
                     //const $codemirror = $('.CodeMirror').nextAll('textarea');
                     //$codemirror.val("[](http://"+ path +")");
+                    $(".editormd-preview-container img").removeAttr("class");
+                    $(".editormd-preview-container img").addClass("col");
+                    $(".editormd-preview-container img").addClass("l12"); 
 
                     Materialize.toast('Archivo subido exitósamente!' + '<br />' + response.path, 4000)
 

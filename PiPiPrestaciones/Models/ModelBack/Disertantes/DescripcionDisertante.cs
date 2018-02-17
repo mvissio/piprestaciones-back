@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
-namespace PiPiPrestaciones.Models.ModelBack.Disertantes
+namespace PiPiPrestaciones.Models
 {
     [Table("DescripcionDisertante")]
     public class DescripcionDisertante
@@ -19,5 +19,8 @@ namespace PiPiPrestaciones.Models.ModelBack.Disertantes
         public int? DisertanteId { get; set; }
         [ForeignKey("DisertanteId")]
         public virtual Disertante Disertante { get; set; }
+        public int? MarkDownDisertanteId { get; set; }
+        [ForeignKey("MarkDownDisertanteId")]
+        public virtual MarkDownModel MarkDownDisertante { get; set; }
     }
 }

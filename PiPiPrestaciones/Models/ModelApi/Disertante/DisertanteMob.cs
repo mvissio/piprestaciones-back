@@ -1,4 +1,4 @@
-﻿using PiPiPrestaciones.Models.ModelBack.Disertantes;
+﻿using PiPiPrestaciones.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

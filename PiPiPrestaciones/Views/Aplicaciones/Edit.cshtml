@@ -129,6 +129,16 @@
              });
         });
 
+        $(".flag-img").click(function () {
+            debugger;
+            var imgUrl = $(this).attr("data-flag");
+            $("#ImageUrl").val(imgUrl);
+            $("#edit-flag-ds").css("background-image", "../../Resources/flags/" + imgUrl);
+            $("#btn-close").click();
+
+        });
+
+
     });
 
 </script>

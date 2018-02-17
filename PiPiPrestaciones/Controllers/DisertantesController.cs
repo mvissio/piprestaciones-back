@@ -138,6 +138,10 @@ namespace PiPiPrestaciones.Controllers
             return PartialView("_Flags", new Helpers.HelperFlag());
         }
 
+        public ActionResult GetDisertantes(int aplicacionId) {
+            var disertantes = db.Disertante.Where(d => d.Status && d.AplicacionId == aplicacionId).ToList();
+            return View("_ListDisertantes",disertantes);
+        }
 
     }
 }

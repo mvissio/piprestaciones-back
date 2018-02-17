@@ -1,0 +1,58 @@
+﻿@model List<PiPiPrestaciones.Models.Disertante>
+
+@if (Model != null)
+
+{
+    <table class="table highlight">
+        <tr>
+            <th>
+
+            </th>
+            <th>
+                Nombre, Apellido
+            </th>
+            <th>
+
+            </th>
+
+
+            <th></th>
+        </tr>
+
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                  <div class="prev-ds" style="background-image:url(../../@item.ImageUrl)">
+                      
+                  </div>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FullName)
+                </td> 
+                <td>
+                 <a class="btn-floating blue-top" 
+                    href="@Url.Action("Edit","Disertantes",new {id = item.DisertanteId })">
+                    </a>
+                </td>
+            </tr>
+
+
+                }
+
+</table>
+        }
+
+
+
+<style>
+    .prev-ds {
+        height: 10em;
+        width: 10em;
+        border-radius: 100%;
+        background-repeat: no-repeat;
+        background-size: 10em;
+    }
+
+</style>

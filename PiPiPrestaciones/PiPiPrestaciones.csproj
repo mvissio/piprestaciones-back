@@ -261,6 +261,10 @@
     <Compile Include="Migrations\201802141941432_AddModels.Designer.cs">
       <DependentUpon>201802141941432_AddModels.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201802171358055_editDisertante.cs" />
+    <Compile Include="Migrations\201802171358055_editDisertante.Designer.cs">
+      <DependentUpon>201802171358055_editDisertante.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ModelApi\Disertante\CssDisertanteMob.cs" />
     <Compile Include="Models\ModelApi\Disertante\DescripcionDisertanteMob.cs" />
@@ -272,16 +276,14 @@
     <Compile Include="Models\ModelBack\AccountBindingModels.cs" />
     <Compile Include="Models\ModelBack\AccountViewModels.cs" />
     <Compile Include="Models\ModelBack\Aplicacion\Aplicacion.cs" />
+    <Compile Include="Models\ModelBack\Aplicacion\MarkDownModel.cs" />
     <Compile Include="Models\ModelBack\Css\CssModel.cs" />
     <Compile Include="Models\ModelBack\Disertantes\DescripcionDisertante.cs" />
     <Compile Include="Models\ModelBack\Disertantes\Disertante.cs" />
     <Compile Include="Models\ModelBack\Mapa\Map.cs" />
-    <Compile Include="Models\ModelBack\Menus\CssModelMenu.cs" />
     <Compile Include="Models\ModelBack\Menus\Type.cs" />
     <Compile Include="Models\ModelBack\Planimetry\DetailsPlanimetry.cs" />
     <Compile Include="Models\ModelBack\Planimetry\Planimetry.cs" />
-    <Compile Include="Models\ModelBack\Static\CssStaticContent.cs" />
-    <Compile Include="Models\ModelBack\Static\CssStaticPage.cs" />
     <Compile Include="Models\ModelBack\IdentityModels.cs" />
     <Compile Include="Controllers\ImagesController.cs" />
     <Compile Include="Models\ModelBack\Image.cs" />
@@ -1085,12 +1087,12 @@
     <Content Include="Views\Shared\_ListMapas.cshtml" />
     <Content Include="Views\Aplicaciones\_EditDisertantes.cshtml" />
     <Content Include="Views\Shared\_Flags.cshtml" />
+    <Content Include="Views\Disertantes\_ListDisertantes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="fonts\" />
     <Folder Include="Models\ModelApi\Aplicacion\" />
-    <Folder Include="Views\Disertantes\" />
     <Folder Include="Views\Images\" />
   </ItemGroup>
   <ItemGroup>
@@ -1105,6 +1107,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201802141941432_AddModels.resx">
       <DependentUpon>201802141941432_AddModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802171358055_editDisertante.resx">
+      <DependentUpon>201802171358055_editDisertante.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

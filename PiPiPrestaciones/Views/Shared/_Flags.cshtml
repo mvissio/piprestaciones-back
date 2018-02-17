@@ -1,19 +1,31 @@
 ﻿@model  PiPiPrestaciones.Helpers.HelperFlag
 
-
-<div class="row">
-@foreach (var item in Model.Flags)
-{
-    <div class="col l4">
-        <img class="flag-img" src="../../Resources/flags/@item" data-flag="@item" />
+<div class="modal-content" style="position:relative;">
+   
+    <div id="box-close">
+        <a class="btn-floating red right modal-action modal-close" id="btn-close"><i class="material-icons">close</i></a>
     </div>
+        
+   
     
+   
+    <div class="row" >
+       
+        @foreach (var item in Model.Flags)
+        {
+            <div class="col l3" style="position:relative">
+                <img class="flag-img" src="../../Resources/flags/@item" data-flag="@item" />
+                <div class="flag-detail" align="center">@item.Replace(".svg", "")</div>
+            </div>
 
 
+        }
 
-}
+    </div>
+
 
 </div>
+
 
 
 
@@ -21,6 +33,59 @@
 <style>
     .flag-img {   
         width:10em;
-        height:10em;    
+        height:10em; 
+        margin-bottom:2em;
+    }
+
+    .flag-detail {
+        position: absolute;
+        bottom: 0px;
+        right: 2em;
+        border-radius:100%;
+       padding: 1em 1em 1em 1em;
+        background-color:#000000;
+        color:white;
+    }
+    .modal-content {
+    background-color:darkslategrey;
+    
+    }
+
+    #btn-close {
+  z-index:1;
+  position:relative;
+    }
+
+    #box-close {
+    margin-bottom:3em;
+    position:sticky;
+    top:0px;
+    z-index:1;
+    
     }
 </style>
+
+@Scripts.Render("~/bundles/materialize/js")
+
+<script>
+    $(document).ready(function () {
+
+        $(".flag-img").click(function () {
+            debugger;
+            var imgUrl = $(this).attr("data-flag");
+            $("#NationalityUrl").val(imgUrl);
+            $("#edit-flag-ds").css("background-image", "url('../../Resources/flags/" + imgUrl +"')");
+
+            $("#edit-flag-ds").removeClass("orange");   
+
+            $("#edit-flag-ds").removeClass("darken-3");
+
+            $("#flags").modal("close");
+
+        });
+
+
+
+    });
+
+</script>

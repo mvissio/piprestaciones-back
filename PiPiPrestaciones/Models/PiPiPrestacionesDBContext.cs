@@ -4,7 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using PiPiPrestaciones.Models;
-using PiPiPrestaciones.Models.ModelBack.Disertantes;
+
 
 namespace PiPiPrestaciones.Models
 {

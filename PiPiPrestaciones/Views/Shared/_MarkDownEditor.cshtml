@@ -1,12 +1,12 @@
 ﻿
 
  
-<div id="editormd">
-    <div class="col l3 " id="box-aligment">
-        <a id="al-left" data-al="left" class=" white alignment "><i class="material-icons small grey-text">format_align_left</i></a>
-        <a id="al-mid" data-al="center" class=" white alignment"><i class="material-icons small grey-text">format_align_center</i></a>
-        <a id="al-right" data-al="right" class=" white alignment"><i class="material-icons small grey-text">format_align_right</i></a>
-        @*<div class="col l3">
+<div id="editormd" class="col l12">
+    @*<div class="col l3 " id="box-aligment">
+        <a id="al-left" data-al="left" class=" white alignment "><i class="fa fa-align-center small blue-grey-text"></i></a>
+        <a id="al-mid" data-al="center" class=" white alignment"><i class="material-icons small blue-grey-text">format_align_center</i></a>
+        <a id="al-right" data-al="right" class=" white alignment"><i class="material-icons small blue-grey-text">format_align_right</i></a>
+        <div class="col l3">
          
         </div>
         <div class="col l3">
@@ -14,11 +14,11 @@
         </div>
         <div class="col l3">
           
-        </div>*@
-    </div>
+        </div>
+    </div>*@
 
 
-    <textarea id="editor-md" style="display:none;">### Hello Editor.md !</textarea>
+    <textarea id="editor-md" class="col l12" style="display:none;">### Hello Editor.md !</textarea>
 </div>
 
 
@@ -58,7 +58,7 @@
     #box-aligment {
         position: absolute;
         top: 0px;
-        right: 0px;
+        right: -8em;
         z-index: 100;
     }
 </style>
@@ -69,6 +69,14 @@
 @Scripts.Render("~/bundles/markdown/js")
 
 <script type="text/javascript">
+    var alinearContenido = function (align) {
+
+        $(".editormd-preview-container").css("text-align", align);
+        $(".editormd-preview-container p").css("text-align", align);
+        $(".CodeMirror-scroll").css("text-align", align);
+        $("#alineacion").html(align)
+    }
+
     $(document).ready(function () {
         //var simplemde = new SimpleMDE({
         //    element: document.getElementById("myMDE")
@@ -79,14 +87,53 @@
             width: "90%",
             height: "50em",
             path: "../../lib/",
+            watch: false,
             toolbarIcons: function () {
                 // Or return editormd.toolbarModes[name]; // full, simple, mini
                 // Using "||" set icons align right.
-                return ["undo", "redo", "|", "bold", "hr", "|", "watch", "|", "h1","h2", "h3",  "h4", "h5","h6", "|"]
+                return ["undo", "redo", "|", "bold", "hr", "|", "watch", "preview", "|", "h1", "h2", "h3", "h4", "h5", "h6", "|", "left", "center","right"]
             },
+            toolbarCustomIcons: {
+                left: "<li id='al-left' data-al='left' class=' white '><i data-al='left' onclick='alinearContenido(\"left\")'  class='fa fa-align-left small '></i></li>",
+                 //left: "<i class='fa fa-star' onclick='alert()'></i>",
+                center: "<li id='al-center' data-al='center' class=' white  '><i onclick='alinearContenido(\"center\")' class='fa fa-align-center small '></i></li>",
+                right: "<li id='al-right' data-al='right' class=' white alignment'><i onclick='alinearContenido(\"right\")' class='fa fa-align-right small '></i></li>"
+        },
             saveHTMLToTextarea: true // Autoload modules mode, codemirror, marked... dependents libs path
         });
 
+    
+
+       
+
+        $(".alignment").click(function () {
+            debugger;
+            var al = $(this);
+            al.removeClass("darken-4");
+            al.addClass("darken-1");
+            var id = al.attr("id");
+            $(".editormd-preview-container").css("text-align", al.attr("data-al"));
+            $(".editormd-preview-container p").css("text-align", al.attr("data-al"));
+
+
+
+            $(".CodeMirror-scroll").css("text-align", al.attr("data-al"));
+
+
+
+            //$("#box-aligment a").each(function () {
+
+            //    if ($(this).attr("id") != id) {
+            //        $(this).removeClass("darken-1");
+            //      $(this).addClass("darken-4");
+            //    }
+
+
+            //});
+
+
+
+        });
 
          var dropZone;
          var Reload;

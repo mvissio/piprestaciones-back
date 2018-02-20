@@ -160,43 +160,65 @@ namespace PiPiPrestaciones.Controllers
         [ValidateInput(false)]
         public ActionResult AddDisertante(Disertante disertante)
         {
-            if (ModelState.IsValid)
-            {
-                var ds = new Disertante();
-                ds.AplicacionId = disertante.Aplicacion.AplicacionId;
-                ds.CssDisertante = new CssModel();
-                ds.CssDisertante.ColorBack = ds.CssDisertante.ColorBack;
-                db.CssModel.Add(ds.CssDisertante);
-                ds.FullName = disertante.FullName;
-                ds.ImageUrl = disertante.ImageUrl;
-                ds.NationalityUrl = disertante.NationalityUrl;
-                ds.Status = true;
-                ds.Title = disertante.Title;
-                ds.WebUrl = disertante.WebUrl;
+            var app = db.Aplicacion.Find(disertante.Aplicacion.AplicacionId);
+            disertante.Aplicacion = app;
+          
+            disertante.Status = true;
+           
+                try
+                {
 
-                db.Disertante.Add(ds);
+                    var ds = new Disertante();
+                    ds.AplicacionId = disertante.Aplicacion.AplicacionId;
+                    ds.CssDisertante = new CssModel();
+                    ds.CssDisertante.ColorBack = disertante.CssDisertante.ColorBack;
+                    db.CssModel.Add(ds.CssDisertante);
+                    ds.FullName = disertante.FullName;
+                    ds.ImageUrl = disertante.ImageUrl;
+                    ds.NationalityUrl = disertante.NationalityUrl;
+                    ds.Status = true;
+                    ds.Title = disertante.Title;
+                    ds.WebUrl = disertante.WebUrl;
 
+                    db.Disertante.Add(ds);
 
-                if (disertante.Descripciones != null) {
-                    if (disertante.Descripciones.Count > 0) {
-                     
-                        foreach (var item in disertante.Descripciones)
+                    var order = 0;
+                    if (disertante.Descripciones != null)
+                    {
+                        if (disertante.Descripciones.Count > 0)
                         {
-                            var desc = new DescripcionDisertante(item);
-                            db.MarkDownModel.Add(desc.MarkDownDisertante);
-                            db.DescripcionDisertante.Add(desc);
+
+                            foreach (var item in disertante.Descripciones)
+                            {
+                                if (item.OrderDescription != -1) {
+                                    item.OrderDescription = order;
+                                    var desc = new DescripcionDisertante(item);
+                                    db.MarkDownModel.Add(desc.MarkDownDisertante);
+                                    db.DescripcionDisertante.Add(desc);
+                                    order++;
+                                }
+                                
+
+                            }
 
                         }
-
                     }
+                    db.SaveChanges();
+
+
+                    return Json("true");
+
                 }
-                db.SaveChanges();
-               
+                catch (Exception ex)
+                {
 
-                return Json("true");
-            }
+                    return Json(ex.ToString());
+                }
 
-            return Json("false");
+
+
+
+            //return Json("false");
         }
     }
 }

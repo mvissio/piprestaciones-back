@@ -12,6 +12,7 @@ namespace PiPiPrestaciones.Models
     {
         [Key]
         public int DescripcionDisertanteId { get; set; }
+
         public string TextDescription { get; set; }
         public string ClassDescription { get; set; }
         public string TextAlingDescription { get; set; }

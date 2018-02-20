@@ -17,7 +17,6 @@ namespace PiPiPrestaciones.Models
 
         [Required(ErrorMessage ="El nombre es requerido")]
         public string FullName { get; set; }
-
        
         public string ImageUrl { get; set; }
 

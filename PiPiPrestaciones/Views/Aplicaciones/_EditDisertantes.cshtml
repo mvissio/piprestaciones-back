@@ -148,8 +148,11 @@
 <script>
     var dropZone;
     var Reload;
+    var appId;
     $(document).ready(function () {
-        $("#Aplicacion_AplicacionId").val($("AplicacionId").val())
+        appId = $("#appId").val();
+      //  alert(appId)
+        $("#Aplicacion_AplicacionId").val(appId)
 
         $("#AddDisertante").click(function () {
           
@@ -157,17 +160,25 @@
             var form = $("form");
             var data = $(form[1]).serializeArray()
             //var data = getFormData($form);
-        $.ajax({
+            $.ajax({
+                method: "POST",
+                url: "@Url.Action("AddDisertante", "Disertantes")",
+                data:data
+            })
+                .done(function (msg) {
+                    alert("Data Saved: " + msg);
+                });
+        @*$.ajax({
             url: '@Url.Action("AddDisertante", "Disertantes")',
             cache: false,
             data:data,
             success: function (res) {
                 if (res == "false") {
-                    //alert("No se pudo guardar el disertante, faltan campos")
+                  
                     Materialize.toast('No se pudo guardar el disertante, faltan campos' + '<br />' , 4000)
                 }
             }
-             });
+             });*@
 
         })
 

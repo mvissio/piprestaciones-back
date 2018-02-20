@@ -22,5 +22,17 @@ namespace PiPiPrestaciones.Models
         public int? MarkDownDisertanteId { get; set; }
         [ForeignKey("MarkDownDisertanteId")]
         public virtual MarkDownModel MarkDownDisertante { get; set; }
+
+        public DescripcionDisertante() { }
+
+        public DescripcionDisertante(DescripcionDisertante descripcion) {
+            this.TextAlingDescription = descripcion.TextAlingDescription;
+            this.OrderDescription = descripcion.OrderDescription;
+            this.Disertante = descripcion.Disertante;
+
+            this.MarkDownDisertante = new MarkDownModel(descripcion.MarkDownDisertante);
+
+        }
+
     }
 }

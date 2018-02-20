@@ -15,8 +15,10 @@ namespace PiPiPrestaciones.Models
 
         public string Title { get; set; }
 
+        [Required(ErrorMessage ="El nombre es requerido")]
         public string FullName { get; set; }
 
+       
         public string ImageUrl { get; set; }
 
         public string NationalityUrl { get; set; }
@@ -36,5 +38,6 @@ namespace PiPiPrestaciones.Models
         public virtual Aplicacion Aplicacion { get; set; }
 
 
+        public virtual List<DescripcionDisertante> Descripciones { get; set; }
     }
 }

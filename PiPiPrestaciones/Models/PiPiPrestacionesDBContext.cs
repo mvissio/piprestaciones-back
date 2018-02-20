@@ -27,5 +27,6 @@ namespace PiPiPrestaciones.Models
         public DbSet<DescripcionDisertante> DescripcionDisertante { get; set; }
         public DbSet<Planimetry> Planimetry { get; set; }
         public DbSet<DetailsPlanimetry> DetailsPlanimetry { get; set; }
+        public DbSet<MarkDownModel> MarkDownModel { get; set; }
     }
 }

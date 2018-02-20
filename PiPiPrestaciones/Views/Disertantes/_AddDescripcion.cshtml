@@ -1,0 +1,59 @@
+﻿
+@model PiPiPrestaciones.Models.DescripcionDisertante
+
+@if (Model != null)
+{
+    
+
+        <div id="desc-@Model.OrderDescription" class="row">
+            <div class="col l8  ">
+            @Model.MarkDownDisertante.MarkDownValue.Substring(0,20) ...
+            </div>
+            <div class="col l3 offset-l1">
+               <a class="btn-floating red desc-remove" data-order="@Model.OrderDescription"><i class="material-icons">close</i></a>
+            </div>
+           
+
+
+        </div>
+
+        @Html.Hidden("Descripciones["+ Model.OrderDescription + "].OrderDescription",Model.OrderDescription)
+        @Html.Hidden("Descripciones[" + Model.OrderDescription + "].TextAlingDescription", Model.TextAlingDescription)
+        @Html.Hidden("Descripciones[" + Model.OrderDescription + "].MarkDownDisertante.MarkDownValue", Model.MarkDownDisertante.MarkDownValue)
+        @Html.Hidden("Descripciones[" + Model.OrderDescription + "].MarkDownDisertante.HtmlValue", Model.MarkDownDisertante.HtmlValue)
+        @Html.Hidden("Descripciones[" + Model.OrderDescription + "].MarkDownDisertante.PreviewValue", Model.MarkDownDisertante.PreviewValue)
+
+    <script>
+        $(document).ready(function () {
+            var i = Number($("#indice").val())
+            i++;
+            $("#indice").val(i)
+
+        });
+
+    </script>
+
+
+}
+
+<style>
+    .desc-remove {
+
+
+    }
+
+</style>
+
+<script>
+    $(document).ready(function () {
+        $(".desc-remove").click(function () {
+            var ord = $(this).attr("data-order");
+            $("#desc-" + ord).remove();
+            Descripciones["+ Model.OrderDescription + "].OrderDescription
+
+            $("#Descripciones_" + ord + "__OrderDescription").val("-1");
+        });
+
+    });
+
+</script>

@@ -16,5 +16,20 @@ namespace PiPiPrestaciones.Models
         public string HtmlValue { get; set; }
 
         public string MarkDownValue { get; set; }
+
+        public string PreviewValue { get; set; }
+
+
+        public MarkDownModel() { 
+        }
+
+
+        public MarkDownModel(MarkDownModel markDownModel)
+        {
+
+            this.HtmlValue = markDownModel.HtmlValue;
+            this.MarkDownValue = markDownModel.MarkDownValue;
+            this.PreviewValue = markDownModel.PreviewValue;
+        }
     }
 }

@@ -77,34 +77,61 @@
         $("#alineacion").html(align)
     }
 
+    var editor = editormd("editormd", {
+        width: "100%",
+        height: "50em",
+        path: "../../lib/",
+        //watch: false,
+        toolbarIcons: function () {
+            // Or return editormd.toolbarModes[name]; // full, simple, mini
+            // Using "||" set icons align right.
+            return ["undo", "redo", "|", "bold", "hr", "|", "watch", "preview", "|", "h1", "h2", "h3", "h4", "h5", "h6", "|", "left", "center", "right"]
+        },
+        toolbarIconsClass: {
+            left: "fa-align-left",
+            center: "fa-align-center",
+            right: "fa-align-right"
+        },
+        //toolbarCustomIcons: {
+        //    left: "<li id='al-left' data-al='left' class=' white '><i data-al='left' onclick='alinearContenido(\"left\")'  class='fa fa-align-left small '></i></li>",
+
+        //    center: "<li id='al-center' data-al='center' class=' white  '><i onclick='alinearContenido(\"center\")' class='fa fa-align-center small '></i></li>",
+        //    right: "<li id='al-right' data-al='right' class=' white alignment'><i onclick='alinearContenido(\"right\")' class='fa fa-align-right small '></i></li>"
+        //},
+        toolbarHandlers: {
+            @*/**
+             * @param {Object}      cm         CodeMirror对象
+             * @param {Object}      icon       图标按钮jQuery元素对象
+             * @param {Object}      cursor     CodeMirror的光标对象，可获取光标所在行和位置
+             * @param {String}      selection  编辑器选中的文本
+             */*@
+    center : function(cm, icon, cursor, selection) {
+
+        alinearContenido("center");
+    },
+
+    left: function (cm, icon, cursor, selection) {
+
+        alinearContenido("left");
+    },
+    right: function (cm, icon, cursor, selection) {
+        alinearContenido("right");
+    }
+        },
+    saveHTMLToTextarea: true // Autoload modules mode, codemirror, marked... dependents libs path
+        });
+
+
     $(document).ready(function () {
         //var simplemde = new SimpleMDE({
         //    element: document.getElementById("myMDE")
         //});
 
 
-        var editor = editormd("editormd", {
-            width: "90%",
-            height: "50em",
-            path: "../../lib/",
-            watch: false,
-            toolbarIcons: function () {
-                // Or return editormd.toolbarModes[name]; // full, simple, mini
-                // Using "||" set icons align right.
-                return ["undo", "redo", "|", "bold", "hr", "|", "watch", "preview", "|", "h1", "h2", "h3", "h4", "h5", "h6", "|", "left", "center","right"]
-            },
-            toolbarCustomIcons: {
-                left: "<li id='al-left' data-al='left' class=' white '><i data-al='left' onclick='alinearContenido(\"left\")'  class='fa fa-align-left small '></i></li>",
-                 //left: "<i class='fa fa-star' onclick='alert()'></i>",
-                center: "<li id='al-center' data-al='center' class=' white  '><i onclick='alinearContenido(\"center\")' class='fa fa-align-center small '></i></li>",
-                right: "<li id='al-right' data-al='right' class=' white alignment'><i onclick='alinearContenido(\"right\")' class='fa fa-align-right small '></i></li>"
-        },
-            saveHTMLToTextarea: true // Autoload modules mode, codemirror, marked... dependents libs path
-        });
-
-    
-
        
+
+
+
 
         $(".alignment").click(function () {
             debugger;
@@ -223,7 +250,7 @@
 
                     var path = response.path
                    // ![](http://)
-                    var mdeVal = editor.getMarkdown();  
+                    var mdeVal = editor.getMarkdown();
 
 
                     editor.setMarkdown(mdeVal + "\n" + "![](" + path + ")")
@@ -231,7 +258,7 @@
                     //$codemirror.val("[](http://"+ path +")");
                     $(".editormd-preview-container img").removeAttr("class");
                     $(".editormd-preview-container img").addClass("col");
-                    $(".editormd-preview-container img").addClass("l12"); 
+                    $(".editormd-preview-container img").addClass("l12");
 
                     Materialize.toast('Archivo subido exitósamente!' + '<br />' + response.path, 4000)
 

@@ -1,84 +1,98 @@
 ﻿@model PiPiPrestaciones.Models.Disertante
 
 
-@using (Html.BeginForm("Create","Disertantes"))
+@using (Html.BeginForm("AddDisertante", "Disertantes"))
 {
-<div class="row">
+    @*@Html.AntiForgeryToken()*@
 
-    @Html.HiddenFor(model => model.DisertanteId)
+    <form id="createDisertante">
+        <div class="row">
 
-    <div class="col l3">
+            @Html.HiddenFor(model => model.DisertanteId)
 
-        <div id="image-ds" class="grey lighten-1 col l12 white-text" style="position:relative">
-            @*<a class="btn-floating orange darken-3" id="edit-image-ds"><i class="material-icons tiny">edit</i></a>*@
-          @Html.HiddenFor(model => model.ImageUrl)
+            <div class="col l3">
 
-                
-            <a class="waves-effect waves-light btn modal-trigger  btn-floating btn-large orange darken-3 " 
-               href="#flags" id="edit-flag-ds"><i class="material-icons large">flag</i></a>
+                <div id="image-ds" class="grey lighten-1 col l12 white-text" style="position:relative">
+                    @*<a class="btn-floating orange darken-3" id="edit-image-ds"><i class="material-icons tiny">edit</i></a>*@
+                    @Html.HiddenFor(model => model.ImageUrl)
 
-            @Html.HiddenFor(model=> model.NationalityUrl)
-        </div>
 
-    </div>
+                    <a class="waves-effect waves-light btn modal-trigger  btn-floating btn-large orange darken-3 "
+                       href="#flags" id="edit-flag-ds"><i class="material-icons large">flag</i></a>
 
-    <div id="create-disertante" class="col l8 offset-l1">
+                    @Html.HiddenFor(model => model.NationalityUrl)
+                </div>
 
-        <div class="input-field">
-            @Html.LabelFor(model => model.FullName, "Nombre y apellido")
-            @Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @class = "validate" } })
-        </div>
-        <div class="input-field">
-            @Html.LabelFor(model => model.Title, "Título")
-            @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "validate" } })
-        </div>
-       
-        <div class="input-field">
-            @Html.LabelFor(model => model.WebUrl, "Web")
-            @Html.EditorFor(model => model.WebUrl)
-        </div>
-        <div class="input-field  container-color-picker">
-            @Html.LabelFor(model => model.CssDisertante.ColorBack, "Color de Fondo" )
-            @Html.EditorFor(model => model.CssDisertante.ColorBack , new { htmlAttributes = new { @class = "color-picker",@id= "backColor-disertante" } })
-            <div class="btn-floating prev-color" id="prev-backColor-disertante"></div>
-            
-         
-           
-        </div>
+            </div>
 
-    </div>
-    
+            <div id="create-disertante" class="col l8 offset-l1">
+                @Html.HiddenFor(model => model.Aplicacion.AplicacionId);
 
-</div>
 
-<div class="row">
-    <hr />
-    <div><label class="control-label">Descripcion Disertante</label>
-    <a class="btn-floating blue-top right"><i class="material-icons">add</i></a>
-    </div>
-    <br />
+                <div class="input-field">
+                    @Html.LabelFor(model => model.FullName, "Nombre y apellido")
+                    @Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @class = "validate", required=true } })
+                </div>
+                <div class="input-field">
+                    @Html.LabelFor(model => model.Title, "Título")
+                    @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "validate" } })
+                </div>
 
-    <div id="mark-down-editor" class="col l12">
-    
-        
-        @Html.Partial("_MarkDownEditor")
-    </div>
+                <div class="input-field">
+                    @Html.LabelFor(model => model.WebUrl, "Web")
+                    @Html.EditorFor(model => model.WebUrl)
+                </div>
+                <div class="input-field  container-color-picker">
+                    @Html.LabelFor(model => model.CssDisertante.ColorBack, "Color de Fondo")
+                    @Html.EditorFor(model => model.CssDisertante.ColorBack, new { htmlAttributes = new { @class = "color-picker", @id = "backColor-disertante" } })
+                    <div class="btn-floating prev-color" id="prev-backColor-disertante"></div>
 
-    
 
-</div>
 
-    <div class="row" >
-        <p>
-            <label>Descripciones agregadas</label> 
-            <label id="alineacion">left</label>
-        </p>
-        
-        <div id="desc-adds">
+                </div>
+
+            </div>
+
 
         </div>
 
-    </div>
+        <div class="row">
+            <hr />
+            <div>
+                <label class="control-label">Descripcion Disertante</label>
+                <a class="btn-floating blue-top right large" id="add-desc"><i class="material-icons">add</i></a>
+            </div>
+            <br />
+
+            <div id="mark-down-editor" class="col l12">
+                <label id="alineacion" hidden>left</label>
+
+                @Html.Partial("_MarkDownEditor")
+            </div>
+
+
+
+        </div>
+
+        <div class="row">
+            <p>
+                <label>Descripciones agregadas</label>
+
+            </p>
+            @Html.Hidden("indice", 0, htmlAttributes: new { @id = "indice" })
+
+
+            <div id="desc-adds">
+
+
+
+            </div>
+
+            <a id="AddDisertante" class="btn btn-primary" >Guardar</a> 
+        </div>
+
+    </form>
+
 
 }
 
@@ -134,9 +148,28 @@
 <script>
     var dropZone;
     var Reload;
-
     $(document).ready(function () {
+        $("#Aplicacion_AplicacionId").val($("AplicacionId").val())
 
+        $("#AddDisertante").click(function () {
+          
+            debugger;
+            var form = $("form");
+            var data = $(form[1]).serializeArray()
+            //var data = getFormData($form);
+        $.ajax({
+            url: '@Url.Action("AddDisertante", "Disertantes")',
+            cache: false,
+            data:data,
+            success: function (res) {
+                if (res == "false") {
+                    //alert("No se pudo guardar el disertante, faltan campos")
+                    Materialize.toast('No se pudo guardar el disertante, faltan campos' + '<br />' , 4000)
+                }
+            }
+             });
+
+        })
 
         $('.color-picker').colorpicker();
 
@@ -184,6 +217,24 @@
         });
 
 
+        $("#add-desc").click(function () {
+            var previewMd = editor.getPreviewedHTML();
+            var htmlMd = editor.getHTML();
+            var markDown = editor.getMarkdown();
+            var textAlign = $("#alineacion").html();
+            var order = Number($("#indice").val());
+            var data = { "markDown": markDown, "htmlMd": htmlMd, "previewMd": previewMd, "textAlign": textAlign, "order": order };
+
+                $.ajax({
+                 url: '@Url.Action("AddDescripcion", "Disertantes")',
+                 cache: false,
+                data:data,
+                 success: function (html) { $("#desc-adds").append(html); }
+             });
+
+
+        });
+
         //Alignment
         $(".alignment").click(function () {
             debugger;
@@ -191,21 +242,21 @@
             al.removeClass("darken-4");
             al.addClass("darken-1");
             var id = al.attr("id");
-            $(".editormd-preview-container").css("text-align",al.attr("data-al"));  
-            $(".editormd-preview-container p").css("text-align",  al.attr("data-al"));  
-         
-           
+            $(".editormd-preview-container").css("text-align",al.attr("data-al"));
+            $(".editormd-preview-container p").css("text-align",  al.attr("data-al"));
+
+
 
                 $(".CodeMirror-scroll").css("text-align", al.attr("data-al"));
-           
-        
+
+
             //$("#box-aligment a").each(function () {
-            
+
             //    if ($(this).attr("id") != id) {
             //        $(this).removeClass("darken-1");
             //      $(this).addClass("darken-4");
             //    }
-            
+
 
             //});
 

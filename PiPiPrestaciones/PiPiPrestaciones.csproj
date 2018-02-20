@@ -265,6 +265,18 @@
     <Compile Include="Migrations\201802171358055_editDisertante.Designer.cs">
       <DependentUpon>201802171358055_editDisertante.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201802192018178_editMarkDown.cs" />
+    <Compile Include="Migrations\201802192018178_editMarkDown.Designer.cs">
+      <DependentUpon>201802192018178_editMarkDown.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802200037389_editDisertante1.cs" />
+    <Compile Include="Migrations\201802200037389_editDisertante1.Designer.cs">
+      <DependentUpon>201802200037389_editDisertante1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802200104370_addMD.cs" />
+    <Compile Include="Migrations\201802200104370_addMD.Designer.cs">
+      <DependentUpon>201802200104370_addMD.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ModelApi\Disertante\CssDisertanteMob.cs" />
     <Compile Include="Models\ModelApi\Disertante\DescripcionDisertanteMob.cs" />
@@ -1088,6 +1100,8 @@
     <Content Include="Views\Aplicaciones\_EditDisertantes.cshtml" />
     <Content Include="Views\Shared\_Flags.cshtml" />
     <Content Include="Views\Disertantes\_ListDisertantes.cshtml" />
+    <Content Include="Views\Disertantes\_AddDescripcion.cshtml" />
+    <Content Include="Views\Disertantes\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1110,6 +1124,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201802171358055_editDisertante.resx">
       <DependentUpon>201802171358055_editDisertante.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802192018178_editMarkDown.resx">
+      <DependentUpon>201802192018178_editMarkDown.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802200037389_editDisertante1.resx">
+      <DependentUpon>201802200037389_editDisertante1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802200104370_addMD.resx">
+      <DependentUpon>201802200104370_addMD.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

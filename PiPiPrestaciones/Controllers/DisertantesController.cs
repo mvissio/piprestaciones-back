@@ -49,12 +49,13 @@ namespace PiPiPrestaciones.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "DisertanteId,Title,FullName,ImageUrl,NationalityUrl,WebUrl,CssModelDisertanteId,AplicacionId")] Disertante disertante)
+        [ValidateInput(false)]
+        public ActionResult Create( Disertante disertante)
         {
             if (ModelState.IsValid)
             {
-                db.Disertante.Add(disertante);
-                db.SaveChanges();
+                //db.Disertante.Add(disertante);
+                //db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -142,6 +143,60 @@ namespace PiPiPrestaciones.Controllers
             var disertantes = db.Disertante.Where(d => d.Status && d.AplicacionId == aplicacionId).ToList();
             return View("_ListDisertantes",disertantes);
         }
+        [ValidateInput(false)]
+        public ActionResult AddDescripcion(string markDown,string htmlMd, string previewMd, string textAlign,string order)
+        {
+            var descripcion = new DescripcionDisertante();
+            descripcion.OrderDescription = Convert.ToInt32(order);
+            descripcion.TextAlingDescription = textAlign;
+            descripcion.MarkDownDisertante = new MarkDownModel();
+            descripcion.MarkDownDisertante.HtmlValue = htmlMd;
+            descripcion.MarkDownDisertante.MarkDownValue = markDown;
+            descripcion.MarkDownDisertante.PreviewValue = previewMd;
 
+
+            return View("_AddDescripcion", descripcion);
+        }
+        [ValidateInput(false)]
+        public ActionResult AddDisertante(Disertante disertante)
+        {
+            if (ModelState.IsValid)
+            {
+                var ds = new Disertante();
+                ds.AplicacionId = disertante.Aplicacion.AplicacionId;
+                ds.CssDisertante = new CssModel();
+                ds.CssDisertante.ColorBack = ds.CssDisertante.ColorBack;
+                db.CssModel.Add(ds.CssDisertante);
+                ds.FullName = disertante.FullName;
+                ds.ImageUrl = disertante.ImageUrl;
+                ds.NationalityUrl = disertante.NationalityUrl;
+                ds.Status = true;
+                ds.Title = disertante.Title;
+                ds.WebUrl = disertante.WebUrl;
+
+                db.Disertante.Add(ds);
+
+
+                if (disertante.Descripciones != null) {
+                    if (disertante.Descripciones.Count > 0) {
+                     
+                        foreach (var item in disertante.Descripciones)
+                        {
+                            var desc = new DescripcionDisertante(item);
+                            db.MarkDownModel.Add(desc.MarkDownDisertante);
+                            db.DescripcionDisertante.Add(desc);
+
+                        }
+
+                    }
+                }
+                db.SaveChanges();
+               
+
+                return Json("true");
+            }
+
+            return Json("false");
+        }
     }
 }

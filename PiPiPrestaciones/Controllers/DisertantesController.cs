@@ -164,9 +164,10 @@ namespace PiPiPrestaciones.Controllers
             disertante.Aplicacion = app;
           
             disertante.Status = true;
-           
+        
                 try
                 {
+              
 
                     var ds = new Disertante();
                     ds.AplicacionId = disertante.Aplicacion.AplicacionId;

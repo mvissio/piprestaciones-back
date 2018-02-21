@@ -4,8 +4,6 @@
     ViewBag.Title = "Edit";
 }
 
-<h4>Edit</h4>
-<hr />
 
 @using (Html.BeginForm())
 {
@@ -97,6 +95,7 @@
     @Html.ActionLink("Back to List", "Index")
 </div>
 
+
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/colorpicker/js")
@@ -120,6 +119,8 @@
 <script>
     $(document).ready(function () {
         $(".btn-edit").click(function () {
+
+            $("#menu-edit").empty();
             var type = $(this).attr("data-type");
             var data = { "type": type };
 

@@ -19,7 +19,7 @@
         <div class="btn-floating prev-color" id="prev-borde-mapa"></div>
     </div>
     <div class="input-field col l2">
-        <a class="btn blue-top col s11 offset-s1" id="add-mapa"><i class="material-icons left">add</i> Agregar </a>
+        <a class="btn blue-top col l12" id="add-mapa"><i class="material-icons left">add</i> Agregar </a>
     </div>  
 </div>
  
@@ -58,6 +58,11 @@
     }
 </style>
 
+  
+    @Scripts.Render("~/bundles/colorpicker/js")
+    @Styles.Render("~/bundles/colorpicker/css")
+
+
 <script>
 
     var getMaps = function () {
@@ -66,16 +71,16 @@
 
         var data = { "AplicacionId": idApp };
 
-         $.ajax({
-                     url: '@Url.Action("GetMaps", "Maps")',
+        $.ajax({
+            url: '@Url.Action("GetMaps", "Maps")',
                      cache: false,
                      data:data,
                      success: function (html) { $("#list-mapas").html(html); }
              });
     }
 
-    $(document).ready(function () {
-        getMaps();
+    $(function () {
+      getMaps();
 
         $('.color-picker').colorpicker();
 
@@ -123,7 +128,12 @@
 
 
         });
-
     });
+
+
+    //$(document).ready(function () {
+
+
+    //});
 
 </script>

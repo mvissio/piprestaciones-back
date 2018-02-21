@@ -1,100 +1,123 @@
 ﻿@model PiPiPrestaciones.Models.Disertante
 
 
-@using (Html.BeginForm("AddDisertante", "Disertantes"))
-{
-    @*@Html.AntiForgeryToken()*@
 
-    <form id="createDisertante">
-        <div class="row">
-
-            @Html.HiddenFor(model => model.DisertanteId)
-
-            <div class="col l3">
-
-                <div id="image-ds" class="grey lighten-1 col l12 white-text" style="position:relative">
-                    @*<a class="btn-floating orange darken-3" id="edit-image-ds"><i class="material-icons tiny">edit</i></a>*@
-                    @Html.HiddenFor(model => model.ImageUrl)
-
-
-                    <a class="waves-effect waves-light btn modal-trigger  btn-floating btn-large orange darken-3 "
-                       href="#flags" id="edit-flag-ds"><i class="material-icons large">flag</i></a>
-
-                    @Html.HiddenFor(model => model.NationalityUrl)
-                </div>
-
-            </div>
-
-            <div id="create-disertante" class="col l8 offset-l1">
-                @Html.HiddenFor(model => model.Aplicacion.AplicacionId);
-
-
-                <div class="input-field">
-                    @Html.LabelFor(model => model.FullName, "Nombre y apellido")
-                    @Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @class = "validate", required=true } })
-                </div>
-                <div class="input-field">
-                    @Html.LabelFor(model => model.Title, "Título")
-                    @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "validate" } })
-                </div>
-
-                <div class="input-field">
-                    @Html.LabelFor(model => model.WebUrl, "Web")
-                    @Html.EditorFor(model => model.WebUrl)
-                </div>
-                <div class="input-field  container-color-picker">
-                    @Html.LabelFor(model => model.CssDisertante.ColorBack, "Color de Fondo")
-                    @Html.EditorFor(model => model.CssDisertante.ColorBack, new { htmlAttributes = new { @class = "color-picker", @id = "backColor-disertante" } })
-                    <div class="btn-floating prev-color" id="prev-backColor-disertante"></div>
-
-
-
-                </div>
-
-            </div>
-
-
-        </div>
-
-        <div class="row">
-            <hr />
-            <div>
-                <label class="control-label">Descripcion Disertante</label>
-                <a class="btn-floating blue-top right large" id="add-desc"><i class="material-icons">add</i></a>
-            </div>
-            <br />
-
-            <div id="mark-down-editor" class="col l12">
-                <label id="alineacion" hidden>left</label>
-
-                @Html.Partial("_MarkDownEditor")
-            </div>
+<div id="tabs">
+    <ul>
+        <li><a href="#tabs-1">Listar Disertantes</a></li>
+        <li><a href="#tabs-2">Incorporar disertante</a></li>
+       
+    </ul>
+    <div id="tabs-1">
+      
+        <div id="listDisertantes">
 
 
 
         </div>
 
-        <div class="row">
-            <p>
-                <label>Descripciones agregadas</label>
+    </div>
+    <div id="tabs-2">
+       @using (Html.BeginForm("AddDisertante", "Disertantes"))
+       {
+        @*@Html.AntiForgeryToken()*@
 
-            </p>
-            @Html.Hidden("indice", 0, htmlAttributes: new { @id = "indice" })
 
 
-            <div id="desc-adds">
+        <form id="createDisertante">
+            <div class="row">
+
+                @Html.HiddenFor(model => model.DisertanteId)
+
+                <div class="col l3">
+
+                    <div id="image-ds" class="grey lighten-1 col l12 white-text" style="position:relative">
+                        @*<a class="btn-floating orange darken-3" id="edit-image-ds"><i class="material-icons tiny">edit</i></a>*@
+                        @Html.HiddenFor(model => model.ImageUrl)
+
+                        <h4 id="lb-image-ds"> Arratre aquí la foto del disertante</h4>
+
+                        <a class="waves-effect waves-light btn modal-trigger  btn-floating btn-large orange darken-3 "
+                           href="#flags" id="edit-flag-ds"><i class="material-icons large">flag</i></a>
+
+                        @Html.HiddenFor(model => model.NationalityUrl)
+                    </div>
+
+                </div>
+
+                <div id="create-disertante" class="col l7 offset-l2">
+                    @Html.HiddenFor(model => model.Aplicacion.AplicacionId);
+
+
+                    <div class="input-field">
+                        @Html.LabelFor(model => model.FullName, "Nombre y apellido")
+                        @Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @class = "validate", required = true } })
+                    </div>
+                    <div class="input-field">
+                        @Html.LabelFor(model => model.Title, "Título")
+                        @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "validate" } })
+                    </div>
+
+                    <div class="input-field">
+                        @Html.LabelFor(model => model.WebUrl, "Web")
+                        @Html.EditorFor(model => model.WebUrl)
+                    </div>
+                    <div class="input-field  container-color-picker">
+                        @Html.LabelFor(model => model.CssDisertante.ColorBack, "Color de Fondo")
+                        @Html.EditorFor(model => model.CssDisertante.ColorBack, new { htmlAttributes = new { @class = "color-picker", @id = "backColor-disertante" } })
+                        <div class="btn-floating prev-color" id="prev-backColor-disertante"></div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+          
+            <div class="row" style="position:relative">
+               
+                <div class="input-field">
+                    
+                    <label class="control-label">Descripcion Disertante</label>
+                    <a class="btn-floating blue-top right large" id="add-desc"><i class="material-icons">add</i></a>
+                </div>
+          
+                <div id="mark-down-editor"  >
+                    <label id="alineacion" hidden>left</label>
+
+                    @Html.Partial("_MarkDownEditor")
+                </div>
 
 
 
             </div>
 
-            <a id="AddDisertante" class="btn btn-primary" >Guardar</a> 
-        </div>
+            <div class="row">
+                <p>
+                    <label>Descripciones agregadas</label>
 
-    </form>
+                </p>
+                @Html.Hidden("indice", 0, htmlAttributes: new { @id = "indice" })
 
 
-}
+                <div id="desc-adds">
+
+
+
+                </div>
+
+                <a id="AddDisertante" class="btn btn-primary">Guardar</a>
+            </div>
+
+        </form>
+
+
+       }
+    </div>
+ 
+</div>
+
+
 
 <div id="flags" class="modal">
 
@@ -119,13 +142,20 @@
     }
 
     #image-ds {
-    height:25em;
-    width:25em;
-    border-radius:100%;
-    background-repeat:no-repeat;
-    background-size:25em;
- 
+        height: 25em;
+        width: 25em;
+        border-radius: 100%;
+        background-repeat: no-repeat;
+        background-size: 25em;
+        /*position: relative;*/
+    }
 
+    #lb-image-ds {
+        text-align: center;
+        /*display: table-cell;
+        vertical-align: middle;*/
+        position:absolute;
+        transform: translateY(150%);
     }
 
 
@@ -149,13 +179,45 @@
     var dropZone;
     var Reload;
     var appId;
-    $(document).ready(function () {
-        appId = $("#appId").val();
+
+    var clearDisertante = function () {
+        $("#menu-edit").empty();
+        var data = { "type": "Disertantes" };
+
+            $.ajax({
+            url: '@Url.Action("GetEditMenu", "Aplicaciones")',
+            cache: false,
+            data:data,
+            success: function (html) { $("#menu-edit").html(html); }
+             });
+
+    };
+
+    var getDisertantes = function (aplicacionId) {
+
+        var data = { "aplicacionId": aplicacionId}
+
+          $.ajax({
+                 url: '@Url.Action("GetDisertantes", "Disertantes")',
+                 cache: false,
+                 data:data,
+                 success: function (html) { $("#listDisertantes").append(html); }
+             });
+
+    };
+
+
+    $(function () {
+        $("#tabs").tabs();
+          appId = $("#appId").val();
       //  alert(appId)
         $("#Aplicacion_AplicacionId").val(appId)
 
+        getDisertantes(appId);
+
+
         $("#AddDisertante").click(function () {
-          
+
             debugger;
             var form = $("form");
             var data = $(form[1]).serializeArray()
@@ -163,10 +225,13 @@
             $.ajax({
                 method: "POST",
                 url: "@Url.Action("AddDisertante", "Disertantes")",
-                data:data
+                data: data
             })
                 .done(function (msg) {
-                    alert("Data Saved: " + msg);
+                    if (msg == "true") {
+                        Materialize.toast('Disertante agregado exitosamente', 4000);
+                        clearDisertante();
+                    }
                 });
         @*$.ajax({
             url: '@Url.Action("AddDisertante", "Disertantes")',
@@ -174,13 +239,19 @@
             data:data,
             success: function (res) {
                 if (res == "false") {
-                  
+
                     Materialize.toast('No se pudo guardar el disertante, faltan campos' + '<br />' , 4000)
                 }
             }
              });*@
 
-        })
+        });
+
+
+
+
+
+
 
         $('.color-picker').colorpicker();
 
@@ -229,7 +300,7 @@
 
 
         $("#add-desc").click(function () {
-            var previewMd = editor.getPreviewedHTML();
+            var previewMd = "";
             var htmlMd = editor.getHTML();
             var markDown = editor.getMarkdown();
             var textAlign = $("#alineacion").html();
@@ -374,6 +445,7 @@
 
                         $("#ImageUrl").val(path);
 
+                        $("#lb-image-ds").hide(500);
                         // ![](http://)
 
                         //const $codemirror = $('.CodeMirror').nextAll('textarea');
@@ -388,6 +460,11 @@
                     }
                 }
             }
+
+    });
+
+    $(document).ready(function () {
+
 
     });
 

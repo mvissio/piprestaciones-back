@@ -714,6 +714,7 @@
     <Content Include="plugins\reference-link-dialog\reference-link-dialog.js" />
     <Content Include="plugins\table-dialog\table-dialog.js" />
     <Content Include="plugins\test-plugin\test-plugin.js" />
+    <Content Include="Resources\banner-consultores-fondo.png" />
     <Content Include="Resources\flags\ad.svg" />
     <Content Include="Resources\flags\ae.svg" />
     <Content Include="Resources\flags\af.svg" />
@@ -970,6 +971,8 @@
     <Content Include="Resources\flags\za.svg" />
     <Content Include="Resources\flags\zm.svg" />
     <Content Include="Resources\flags\zw.svg" />
+    <Content Include="Resources\fondo-pi-home.jpg" />
+    <Content Include="Resources\image-mobile-home.jpg" />
     <Content Include="Scripts\ace.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

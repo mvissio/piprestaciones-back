@@ -1,23 +1,6 @@
-﻿
-    
-
-
-body {
-    padding-top: 50px;
-    padding-bottom: 20px;
-}
-
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
-}
-
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    /*max-width: 280px;*/
+﻿#menu-top:hover{
+    text-decoration: none !important;
+    background-color: #eeeeee !important;
 }
 
 
@@ -43,30 +26,9 @@ right:0;
 top:0;
 }
 #content-page {
-margin-top:3em;
+    margin-top: 1rem !important;
+    margin-bottom: 1rem !important;
 }
-
-/*.btn-primary {
-    background-color: #0e68ce !important;
-}
-
-.btn-danger {
-    background-color: rgb(244,71,71);
-}
-    .btn-danger :hover {
-        background-color: rgba(244,71,71,0.8);
-    }
-    .btn-danger:after {
-        background-color: rgb(244,71,71);
-    }
-
-.btn-success {
-    background-color:#7fdb6a;
-}
-
-.btn-info {
-    background-color: #eedc31;
-}*/
 
 #nav-top {
     background-color: #0e68ce !important;
@@ -93,4 +55,29 @@ margin-top:3em;
     position: absolute;
     right: 0px;
     bottom: 1em;
+}
+
+#logo {
+    position: static;
+    width: 32px;
+    height: 32px;
+}
+
+#index-container {
+    background-image: url(../Resources/banner-consultores-fondo.png);
+    height: 50rem;
+    width: auto;
+}
+
+.card-action{
+    padding:0px !important;
+}
+
+a.btn.btn-block {
+    height: 3rem;
+}
+
+
+.container .row {
+    margin:auto;
 }

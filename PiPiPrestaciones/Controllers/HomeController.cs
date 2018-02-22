@@ -11,7 +11,7 @@ namespace PiPiPrestaciones.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";    
+            ViewBag.Title = "PI - Prestaciones Informáticas";    
             return View();
         }
     }

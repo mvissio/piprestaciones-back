@@ -4,16 +4,23 @@
 @if (Model != null)
 {
     
+        <div id="desc-@Model.OrderDescription" class="row" align="center">
+            <div class="col l4">
+                @if (Model.MarkDownDisertante.MarkDownValue.Length > 20)
+                {
+                    @Model.MarkDownDisertante.MarkDownValue.Substring(0, 20)
+                }
+                else
+                {
+                        @Model.MarkDownDisertante.MarkDownValue
+                                    }
 
-        <div id="desc-@Model.OrderDescription" class="row">
-            <div class="col l8  ">
-            @Model.MarkDownDisertante.MarkDownValue.Substring(0,20) ...
             </div>
             <div class="col l3 offset-l1">
-               <a class="btn-floating red desc-remove" data-order="@Model.OrderDescription"><i class="material-icons">close</i></a>
+               <a class="btn-floating grey bordered  desc-remove" data-order="@Model.OrderDescription"><i class="material-icons red-text">delete</i></a>
             </div>
            
-
+            
 
         </div>
 

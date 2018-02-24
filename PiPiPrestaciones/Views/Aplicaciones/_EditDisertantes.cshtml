@@ -2,14 +2,20 @@
 
 
 
-<div id="tabs">
-    <ul>
+<div id="box-disertantes">
+    @*<ul>
         <li><a href="#tabs-1">Listar Disertantes</a></li>
         <li><a href="#tabs-2">Incorporar disertante</a></li>
        
-    </ul>
+    </ul>*@
     <div id="tabs-1">
       
+        <div class="row" style="margin-bottom:2em;">
+            <a class="waves-effect  btn modal-trigger blue white-text  btn-large col l4 offset-l8 btn-add"
+               href="#incorporar-disertante" id="btn-incorporar-disertante"><i class="material-icons left">people</i>Incorporar disertante</a>
+        </div>
+      
+
         <div id="listDisertantes">
 
 
@@ -17,7 +23,9 @@
         </div>
 
     </div>
-    <div id="tabs-2">
+    <div id="incorporar-disertante" class="modal" >
+        <a class="btn-floating red white-text modal-action modal-close right " id="close-disertante"><i class="material-icons">close</i></a>
+
        @using (Html.BeginForm("AddDisertante", "Disertantes"))
        {
         @*@Html.AntiForgeryToken()*@
@@ -25,89 +33,107 @@
 
 
         <form id="createDisertante">
-            <div class="row">
+        
+            <div class="container-disertante">
+              
+                <div class="row">
 
-                @Html.HiddenFor(model => model.DisertanteId)
+                    @Html.HiddenFor(model => model.DisertanteId)
 
-                <div class="col l3">
+                    <div class="col l3">
 
-                    <div id="image-ds" class="grey lighten-1 col l12 white-text" style="position:relative">
-                        @*<a class="btn-floating orange darken-3" id="edit-image-ds"><i class="material-icons tiny">edit</i></a>*@
-                        @Html.HiddenFor(model => model.ImageUrl)
+                        <div id="image-ds" class="grey lighten-1 col l12 white-text" style="position:relative">
+                            @*<a class="btn-floating orange darken-3" id="edit-image-ds"><i class="material-icons tiny">edit</i></a>*@
+                            @Html.HiddenFor(model => model.ImageUrl)
 
-                        <h4 id="lb-image-ds"> Arratre aquí la foto del disertante</h4>
+                            <h4 id="lb-image-ds"> Arratre aquí la foto del disertante</h4>
 
-                        <a class="waves-effect waves-light btn modal-trigger  btn-floating btn-large orange darken-3 "
-                           href="#flags" id="edit-flag-ds"><i class="material-icons large">flag</i></a>
+                            <a class="waves-effect waves-light btn modal-trigger  btn-floating btn-large orange darken-3 "
+                               href="#flags" id="edit-flag-ds"><i class="material-icons large">flag</i></a>
 
-                        @Html.HiddenFor(model => model.NationalityUrl)
+                            @Html.HiddenFor(model => model.NationalityUrl)
+                        </div>
+
                     </div>
+
+                    <div id="create-disertante" class="col l7 offset-l2">
+                        @Html.HiddenFor(model => model.Aplicacion.AplicacionId);
+
+
+                        <div class="input-field col l12">
+                            @Html.LabelFor(model => model.FullName, "Nombre y apellido")
+                            @Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @class = "validate", required = true } })
+                        </div>
+                        <div class="input-field col l12">
+                            @Html.LabelFor(model => model.Title, "Título")
+                            @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "validate" } })
+                        </div>
+
+                        <div class="input-field col l12">
+                            @Html.LabelFor(model => model.WebUrl, "Web")
+                            @Html.EditorFor(model => model.WebUrl)
+                        </div>
+                        <div class="input-field  container-color-picker col l12">
+                            @Html.LabelFor(model => model.CssDisertante.ColorBack, "Color de Fondo")
+                            @Html.EditorFor(model => model.CssDisertante.ColorBack, new { htmlAttributes = new { @class = "color-picker", @id = "backColor-disertante" } })
+                            <div class="btn-floating prev-color" id="prev-backColor-disertante"></div>
+
+                        </div>
+
+                    </div>
+
 
                 </div>
 
-                <div id="create-disertante" class="col l7 offset-l2">
-                    @Html.HiddenFor(model => model.Aplicacion.AplicacionId);
+                <div class="row" style="position:relative">
 
+                    <div class="row" style="margin-bottom:2em;margin-top:2em;">
 
-                    <div class="input-field">
-                        @Html.LabelFor(model => model.FullName, "Nombre y apellido")
-                        @Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @class = "validate", required = true } })
-                    </div>
-                    <div class="input-field">
-                        @Html.LabelFor(model => model.Title, "Título")
-                        @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "validate" } })
-                    </div>
-
-                    <div class="input-field">
-                        @Html.LabelFor(model => model.WebUrl, "Web")
-                        @Html.EditorFor(model => model.WebUrl)
-                    </div>
-                    <div class="input-field  container-color-picker">
-                        @Html.LabelFor(model => model.CssDisertante.ColorBack, "Color de Fondo")
-                        @Html.EditorFor(model => model.CssDisertante.ColorBack, new { htmlAttributes = new { @class = "color-picker", @id = "backColor-disertante" } })
-                        <div class="btn-floating prev-color" id="prev-backColor-disertante"></div>
+                        <h5 class="col l5">
+                            Descripcion Disertante
+                        </h5>
+                        <a class="btn btn-primary btn-add blue white-text col s4 offset-l3 " id="add-desc"><i class="material-icons left">add</i> Agregar Descripción</a>
 
                     </div>
+                  
+                        
+                      
+                   
+
+                    <div id="mark-down-editor">
+                        <label id="alineacion" hidden>left</label>
+
+                        @Html.Partial("_MarkDownEditor")
+                    </div>
+
+
 
                 </div>
 
+                <div class="row">
+                    <h5>
+                        Descripciones agregadas
 
+                    </h5>
+                    @Html.Hidden("indice", 0, htmlAttributes: new { @id = "indice" })
+
+
+                    <div id="desc-adds">
+
+
+
+                    </div>
+
+
+                </div>
+                <div class="row" style="margin-top:2em;">
+                    <a id="AddDisertante" class="btn btn-large btn-add blue white-text col l4 offset-l8 waves-effect">
+                        <i class="material-icons left">done</i>
+                        Guardar
+                    </a>
+                </div>
             </div>
-          
-            <div class="row" style="position:relative">
-               
-                <div class="input-field">
-                    
-                    <label class="control-label">Descripcion Disertante</label>
-                    <a class="btn-floating blue-top right large" id="add-desc"><i class="material-icons">add</i></a>
-                </div>
-          
-                <div id="mark-down-editor"  >
-                    <label id="alineacion" hidden>left</label>
 
-                    @Html.Partial("_MarkDownEditor")
-                </div>
-
-
-
-            </div>
-
-            <div class="row">
-                <p>
-                    <label>Descripciones agregadas</label>
-
-                </p>
-                @Html.Hidden("indice", 0, htmlAttributes: new { @id = "indice" })
-
-
-                <div id="desc-adds">
-
-
-
-                </div>
-
-                <a id="AddDisertante" class="btn btn-primary">Guardar</a>
-            </div>
 
         </form>
 
@@ -132,13 +158,17 @@
     top:0px;
     }
 
+    #listDisertantes {
+        overflow: scroll;
+        
+        max-height:600px; 
+    }
     #edit-flag-ds {
         position: absolute;
         right: 0px;
         bottom: 0px;
         background-repeat: no-repeat;
         background-size: 100%;
-        
     }
 
     #image-ds {
@@ -158,6 +188,10 @@
         transform: translateY(150%);
     }
 
+    #container-disertante {
+    padding-bottom:5em;
+    position:relative
+    }
 
     .CodeMirror-scroll {
     z-index:20;
@@ -171,6 +205,18 @@
     }
     .al-right {
         text-align: right;
+    }
+
+    #incorporar-disertante {
+        /*position:relative;*/
+        padding-bottom: 2em;
+    }
+
+    #close-disertante {
+    position:sticky;
+    z-index:1000;
+    top:0px;
+    right:0px;
     }
    
 </style>
@@ -208,7 +254,7 @@
 
 
     $(function () {
-        $("#tabs").tabs();
+        //$("#tabs").tabs();
           appId = $("#appId").val();
       //  alert(appId)
         $("#Aplicacion_AplicacionId").val(appId)
@@ -297,6 +343,23 @@
             }
             );
         });
+
+        $("#btn-incorporar-disertante").click(function () {
+            $('#incorporar-disertante').modal({
+                dismissible: false, // Modal can be dismissed by clicking outside of the modal
+                opacity: .5, // Opacity of modal background
+                inDuration: 300, // Transition in duration
+                outDuration: 200, // Transition out duration
+                startingTop: '4%', // Starting top style attribute
+                endingTop: '10%', // Ending top style attribute
+                ready: function (modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
+
+                },
+                complete: function () { } // Callback for Modal close
+            }
+            );
+        });
+
 
 
         $("#add-desc").click(function () {

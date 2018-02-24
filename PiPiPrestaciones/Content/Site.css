@@ -81,3 +81,7 @@ a.btn.btn-block {
 .container .row {
     margin:auto;
 }
+
+.btn-add {
+border-radius:2em;
+}

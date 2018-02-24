@@ -15,7 +15,7 @@ namespace PiPiPrestaciones.Controllers
         private PiPiPrestacionesDBContext db = new PiPiPrestacionesDBContext();
 
         private static List<Map> mapList = new List<Map>();
-
+        private AplicacionesController appCtrl = new AplicacionesController();
         [HttpGet]
         public JsonResult GetMap()
         {
@@ -144,6 +144,8 @@ namespace PiPiPrestaciones.Controllers
 
             var listMaps = db.Map.Where(m => m.AplicacionId == aplicacionId).OrderBy(m => m.Order).ToList();
             db.Database.Connection.Close();
+            appCtrl.UpdateVersion(aplicacionId);
+
             if (listMaps != null)
             {
                 return PartialView("_ListMapas", listMaps);
@@ -151,7 +153,7 @@ namespace PiPiPrestaciones.Controllers
             }
             else {
 
-                return JavaScript("alert('OCURRIO UN ERROR AL INTENTAR ELIMINAR VUELVA A INTENTAR')");
+                return JavaScript("");
             }
         
 
@@ -205,6 +207,9 @@ namespace PiPiPrestaciones.Controllers
                 {
 
                     db.SaveChanges();
+                   
+                    appCtrl.UpdateVersion(map.AplicacionId);
+
                 }
                 catch (Exception ex)
                 {

@@ -1,0 +1,22 @@
+﻿@model List<PiPiPrestaciones.Models.Menu>
+
+
+<ul id="sortable">
+    @foreach (var item in Model)
+    {
+
+        <li class="btn btn-edit col l12 selector ui-state-default"
+            data-type="@item.Type"
+            data-id="@item.MenuId"
+            data-order="@item.Order"
+            style="background-color:@item.CssModelItemMenu.ColorBack;
+                          color:@item.CssModelItemMenu.ColorText; "
+            id="menu-@item.Order">
+            <i class="@item.Icon left"></i>@item.Type
+        </li>
+
+
+    }
+</ul>
+
+

@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Edit";
+
 }
 
 
@@ -12,20 +13,10 @@
     @Html.HiddenFor(model => model.AplicacionId);
 
     <div class="row">
-        <div class="col s3">
-            @foreach (var item in Model.Menus)
-            {
+        <div class="col s3" id="menuList">
 
-                <a class="btn btn-edit col s12"
-                   data-type="@item.Type"
-                   style="background-color:@item.CssModelItemMenu.ColorBack;
-                          color:@item.CssModelItemMenu.ColorText; "
-                   id="@item.Type+@item.MenuId">
-                    <i class="@item.Icon left"></i>@item.Type
-                </a>
+            @Html.Partial("_ListMenus", Model.Menus)
 
-
-            }
 
         </div>
 
@@ -35,60 +26,62 @@
 
         </div>
 
+
+
     </div>
-       
 
-   
 
-   
+
+
+
 
 
     @*<div class="form-horizontal">
-        <h4>Aplicacion</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.AplicacionId)
+            <h4>Aplicacion</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.AplicacionId)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.VersionId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.VersionId, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.VersionId, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.VersionId, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.VersionId, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.VersionId, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.LastModification, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.LastModification, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.LastModification, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.LastModification, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.LastModification, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.LastModification, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.CreateAt, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CreateAt, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CreateAt, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.CreateAt, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.CreateAt, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CreateAt, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.CreateBy, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CreateBy, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CreateBy, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.CreateBy, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.CreateBy, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CreateBy, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
             </div>
-        </div>
-    </div>*@
+        </div>*@
 }
-<input hidden type="text" value="@Model.AplicacionId"  id="appId"/>
+<input hidden type="text" value="@Model.AplicacionId" id="appId" />
 
 
 <div>
@@ -105,18 +98,87 @@
 
 <style>
     .btn-edit {
-    height: 100%;
-    border-radius:1em;
-    margin-bottom:1em;
-    }
-    #menu-edit{
-       position:relative;
-
+        height: 100%;
+        border-radius: 1em;
+        margin-bottom: 1em;
     }
 
+    #menu-edit {
+        position: relative;
+    }
+
+    .selector {
+    }
 </style>
 
 <script>
+    $(function () {
+        $("#sortable").sortable({
+
+        });
+        $("#sortable").disableSelection();
+
+
+    });
+
+    var updateMenuOrder = function (data) {
+        debugger;
+
+           $.ajax({
+                //method: "POST",
+                url: "@Url.Action("UpdateMenuOrder", "Aplicaciones")",
+                data: data
+                //cache: false
+            })
+                .done(function (html) {
+                    if (html != "true") {
+
+                        alert("ocurrio un error");
+                    } else {
+
+                        //$("#menuList").html(html)
+                    }
+                });
+
+
+    }
+
+    $("#sortable").sortable({
+        update: function (event, ui) {
+
+            var index = 0;
+            var menus = new Array();
+            var listMenu = new Object();
+            listMenu.menus = menus;
+
+            //var data = $(this).children("li");
+            $("#sortable li").each(function () {
+
+             //   var menu = new Object();
+                var menu = {
+                    menuId : $(this).attr("data-id"),
+                    order : String(index)
+                }
+              //  menu.menuId = $(this).attr("data-id");
+                //menu.order = String(index);
+                //listMenu.menus.push(menu);
+                updateMenuOrder(menu);
+                index++;
+            });
+
+
+
+
+           // var JString = JSON.serializeArray(listMenu);
+            //var data = $.parseJSON(JString);
+            //updateMenuOrder(listMenu);
+
+
+
+
+        }
+    });
+
     $(document).ready(function () {
         $(".btn-edit").click(function () {
 
@@ -126,10 +188,10 @@
 
             $.ajax({
             url: '@Url.Action("GetEditMenu", "Aplicaciones")',
-            cache: false,
-            data:data,
-            success: function (html) { $("#menu-edit").html(html); }
-             });
+                cache: false,
+                data: data,
+                success: function (html) { $("#menu-edit").html(html); }
+            });
         });
 
         $(".flag-img").click(function () {

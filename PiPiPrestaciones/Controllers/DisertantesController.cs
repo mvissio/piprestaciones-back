@@ -13,7 +13,7 @@ namespace PiPiPrestaciones.Controllers
     public class DisertantesController : Controller
     {
         private PiPiPrestacionesDBContext db = new PiPiPrestacionesDBContext();
-
+        private AplicacionesController appCtrl = new AplicacionesController();
         // GET: Disertantes
         public ActionResult Index()
         {
@@ -205,7 +205,7 @@ namespace PiPiPrestaciones.Controllers
                         }
                     }
                     db.SaveChanges();
-
+                    appCtrl.UpdateVersion(Convert.ToInt32(ds.AplicacionId));
 
                     return Json("true");
 

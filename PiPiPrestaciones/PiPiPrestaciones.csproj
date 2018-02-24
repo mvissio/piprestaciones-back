@@ -1115,6 +1115,7 @@
     <Content Include="Views\Disertantes\_ListDisertantes.cshtml" />
     <Content Include="Views\Disertantes\_AddDescripcion.cshtml" />
     <Content Include="Views\Disertantes\Create.cshtml" />
+    <Content Include="Views\Shared\_ListMenus.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

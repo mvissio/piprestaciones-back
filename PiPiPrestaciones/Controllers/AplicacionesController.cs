@@ -42,19 +42,20 @@ namespace PiPiPrestaciones.Controllers
         {
             AplicacionCreateView aplicacion = new AplicacionCreateView();
             var types = db.Type.Where(t => t.Status).ToList();
-            if (types == null )
-            {                 
-                    var type = new Models.Type();
-                    type.InflateType();
-                    types = db.Type.Where(t => t.Status).ToList();
+            if (types == null)
+            {
+                var type = new Models.Type();
+                type.InflateType();
+                types = db.Type.Where(t => t.Status).ToList();
 
             }
-            else if( types.Count == 0) {
-                    var type = new Models.Type();
-                    type.InflateType();
-                    types = db.Type.Where(t => t.Status).ToList();
+            else if (types.Count == 0)
+            {
+                var type = new Models.Type();
+                type.InflateType();
+                types = db.Type.Where(t => t.Status).ToList();
             }
-           
+
 
             ViewBag.Types = types;
 
@@ -82,7 +83,8 @@ namespace PiPiPrestaciones.Controllers
                 {
                     foreach (var item in aplicacion.Menus)
                     {
-                        if (item.Type != "") {
+                        if (item.Type != "")
+                        {
                             var menu = new Menu();
                             var cssItemMenu = new CssModel();
                             cssItemMenu.BorderSize = item.CssModelItemMenu.BorderSize;
@@ -103,14 +105,14 @@ namespace PiPiPrestaciones.Controllers
                             db.Menu.Add(menu);
                             order++;
                         }
-                       
+
 
 
                     }
                 }
 
 
-            
+
 
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -185,8 +187,8 @@ namespace PiPiPrestaciones.Controllers
             base.Dispose(disposing);
         }
 
-
-        public ActionResult AddMenu(string type, int order) {
+        public ActionResult AddMenu(string type, int order)
+        {
             var menu = new Menu();
             menu.Order = order;
             menu.Type = type;
@@ -194,11 +196,49 @@ namespace PiPiPrestaciones.Controllers
             return PartialView("_AddMenu", menu);
         }
 
-        public ActionResult GetEditMenu(string type) {
+        public ActionResult GetEditMenu(string type)
+        {
 
 
             return PartialView("_Edit" + type);
 
         }
+
+        public string UpdateMenuOrder(string menuId, string order)
+        {
+            try
+            {
+                var id = Convert.ToInt32(menuId);
+                var menu_ = db.Menu.Find(id);
+                menu_.Order = Convert.ToInt32(order); ;
+                db.SaveChanges();
+                UpdateVersion(Convert.ToInt32(menu_.AplicacionId));
+                return "true";
+            }
+            catch (Exception ex)
+            {
+
+                return ex.ToString();
+            }
+        }
+
+        public void UpdateVersion(int aplicacionId) {
+
+           // var appId = Convert.ToInt32(aplicacionId);
+
+            var app =db.Aplicacion.Find(aplicacionId);
+
+            app.LastModification = DateTime.Now;
+
+            app.VersionId = Guid.NewGuid().ToString();
+
+            db.SaveChanges();
+
+        }
+
+
     }
+
+
 }
+

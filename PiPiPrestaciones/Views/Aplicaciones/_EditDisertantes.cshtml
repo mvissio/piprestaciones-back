@@ -201,7 +201,7 @@
                  url: '@Url.Action("GetDisertantes", "Disertantes")',
                  cache: false,
                  data:data,
-                 success: function (html) { $("#listDisertantes").append(html); }
+                 success: function (html) { $("#listDisertantes").html(html); }
              });
 
     };

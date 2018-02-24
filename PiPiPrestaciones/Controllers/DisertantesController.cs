@@ -141,7 +141,7 @@ namespace PiPiPrestaciones.Controllers
 
         public ActionResult GetDisertantes(int aplicacionId) {
             var disertantes = db.Disertante.Where(d => d.Status && d.AplicacionId == aplicacionId).ToList();
-            return View("_ListDisertantes",disertantes);
+            return PartialView("_ListDisertantes",disertantes);
         }
         [ValidateInput(false)]
         public ActionResult AddDescripcion(string markDown,string htmlMd, string previewMd, string textAlign,string order)
@@ -155,7 +155,7 @@ namespace PiPiPrestaciones.Controllers
             descripcion.MarkDownDisertante.PreviewValue = previewMd;
 
 
-            return View("_AddDescripcion", descripcion);
+            return PartialView("_AddDescripcion", descripcion);
         }
         [ValidateInput(false)]
         public ActionResult AddDisertante(Disertante disertante)

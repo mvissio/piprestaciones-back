@@ -85,3 +85,15 @@ a.btn.btn-block {
 .btn-add {
 border-radius:2em;
 }
+
+.tabs .tab a:hover, .tabs .tab a.active {
+    color: #6e9cee !important;
+}
+
+.tabs .indicator {
+    position: absolute;
+    bottom: 0;
+    height: 2px;
+    background-color: #6edaee !important;
+    will-change: left, right;
+}

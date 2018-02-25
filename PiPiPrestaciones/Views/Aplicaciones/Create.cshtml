@@ -6,35 +6,26 @@
 }
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        @*<h4 class="tabs-title">Incorporar Aplicación</h4>*@
-        @*<hr />*@
 
-        <br />
+    <div class="form-horizontal">
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-            <div class="col s12">
-                <ul class="tabs">
-                    <li class="tab col s3"><a class="active" href="#test1">Configuración general</a></li>
-                    <li class="tab col s3"><a  href="#test2">Definir estilos</a></li>
-                    @*<li class="tab col s3 "><a href="#test3">Disabled Tab</a></li>
-                    <li class="tab col s3"><a href="#test4">Test 4</a></li>*@
-                </ul>
-            </div>
-        <br />
+        <div class="col s12">
+            <ul class="tabs">
+                <li class="tab col s3 disabled"><a class="active" id="config-tab" href="#configuracion-general">Configuración general</a></li>
+                <li class="tab col s3 disabled"><a id="def-menu" href="#menus-app">Definir menus</a></li>
+            </ul>
+        </div>
         <div class="row">
-            <div id="test1" class="col s12 ">
-                @*<h4 class="tabs-title">Configuración general</h4>*@
+            <div id="configuracion-general" class="col s12 ">
                 <div class="row">
                     <div class="input-field col s6">
                         @Html.EditorFor(model => model.Titulo)
                         @Html.LabelFor(model => model.Titulo)
                     </div>
-
                     <div class="col s6">
                         <p>
                             <input type="checkbox" id="App-Independiente" name="" />
@@ -43,49 +34,42 @@
                         <div hidden>
                             @Html.HiddenFor(model => model.AppIndependiente)
                         </div>
-                    </div> 
+                    </div>
                 </div>
-
-                                                     
-               <br />
-                @*@Html.EditorFor(model => model.Titulo, new { htmlAttributes = new { @class = "form-control" } })*@
-               <div class="row">
-                   <div class=" col s6">
-                       <select id="select-idioma" class="form-control">
-                           <option value="" disabled selected>Selecciona un idioma</option>
-                           <option value="Español">Español</option>
-                           <option value="Inglés">Inglés</option>
-                           <option value="Portugués">Portugués</option>
-                       </select>
-                       @Html.HiddenFor(model => model.Idioma)
-                       
-                   </div>  
-                   <div class="col s6">
-                       <p>
-                           <input type="checkbox" id="Lenguaje-PorDefecto" name="" />
-                           <label for="Lenguaje-PorDefecto">¿Lenguaje por defecto?</label>
-                       </p>
-                       <i>
-                           Mostrar este idioma para usuarios que tengan el celular en una configuración distinta de español, inglés o portugués.
-                       </i>
-                       <div hidden>
-                           @Html.HiddenFor(model => model.LenguajePorDefecto)
-                       </div>
-                   </div>
-               </div>
-                
-                    <div class="row">
-                        <div class="input-field col s6">
-                            @Html.LabelFor(model => model.AdminUser)
-                            @Html.EditorFor(model => model.AdminUser)
+                <div class="row">
+                    <div class="input-field col s6">
+                        <select>
+                            <option value="" disabled selected>Seleccione un idioma</option>
+                            <option value="Español">Español</option>
+                            <option value="Ingles">Ingles</option>
+                            <option value="Portugues">Portugues</option>
+                        </select>
+                        <label>Seleccione un idioma</label>
+                    </div>
+                    <div class="col s6">
+                        <p>
+                            <input type="checkbox" id="Lenguaje-PorDefecto" name="" />
+                            <label for="Lenguaje-PorDefecto">¿Lenguaje por defecto?</label>
+                        </p>
+                        <i>
+                            Mostrar este idioma para usuarios que tengan el celular en una configuración distinta de español, inglés o portugués.
+                        </i>
+                        <div hidden>
+                            @Html.HiddenFor(model => model.LenguajePorDefecto)
                         </div>
-                        <div class="input-field col s6">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        @Html.LabelFor(model => model.AdminUser)
+                        @Html.EditorFor(model => model.AdminUser)
+                    </div>
+                    <div class="input-field col s6">
 
-                            @Html.LabelFor(model => model.AdminPasword)
-                            @Html.EditorFor(model => model.AdminPasword)
-                        </div>
-                    </div>        
-               
+                        @Html.LabelFor(model => model.AdminPasword)
+                        @Html.EditorFor(model => model.AdminPasword)
+                    </div>
+                </div>
                 <div class="row">
                     <div class="input-field col s6">
                         @Html.LabelFor(model => model.ClaveApp)
@@ -96,9 +80,7 @@
                         @Html.LabelFor(model => model.ApiKey)
                         @Html.EditorFor(model => model.ApiKey)
                     </div>
-                </div>   
-
-
+                </div>
                 <div class="row">
                     <div class="input-field col s6">
                         @Html.LabelFor(model => model.Canal)
@@ -109,237 +91,163 @@
                         @Html.LabelFor(model => model.HashTagTwiter)
                         @Html.EditorFor(model => model.HashTagTwiter)
                     </div>
-                </div>   
-
-                @*@Html.EditorFor(model => model.Titulo, new { htmlAttributes = new { @class = "form-control" } })*@
-             
-           
-            </div>
-            <div id="test2" class="row container-menu">
-            
+                </div>
                 <div class="row">
-                    <div class="input-field col s4">
-                        @Html.LabelFor(model => model.CssAplicacion.ColorBack,"Color de Fondo de la app")
+                    <div class="col s6 m4 l3">
+                        <a type="button" href="@Url.Action("Index","Aplicaciones")" class="waves-effect btn-large red accent-3"><i class="material-icons left">arrow_back</i>Aplicaciones</a>
+                    </div>
+                    <div class="col s6 m4 offset-m4 l3 offset-l6">
+                        <button type="button" onclick="changeTab2()" class="waves-effect btn-large light-blue darken-2"><i class="material-icons right">keyboard_arrow_right</i> Continuar</button>
+                    </div>
+                </div>
+            </div>
+            <div id="menus-app" class="row container-menu">
+
+                <div class="row">
+                    <div class="input-field col s5">
+                        @Html.LabelFor(model => model.CssAplicacion.ColorBack, "Color de Fondo de la app")
                         @Html.EditorFor(model => model.CssAplicacion.ColorBack)
                     </div>
-
-                    @*<input id="mycp" type="text" class="input-field" />
-            <label for="first_name">First Name</label>*@
                     <div hidden class="col s2">
                         <div class="btn-floating" id="seleccion-color"></div>
                     </div>
                 </div>
-
                 <div class="row">
-
-                    <div class="col s3">
-                        
-                       
+                    <div class="col s4 ">
                         <div align="center">
                             <p><label class="control-label">Agregar elementos al menú principal</label></p>
-                            @*<a class='dropdown-button btn' href='#' data-activates='dropdown1'>
-            Agregar accion al menu principal
-        </a>*@
-                            <!-- Dropdown Structure -->
-
                             @foreach (var item in types)
                             {
 
-                                <a class="sel-accion btn btn-primary" data-enable="true" id="btn-@item.TypeName" data-name="@item.TypeName"><i class="material-icons left">add</i>@item.TypeName</a>
+                                <a class="sel-accion btn btn-primary" draggable="true" data-enable="true" id="btn-@item.TypeName" data-name="@item.TypeName"><i class="material-icons left">add</i>@item.TypeName</a>
 
                             }
-
-                            @*<div id="btn-type-list">
-                                <a class="sel-accion btn btn-primary" data-enable="true" id="btn-Agenda" data-name="Agenda"><i class="material-icons left">add</i>Agenda</a>
-                                <a class="sel-accion btn btn-primary" data-enable="true" id="btn-Favoritos" data-name="Favoritos"><i class="material-icons left">add</i>Favoritos</a>
-                                <a class="sel-accion btn btn-primary" data-enable="true" id="btn-Alojamientos" data-name="Alojamientos"><i class="material-icons left">add</i>Alojamientos</a>
-                                <a class="sel-accion btn btn-primary" data-enable="true" id="btn-Mapa" data-name="Mapa"><i class="material-icons left">add</i>Mapa</a>
-                                <a class="sel-accion btn btn-primary" data-enable="true" id="btn-Exposición" data-name="Exposición"><i class="material-icons left">add</i>Exposición</a>
-                                <a class="sel-accion btn btn-primary" data-enable="true" id="btn-Formulario" data-name="Formulario"><i class="material-icons left">add</i>Formulario</a>
-                                <a class="sel-accion btn btn-primary" data-enable="true" id="btn-Certificado" data-name="Certificado"><i class="material-icons left">add</i>Certificado</a>
-                                <a class="sel-accion btn btn-primary" data-enable="true" id="btn-Link" data-name="Link"><i class="material-icons left">add</i>Link</a>
-                                <a class="sel-accion btn btn-primary" data-enable="true" id="btn-Noticias" data-name="Noticias"><i class="material-icons left">add</i>Noticias</a>
-                                <a class="sel-accion btn btn-primary" data-enable="true" id="btn-Paginas" data-name="Paginas"><i class="material-icons left">add</i>Paginas</a>
-
-
-                            </div>*@
-
-                           
-
                         </div>
-                           
-                       
                     </div>
-
-                    <div class="col s3 offset-s1" align="center">
-
+                    <div class="col s4 offset-s2" align="center">
                         <div>
                             <div id="acciones-agregadas">
                                 <div id="status-bar"></div>
                                 <div id="title-app" align="center">
-                                    title
+                                    Titulo
                                 </div>
-
                             </div>
-
-
-
-
                         </div>
-
                     </div>
-
-                    <div class="col s4 ofset-s1">
-
-                       
-
-                    </div>
-                   
-
                 </div>
-               
-
-    
-    @*<ul id="icons">*@
-
-
-
-                @*<div class="col s1">
-                    <p>
-                        <input type="radio" id="icon-1" name="" />
-                        <i for="icon-1" class="col s3 icon-ionic ion-arrow-right-a"></i>
-                    </p>
-                   
-                </div>*@ 
-
-   
-</div>
-            <div id="test3" class="col s12">
-
-            
-
-
-
-            </div>
-            @*<div id="test4" class="col s12">Test 4</div>*@
-      
-        
-        </div>
-
-       <label hidden id="index" >0</label>
-
-        <div class="form-group">
-            <div class="col-md-offset-10 col-md-2">
-                @*<input type="submit" value="Create" class="waves-effect btn btn-primary" />*@
-                <button type="submit" class="waves-effect btn-large btn-success" ><i class="material-icons right">done</i> Guardar</button>
+                <div class="row">
+                    <div class="col s4 m4 l3">
+                        <a type="button" href="@Url.Action("Index","Aplicaciones")" class="waves-effect btn-large red accent-3"><i class="material-icons left">arrow_back</i>Aplicaciones</a>
+                    </div>
+                    <div class="col s4 m4 l3 offset-l1">
+                        <button type="button" onclick="changeTab1()" class="waves-effect btn-large deep-orange accent-3"><i class="material-icons left">keyboard_arrow_left</i>Regresar</button>
+                    </div>
+                    <div class="col s4 m4 l3 offset-l1">
+                        <button type="submit" class="waves-effect btn-large light-blue darken-2"><i class="material-icons right">keyboard_arrow_right</i> Crear</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-
-  
-
 }
+
 <div hidden>
     <button id="show-modal" data-target="modal1" class="btn show-modal modal-trigger">Modal</button>
 </div>
- 
 
 <div id="modal1" class="modal modal-fixed-footer">
     <div class="modal-content">
         @Html.Partial("_EditMenu")
     </div>
     <div class="modal-footer">
-        <a id="edit-menu-done" 
+        <a id="edit-menu-done"
            data-type=""
            data-order=""
-           class="modal-action waves-effect waves-green btn-flat material-icons "> done</a>
+           class="modal-action waves-effect waves-green btn-flat"><i class="material-icons right">done</i>Guardar</a>
     </div>
 </div>
 
 <label hidden id="index">0</label>
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-
-@*<input hidden name='Menus[i].Type' value='' data-id='i' />
-<input hidden name='Menus[i].Order' value='' data-id='i' />
-<a class="btn blue lighten-3"></a>*@
-
 
 @section Scripts {
-    @*@Scripts.Render("~/bundles/jqueryval")*@
     @Scripts.Render("~/bundles/colorpicker/js")
     @Styles.Render("~/bundles/colorpicker/css")
 }
 <style>
-   
+
+    .row {
+        padding-top: 2rem !important;
+    }
+
     #status-bar {
         background-image: url(../../Resources/android-statusbar.png);
-        background-repeat:no-repeat;
-        background-size:contain;
-        width:100%;
-        height:2em;
-
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 100%;
+        height: 2em;
     }
+
     .show-modal {
     }
+
     .btn-preview {
-    
     }
+
     #title-app {
         background-size: cover;
-        margin-left:0;
-        margin-right:0;
-
-       
+        margin-left: 0;
+        margin-right: 0;
         background-color: black;
         color: white;
         font-size: 32px;
         height: 1.5em;
         padding-bottom: 0.5em;
-       
         margin-bottom: 0.5em;
     }
+
     .container-menu {
-    margin-top:1em;
-    
+        margin-top: 1em;
     }
+
     .icon-ionic {
-    font-size:32px;
-    padding-top:0.5em;
+        font-size: 32px;
+        padding-top: 0.5em;
     }
-    a:active  {
+
+    a:active {
         border-bottom: rgba(171,166,166, 0.9);
     }
+
     .tabs .tab a {
-        /*background-color: rgba(171,166,166, 0.9);*/
         color: black;
         border-bottom: rgba(171,166,166, 0.9);
     }
+
         .tabs .tab a:hover {
             color: rgba(171,166,166, 0.9);
-            text-decoration:none;
+            text-decoration: none;
         }
+
         .tabs .tab a:active {
             border-bottom: rgba(171,166,166, 0.9);
             color: rgba(171,166,166, 0.9);
             text-decoration: none;
         }
+
     .sel-accion {
-        /*background-color: rgb(73, 27, 27);*/ /*rgba(73, 27, 27, 0.78)*/
         width: 80%;
-        /*border-radius: unset;*/
-        margin-top:1em;
+        margin-top: 1em;
     }
+
         .sel-accion:hover {
             background-color: rgba(73, 27, 27, 0.70);
-            color:white;    
+            color: white;
         }
 
     #acciones-agregadas {
         height: 40em;
-         min-height:40em;
-         min-width:20em;
+        min-height: 40em;
+        min-width: 20em;
         overflow: scroll;
         position: relative;
     }
@@ -348,25 +256,29 @@
         height: 40em;
         min-height: 40em;
         min-width: 20em;
-       
-        
         position: relative;
     }
-    .container-menu{
-       
+
+    .container-menu {
     }
 </style>
 <script>
+    function changeTab2() {
+        $('.tab').removeClass('disabled');
+        $('#def-menu').trigger("click");
+        $('.tab').addClass('disabled');
+    }
+    function changeTab1() {
+        $('.tab').removeClass('disabled');
+        $('#config-tab').trigger("click");
+        $('.tab').addClass('disabled');
+    }
+
     $(document).ready(function () {
-        //$('.modal').modal();
-
-
 
         $('#CssAplicacion_ColorBack').colorpicker();
 
         $("#CssAplicacion_ColorBack").on("change", function () {
-
-            //debugger;
             var backGround = $(this).val()
             $("#seleccion-color").css("background-color", backGround);
             $("#acciones-agregadas").css("background-color", backGround);
@@ -377,11 +289,7 @@
             $('#CssAplicacion_ColorBack').focus();
         });
 
-
-
-
         $("#App-Independiente").click(function () {
-            //debugger;
             var val = $(this).val();
 
             if (val == "on") {
@@ -394,7 +302,6 @@
         });
 
         $("#Lenguaje-PorDefecto").click(function () {
-            //debugger;
             var val = $(this).val();
 
             if (val == "on") {
@@ -416,25 +323,14 @@
 
         });
 
-
-        //Region Seleccionar menu
-
         $(".sel-accion").click(function () {
-            //debugger;
             var enable = $(this).attr("data-enable");
 
             if (enable == "true") {
-
                  var n_id = Number($("#index").html());
             var i = $("#index").html();
             var type = $(this).attr("data-name");
 
-            //var htmlApend = "<tr>" +
-            //    "<input hidden name= 'Menus[" + i + "].Type' value= '" + type + "' data-id='" + i + "' />" +
-            //    "<input hidden name= 'Menus[" + i + "].Order' value='" + i + "' data-id='" + i + "' />" +
-            //    "<a class='btn blue lighten-3'>" + type + "</a>" +
-            //    "</tr>";
-            //$("#table-acciones").append(htmlApend);
             n_id += 1
             var data = {
                 order: i,
@@ -453,28 +349,12 @@
             if (type != "Paginas") {
                 $(this).attr("data-enable", "false");
             }
-           
+
 
             }
-
-
-
-
         });
 
-
-
-        //$(".btn-preview").click(function () {
-        //    debugger;
-        //    var order = $(this).attr("data-order");
-        //    var type = $(this).attr("data-type");
-        //    $("#edit-menu-done").attr("data-order", order)
-        //    $("#edit-menu-done").attr("data-type", type)
-        //    $("#show-modal").click();
-        //});
-
         $("#show-modal").click(function () {
-            //debugger;
             $('#modal1').modal({
                 dismissible: false, // Modal can be dismissed by clicking outside of the modal
                 opacity: .5, // Opacity of modal background
@@ -491,9 +371,6 @@
         });
 
         $("#edit-menu-done").click(function () {
-
-            //debugger;
-            //Recupero inputs del  modal
             var order = $(this).attr("data-order");
             var type = $(this).attr("data-type");
             var titleMenu = $("#titulo-edit-menu").val();
@@ -507,7 +384,6 @@
                 titleMenu = type;
             }
 
-            // Guardo en las variables de backend
             $("#Menus_" + order + "__" + "TitleMenu").val(titleMenu);
             $("#Menus_" + order + "__" + "Icon").val(icon);
             $("#Menus_" + order + "__" + "CssModelItemMenu_ColorBack").val(buttonColor);
@@ -541,15 +417,13 @@
            btnPreview.attr("data-pageColor", pageColor);
            btnPreview.attr("data-pageColorText", pageColorText);
            btnPreview.attr("data-imageback",backimage);
-
             //Cierro el modal
             $('#modal1').modal('close');
-
-
         });
-
-
     });
-
-
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('select').material_select();
+    });
 </script>

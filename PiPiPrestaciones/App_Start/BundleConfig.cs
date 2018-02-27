@@ -30,7 +30,11 @@ namespace PiPiPrestaciones
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
-            
+            bundles.Add(new ScriptBundle("~/bundles/summernote/js").Include(
+                      "~/Scripts/summernote-lite.js"));
+
+
+
             bundles.Add(new ScriptBundle("~/bundles/materialize/js").Include(
                           "~/Scripts/materialize/materialize.js"));
 
@@ -47,6 +51,8 @@ namespace PiPiPrestaciones
                      "~/Content/jquery-ui*"));
 
 
+            bundles.Add(new StyleBundle("~/bundles/summernote/css").Include(
+                      "~/Content/summernote-lite.css"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(                     
                       "~/Content/site.css"));

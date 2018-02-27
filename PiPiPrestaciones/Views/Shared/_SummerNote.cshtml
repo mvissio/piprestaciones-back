@@ -1,0 +1,106 @@
+﻿
+
+<div class="input-field" style="width:400px;">
+    <input class='color-picker' data-accion="" type='text' id='select-color' />
+    <label for="select-color">Color de fondo</label>
+    <a onclick="GetHtml()">algo</a>
+</div>
+
+<div id="summernote"></div>
+
+
+
+
+@*Librerias*@
+
+<style>
+    .note-toolbar {
+        background-color: #2196F3 !important;
+    }
+
+    .note-editor.note-frame .note-editing-area .note-editable {
+    }
+</style>
+
+@Styles.Render("~/bundles/colorpicker/css")
+@Scripts.Render("~/bundles/colorpicker/js")
+
+
+@Styles.Render("~/bundles/summernote/css")
+@Scripts.Render("~/bundles/summernote/js")
+
+<script>
+        var GetHtml
+        $(document).ready(function () {
+            GetHtml = function () {
+                //<p><b><span style="font-size: 36px; color: rgb(107, 173, 222);">Hola muncdo</span></b></p><p><b><span style="font-size: 36px; color: rgb(107, 173, 222);"><br></span></b></p>   $('.note-editable').html("XD XDXD");
+                $('.note-editable').html("<p><b><span style='font-size: 36px; color: rgb(107, 173, 222); '>Hola muncdo</span></b></p><p><b><span style='font-size: 36px; color: rgb(107, 173, 222);'><br></span></b></p> ");
+
+                // var html = $('.note-editable').html();
+                //alert(html);
+            };
+
+            //COLOR-PICKER
+            $('.color-picker').colorpicker();
+
+            $(".color-picker").on("change", function () {
+
+                //debugger;
+                var backGround = $(this).val()
+
+
+                $(".note-editor.note-frame .note-editing-area .note-editable ").css("background-color", backGround);
+            });
+
+
+
+            $('#summernote').summernote({
+            //placeholder: 'Inserte su texto aquí',
+            tabsize: 2,
+            height: 300,
+            width: 400,
+            codemirror: { // codemirror options
+                theme: 'cosmos'
+            },
+            fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','Roboto'],
+            toolbar: [
+                // [groupName, [list of button]]
+                ['style', ['bold', 'italic', 'underline', 'clear']],
+                ['font', ['strikethrough',  'fontname']],
+                ['fontsize', ['fontsize']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['height', ['height']]
+            ],
+            popover: {
+                image: [
+                    ['imagesize', ['imageSize100', 'imageSize50', 'imageSize25']],
+                    ['float', ['floatLeft', 'floatRight', 'floatNone']],
+                    ['remove', ['removeMedia']]
+                ],
+                link: [
+                    ['link', ['linkDialogShow', 'unlink']]
+                ],
+                air: [
+                    ['color', ['color']],
+                    ['font', ['bold', 'underline', 'italic']],
+                    ['para', ['ul', 'paragraph']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'picture']]
+                ]
+            }
+            });
+
+
+
+
+
+        });
+
+
+
+
+
+
+</script>
+

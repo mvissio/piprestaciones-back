@@ -336,6 +336,7 @@
     <Content Include="Content\materialize\font\material-design-icons\Material-Design-Icons.svg" />
     <Content Include="Content\materialize\css\materialize.css" />
     <Content Include="Content\materialize\css\materialize.min.css" />
+    <Content Include="Content\summernote-lite.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Images\loading%402x.gif" />
@@ -376,6 +377,9 @@
     <Content Include="plugins\emoji-dialog\emoji.json" />
     <Content Include="plugins\help-dialog\help.md" />
     <Content Include="plugins\html-entities-dialog\html-entities.json" />
+    <Content Include="Content\font\summernote.eot" />
+    <Content Include="Content\font\summernote.ttf" />
+    <Content Include="Content\font\summernote.woff" />
     <None Include="Resources\brand.png" />
     <None Include="Resources\banner.jpg" />
     <None Include="Resources\android-statusbar.png" />
@@ -1071,6 +1075,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\summernote-lite.js" />
     <Content Include="Scripts\theme-tomorrow.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -1116,6 +1121,7 @@
     <Content Include="Views\Disertantes\_AddDescripcion.cshtml" />
     <Content Include="Views\Disertantes\Create.cshtml" />
     <Content Include="Views\Shared\_ListMenus.cshtml" />
+    <Content Include="Views\Shared\_SummerNote.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

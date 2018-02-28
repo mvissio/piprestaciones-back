@@ -277,6 +277,10 @@
     <Compile Include="Migrations\201802200104370_addMD.Designer.cs">
       <DependentUpon>201802200104370_addMD.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201802282052051_addCssDescDisertante.cs" />
+    <Compile Include="Migrations\201802282052051_addCssDescDisertante.Designer.cs">
+      <DependentUpon>201802282052051_addCssDescDisertante.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ModelApi\Disertante\CssDisertanteMob.cs" />
     <Compile Include="Models\ModelApi\Disertante\DescripcionDisertanteMob.cs" />
@@ -1153,6 +1157,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201802200104370_addMD.resx">
       <DependentUpon>201802200104370_addMD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802282052051_addCssDescDisertante.resx">
+      <DependentUpon>201802282052051_addCssDescDisertante.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

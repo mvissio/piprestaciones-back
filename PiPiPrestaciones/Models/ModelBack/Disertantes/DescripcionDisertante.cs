@@ -23,6 +23,9 @@ namespace PiPiPrestaciones.Models
         public int? MarkDownDisertanteId { get; set; }
         [ForeignKey("MarkDownDisertanteId")]
         public virtual MarkDownModel MarkDownDisertante { get; set; }
+        public int? CssDisertanteId { get; set; }
+        [ForeignKey("CssDisertanteId")]
+        public virtual CssModel CssDisertante { get; set; }
 
         public DescripcionDisertante() { }
 
@@ -30,6 +33,11 @@ namespace PiPiPrestaciones.Models
             this.TextAlingDescription = descripcion.TextAlingDescription;
             this.OrderDescription = descripcion.OrderDescription;
             this.Disertante = descripcion.Disertante;
+            if (descripcion.CssDisertante != null)
+            {
+                this.CssDisertante = descripcion.CssDisertante;
+
+            }
 
             this.MarkDownDisertante = new MarkDownModel(descripcion.MarkDownDisertante);
 

@@ -228,7 +228,8 @@
     var appId;
 
     var clearDisertante = function () {
-        $("#menu-edit").empty();
+        $(".modal").modal("close");
+        $("#menu-edit").empty();    
         var data = { "type": "Disertantes" };
 
             $.ajax({
@@ -365,17 +366,21 @@
 
         $("#add-desc").click(function () {
             var previewMd = "";
-            var htmlMd = editor.getHTML();
-            var markDown = editor.getMarkdown();
-            var textAlign = $("#alineacion").html();
+            var htmlMd = GetHtml();
+            var markDown = GetContent();
+            var colorBack = $("#select-color-sn").val();
+            //var textAlign = $("#alineacion").html();
             var order = Number($("#indice").val());
-            var data = { "markDown": markDown, "htmlMd": htmlMd, "previewMd": previewMd, "textAlign": textAlign, "order": order };
+            var data = { "markDown": markDown, "htmlMd": htmlMd, "order": order, "colorBack": colorBack};
 
                 $.ajax({
                  url: '@Url.Action("AddDescripcion", "Disertantes")',
                  cache: false,
                 data:data,
-                 success: function (html) { $("#desc-adds").append(html); }
+                success: function (html) {
+                    $("#desc-adds").append(html);
+                    ClearSummerNote();
+                }
              });
 
 

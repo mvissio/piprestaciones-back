@@ -1,9 +1,9 @@
 ﻿
 
 <div class="input-field" style="width:400px;">
-    <input class='color-picker' data-accion="" type='text' id='select-color' />
+    <input class='color-picker' data-accion="" type='text' id='select-color-sn' />
     <label for="select-color">Color de fondo</label>
-    <a onclick="GetHtml()">algo</a>
+    
 </div>
 
 <div id="summernote"></div>
@@ -30,24 +30,55 @@
 @Scripts.Render("~/bundles/summernote/js")
 
 <script>
-        var GetHtml
+    var GetHtml;
+    var SetHtml;
+    var GetContent;
+    var ClearSummerNote;
         $(document).ready(function () {
+         
             GetHtml = function () {
                 //<p><b><span style="font-size: 36px; color: rgb(107, 173, 222);">Hola muncdo</span></b></p><p><b><span style="font-size: 36px; color: rgb(107, 173, 222);"><br></span></b></p>   $('.note-editable').html("XD XDXD");
-                $('.note-editable').html("<p><b><span style='font-size: 36px; color: rgb(107, 173, 222); '>Hola muncdo</span></b></p><p><b><span style='font-size: 36px; color: rgb(107, 173, 222);'><br></span></b></p> ");
-
+                //  return $('.note-editable').html();
+                return $("#summernote").summernote('code');
                 // var html = $('.note-editable').html();
                 //alert(html);
             };
 
-            //COLOR-PICKER
-            $('.color-picker').colorpicker();
+            SetHtml = function (html) {
+                //<p><b><span style="font-size: 36px; color: rgb(107, 173, 222);">Hola muncdo</span></b></p><p><b><span style="font-size: 36px; color: rgb(107, 173, 222);"><br></span></b></p>   $('.note-editable').html("XD XDXD");
+                //$('.note-editable').html(html);
+                $("#summernote").summernote('code', html);
+                // var html = $('.note-editable').html();
+                //alert(html);
+            };
 
-            $(".color-picker").on("change", function () {
+            GetContent = function () {
+                debugger;
+                var content = "";
+                $(".note-editable p").each(function () {
+                    content = content + $(this).text() + "\n";
+                });
+                //var sn = $(".note-editable p:first").text();
+                //var layout = sn.layoutInfo;
+                //var $editor = layout.editor;
+
+                return content;
+            }
+
+            ClearSummerNote = function ()
+            {
+                $(".note-editor.note-frame .note-editing-area .note-editable ").css("background-color", "#ffffff");
+                $('#summernote').summernote('reset');
+                $("#select-color-sn").val("");
+            }
+            //COLOR-PICKER
+            $('#select-color-sn').colorpicker();
+
+            $("#select-color-sn").on("change", function () {
 
                 //debugger;
                 var backGround = $(this).val()
-
+             
 
                 $(".note-editor.note-frame .note-editing-area .note-editable ").css("background-color", backGround);
             });

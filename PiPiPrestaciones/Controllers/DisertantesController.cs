@@ -144,15 +144,17 @@ namespace PiPiPrestaciones.Controllers
             return PartialView("_ListDisertantes",disertantes);
         }
         [ValidateInput(false)]
-        public ActionResult AddDescripcion(string markDown,string htmlMd, string previewMd, string textAlign,string order)
+        public ActionResult AddDescripcion(string markDown,string htmlMd,string order, string colorBack)
         {
             var descripcion = new DescripcionDisertante();
             descripcion.OrderDescription = Convert.ToInt32(order);
-            descripcion.TextAlingDescription = textAlign;
+           // descripcion.TextAlingDescription = textAlign;
             descripcion.MarkDownDisertante = new MarkDownModel();
             descripcion.MarkDownDisertante.HtmlValue = htmlMd;
             descripcion.MarkDownDisertante.MarkDownValue = markDown;
-            descripcion.MarkDownDisertante.PreviewValue = previewMd;
+            descripcion.CssDisertante = new CssModel();
+            descripcion.CssDisertante.ColorBack = colorBack;
+            //descripcion.MarkDownDisertante.PreviewValue = previewMd;
 
 
             return PartialView("_AddDescripcion", descripcion);

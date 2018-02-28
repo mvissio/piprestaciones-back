@@ -251,3 +251,4 @@ C:\Users\Matías\Documents\Sites\PiPrestaciones-back\piprestaciones-back\PiPiPre
 C:\Users\Matías\Documents\Sites\PiPrestaciones-back\piprestaciones-back\PiPiPrestaciones\obj\Debug\PiPiPrestaciones.csproj.CoreCompileInputs.cache
 C:\Users\Matías\Documents\Sites\PiPrestaciones-back\piprestaciones-back\PiPiPrestaciones\obj\Debug\PiPiPrestaciones.dll
 C:\Users\Matías\Documents\Sites\PiPrestaciones-back\piprestaciones-back\PiPiPrestaciones\obj\Debug\PiPiPrestaciones.pdb
+C:\Users\Matías\Documents\Sites\PiPrestaciones-back\piprestaciones-back\PiPiPrestaciones\obj\Debug\PiPiPrestaciones.Migrations.addCssDescDisertante.resources

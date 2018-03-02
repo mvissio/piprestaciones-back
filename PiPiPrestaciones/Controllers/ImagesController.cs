@@ -49,7 +49,7 @@ namespace PiPiPrestaciones.Models
 
 
 
-                return Json( new { path =  img.Root.Replace("~","..") + img.Path });
+                return Json( new { path =  img.Root.Replace("~","") + img.Path });
             }
 
             return Json(new { success = false });

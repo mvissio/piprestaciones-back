@@ -1126,6 +1126,7 @@
     <Content Include="Views\Disertantes\Create.cshtml" />
     <Content Include="Views\Shared\_ListMenus.cshtml" />
     <Content Include="Views\Shared\_SummerNote.cshtml" />
+    <Content Include="Views\Aplicaciones\_EditPlanimetria.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

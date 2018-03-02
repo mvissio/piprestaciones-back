@@ -42,7 +42,8 @@ namespace PiPiPrestaciones.Models
                        new Type("Link",true),
                          new Type("Disertantes",true),
                         new Type("Noticias",true),
-                         new Type("Paginas",true)
+                         new Type("Paginas",true),
+                         new Type("Planimetria",true)
             };
             
             foreach (var item in listType) {

@@ -1,0 +1,91 @@
+﻿@model PiPiPrestaciones.Models.Planimetry
+<div class="row">
+    @Html.HiddenFor(model => model.AplicacionId, new { htmlAtributtes = new { @id = "Planimetry_AplicacionId" } })
+    <div class="col l6">
+        <div class="input-field col l12">
+            @Html.TextBoxFor(model => model.TitlePlanimetry)
+            @Html.LabelFor(model => model.TitlePlanimetry, "Título de la planimetría")
+        </div>
+        <div class="input-field col l12">
+            @Html.TextBoxFor(model => model.FooterPlanimetry)
+            @Html.LabelFor(model => model.FooterPlanimetry, "Nota al pie ")
+        </div>
+    </div>
+
+  
+
+    <div class="col l6">
+        <div class="file-field input-field col l12">
+            <div class="btn blue right">
+                <span><i class="material-icons left">file_upload</i>Subir</span>
+                <input type="file" id="file-upload">
+            </div>
+            <div class="file-path-wrapper ">
+                <input class="file-path validate" placeholder="Subir planimetría (1024 * 720)" id="result-upload" type="text">
+            </div>
+        </div>
+
+
+        @Html.HiddenFor(model=>model.UrlImagePlanimetry)
+
+        <div class="col l12">
+
+            <a class="btn blue right" id="add-planimetria">Agregar planimetría</a>
+
+        </div>
+    </div>
+
+   
+
+
+</div>
+
+
+
+<script>
+   
+    $(document).ready(function () {
+
+
+        $("#file-upload").on("change", function (event) {
+            var filePath = this.value;
+            var allowedExtensions = /(.jpg|.jpeg|.png|.gif)$/i;
+            if (!allowedExtensions.exec(filePath)) {
+                Materialize.toast('solo están permitidas las siguientes extensiones: ' + '<br />'
+                    + ".jpeg/.jpg/.png/.gif", 4000);
+                this.value = '';
+                return false;
+            } else {
+            event.preventDefault();
+            var file = this.files[0];
+
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = stateChange;
+            xhr.open('POST','@Url.Action("HandleFileUpload","Images")', true);
+            xhr.setRequestHeader('X-FILE-NAME', file.name);
+            xhr.send(file);
+            }
+
+        });
+
+        function stateChange(event) {
+            if (event.target.readyState == 4) {
+                if (event.target.status == 200) {
+
+                    //var xhr = event.target.xhr;
+                    var response = $.parseJSON(this.responseText);
+
+                    var path = response.path
+                    $("#UrlImagePlanimetry").val(response.path);
+                    Materialize.toast('Archivo subido exitósamente!' + '<br />', 4000);
+                }
+                else {
+                    $("#result-upload").text('Ocurrio un fallo al subir el archivo!');
+                }
+            }
+        }
+
+    });
+
+
+</script>

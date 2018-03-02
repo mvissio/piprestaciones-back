@@ -133,6 +133,10 @@ namespace PiPiPrestaciones.Controllers
             {
                 return HttpNotFound();
             }
+            if (aplicacion.Menus != null)
+            {
+                aplicacion.Menus = aplicacion.Menus.OrderBy(m => m.Order).ToList();
+            }
             return View(aplicacion);
         }
 

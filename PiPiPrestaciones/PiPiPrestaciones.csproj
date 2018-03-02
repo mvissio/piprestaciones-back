@@ -233,6 +233,7 @@
     <Compile Include="Controllers\API\MapasController.cs" />
     <Compile Include="Controllers\API\MenusController.cs" />
     <Compile Include="Controllers\API\PlanimetriasController.cs" />
+    <Compile Include="Controllers\API\ProgramasController.cs" />
     <Compile Include="Controllers\API\StaticPagesController.cs" />
     <Compile Include="Controllers\AplicacionesController.cs" />
     <Compile Include="Controllers\DisertantesController.cs" />
@@ -289,6 +290,12 @@
     <Compile Include="Models\ModelApi\Menu\MenuMob.cs" />
     <Compile Include="Models\ModelApi\Planimetry\DetailsPlanimetryMob.cs" />
     <Compile Include="Models\ModelApi\Planimetry\PlanimetryMob.cs" />
+    <Compile Include="Models\ModelApi\Programa\ActivityProgram.cs" />
+    <Compile Include="Models\ModelApi\Programa\AreaProgram.cs" />
+    <Compile Include="Models\ModelApi\Programa\CssActivityProgram.cs" />
+    <Compile Include="Models\ModelApi\Programa\CssAreaProgram.cs" />
+    <Compile Include="Models\ModelApi\Programa\CssDateProgram.cs" />
+    <Compile Include="Models\ModelApi\Programa\DateProgram.cs" />
     <Compile Include="Models\ModelBack\AccountBindingModels.cs" />
     <Compile Include="Models\ModelBack\AccountViewModels.cs" />
     <Compile Include="Models\ModelBack\Aplicacion\Aplicacion.cs" />
@@ -1132,6 +1139,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="fonts\" />
     <Folder Include="Models\ModelApi\Aplicacion\" />
+    <Folder Include="Models\ModelBack\Program\" />
     <Folder Include="Views\Images\" />
   </ItemGroup>
   <ItemGroup>

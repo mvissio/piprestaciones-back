@@ -1,0 +1,127 @@
+﻿@model List<PiPiPrestaciones.Models.Planimetry>
+
+
+
+@if (Model != null)
+{
+
+    <table class="table highlight">
+        <tr>
+            <th>
+                Título de la planimetría
+            </th>
+            <th>
+                Nota al pie
+            </th>
+            <th>
+                
+            </th>
+           
+
+           
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TitlePlanimetry)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FooterPlanimetry)
+                </td>
+                <td>
+                    <div class="col l12">
+                        <a class="btn-floating orange modal-trigger" href="#prev-planimetry"   id="btn-prev-planimetry" data-urlImagePlanimetry="@item.UrlImagePlanimetry"> <i class="material-icons">remove_red_eye</i></a>
+                    <a class="btn-floating red btn-delete-planimetry " id="btn-delete-planimetry"  data-planimetryId="@item.PlanimetryId"> <i class="material-icons">clear</i></a>
+                    </div>
+                  
+                    @*<div class="col l6">
+                        
+                    </div>*@
+                
+                </td>
+
+            </tr>
+         
+        }
+
+    </table>
+
+
+}
+
+<div id="prev-planimetry" class="modal">
+    <img id="img-prev-planimetry" style="width: 50em; height: 30em;" />
+
+</div>
+
+<style>
+    #prev-planimetry {
+        display: none;
+        /*height: 30em;
+        width: 50em;
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-color: dimgray;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 2000;*/
+    }
+    .modal {
+        width: 50em !important;
+        height: 30em !important;
+    }
+</style>
+
+
+<script>
+
+    $(document).ready(function () {
+
+        $("#prev-planimetry").on("blur",function () {
+            $(this).toggle("Highlight");
+        })
+        $("#btn-prev-planimetry").click(function () {
+            var url = $(this).attr("data-urlImagePlanimetry")
+            $("#img-prev-planimetry").attr("src", "../../" + url);
+            //$("#prev-planimetry").toggle("Highlight");
+            //$("#prev-planimetry").focus();
+
+            $('#prev-planimetry').modal({
+                dismissible: true, // Modal can be dismissed by clicking outside of the modal
+                opacity: .5, // Opacity of modal background
+                inDuration: 300, // Transition in duration
+                outDuration: 200, // Transition out duration
+                startingTop: '4%', // Starting top style attribute
+                endingTop: '10%', // Ending top style attribute
+                ready: function (modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
+
+                },
+                complete: function () { } // Callback for Modal close
+            }
+            );
+        });
+
+
+        $("#btn-delete-planimetry").click(function () {
+            var planimetryId = Number($(this).attr("data-planimetryId"));
+            var appId = Number($("#appId").val());
+            var data = {
+                'planimetryId': planimetryId,
+                'appId': appId
+
+            };
+             $.ajax({
+                url: '@Url.Action("RemovePlanimetry", "Planimetries")',
+                    cache: false,
+                    data: data,
+                    success: function (html) { $("#list-planimetry").html(html); }
+                });
+        });
+
+
+    });
+
+</script>

@@ -16,7 +16,7 @@
 
     <div class="col l6">
         <div class="file-field input-field col l12">
-            <div class="btn blue right">
+            <div class="btn  blue right">
                 <span><i class="material-icons left">file_upload</i>Subir</span>
                 <input type="file" id="file-upload">
             </div>
@@ -30,7 +30,8 @@
 
         <div class="col l12">
 
-            <a class="btn blue right" id="add-planimetria">Agregar planimetría</a>
+            <a class="btn  btn-large blue right" style="margin-top:1em;" id="add-planimetry"><i class="material-icons left">art_track</i>
+            Agregar planimetría</a>
 
         </div>
     </div>
@@ -40,12 +41,34 @@
 
 </div>
 
+<div class="row">
+    <div id="list-planimetry">
+
+
+    </div>
+</div>
+
 
 
 <script>
-   
-    $(document).ready(function () {
 
+    function GetPlanimetries(appId) {
+        var id = Number(appId)
+        var data = { "appId": id };
+         $.ajax({
+                url: '@Url.Action("GetPlanimetries", "Planimetries")',
+                    cache: false,
+                    data: data,
+                    success: function (html) { $("#list-planimetry").html(html); }
+                });
+
+
+    }
+
+    $(document).ready(function () {
+      
+
+        GetPlanimetries($("#appId").val());
 
         $("#file-upload").on("change", function (event) {
             var filePath = this.value;
@@ -56,12 +79,12 @@
                 this.value = '';
                 return false;
             } else {
-            event.preventDefault();
-            var file = this.files[0];
+                event.preventDefault();
+                var file = this.files[0];
 
-            var xhr = new XMLHttpRequest();
-            xhr.onreadystatechange = stateChange;
-            xhr.open('POST','@Url.Action("HandleFileUpload","Images")', true);
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = stateChange;
+                xhr.open('POST','@Url.Action("HandleFileUpload","Images")', true);
             xhr.setRequestHeader('X-FILE-NAME', file.name);
             xhr.send(file);
             }
@@ -84,6 +107,31 @@
                 }
             }
         }
+
+        $("#add-planimetry").click(function () {
+
+            var url = $("#UrlImagePlanimetry").val();
+            var title = $("#TitlePlanimetry").val();
+            var footer = $("#FooterPlanimetry").val()
+            var appId = Number($("#appId").val());
+
+            var data =
+                {
+                    'TitlePlanimetry': title,
+                    'FooterPlanimetry': footer,
+                    'UrlImagePlanimetry': url,
+                    'AplicacionId':appId
+                };
+
+             $.ajax({
+                url: '@Url.Action("AddPlanimetry", "Planimetries")',
+                    cache: false,
+                    data: data,
+                    success: function (html) { $("#list-planimetry").html(html); }
+                });
+
+        });
+
 
     });
 

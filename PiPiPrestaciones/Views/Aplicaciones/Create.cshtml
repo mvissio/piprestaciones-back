@@ -183,7 +183,7 @@
         background-image: url(../../Resources/android-statusbar.png);
         background-repeat: no-repeat;
         background-size: contain;
-        width: 100%;
+        width: 120%;
         height: 2em;
     }
 
@@ -250,7 +250,15 @@
         min-width: 20em;
         overflow: scroll;
         position: relative;
+        -ms-overflow-style: none;
+     
+        
     }
+
+        #acciones-agregadas::-webkit-scrollbar {
+            display: none;
+           
+        }
 
     #btn-type-list {
         height: 40em;

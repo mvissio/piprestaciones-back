@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace PiPiPrestaciones.Models
 {
-    public class ImagesController : Controller
+    public class FilesController : Controller
     {
         // GET: Images
         public ActionResult Index()

@@ -489,7 +489,7 @@
             var xhr = new XMLHttpRequest();
         //    xhr.upload.addEventListener('progress', uploadProgress, false);
             xhr.onreadystatechange = stateChange;
-            xhr.open('POST','@Url.Action("HandleFileUpload","Images")', true);
+            xhr.open('POST','@Url.Action("HandleFileUpload", "Files")', true);
             xhr.setRequestHeader('X-FILE-NAME', file.name);
 
             xhr.send(file);

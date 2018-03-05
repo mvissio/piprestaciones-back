@@ -15,6 +15,8 @@ namespace PiPiPrestaciones.Models
         public string TitlePlanimetry { get; set; }
         public string FooterPlanimetry { get; set; }
         public string UrlImagePlanimetry { get; set; }
+        public bool? OrderPlanimetry { get; set; }
+        public bool Status { get; set; }
         public int? CssModelPlanimetryId { get; set; }
         [ForeignKey("CssModelPlanimetryId")]
         public virtual CssModel CssModelPlanimetry { get; set; }
@@ -32,6 +34,7 @@ namespace PiPiPrestaciones.Models
             this.UrlImagePlanimetry = planimetry.UrlImagePlanimetry;
             this.FooterPlanimetry = planimetry.FooterPlanimetry;
             this.AplicacionId = planimetry.AplicacionId;
+            this.Status = true;
         }
 
     }

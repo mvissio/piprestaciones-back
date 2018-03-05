@@ -20,7 +20,7 @@ namespace PiPiPrestaciones.Controllers.API
             try
             {
                 List<PlanimetryMob> planimetryMobList = new List<PlanimetryMob>();
-                List<Planimetry> planimetryList = db.Planimetry.Where(m => m.AplicacionId == aplicacionId).OrderBy(p=>p.TitlePlanimetry).ToList();
+                List<Planimetry> planimetryList = db.Planimetry.Where(m => m.AplicacionId == aplicacionId && m.Status==true).OrderBy(p=>p.TitlePlanimetry).ToList();
                 foreach (var planimetry in planimetryList)
                 {
                     List<DetailsPlanimetry> detailsPlanimetryList = db.DetailsPlanimetry.Where(d => d.PlanimetryId == planimetry.PlanimetryId).OrderBy(p=>p.TitleDetails).ToList();

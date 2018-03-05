@@ -283,6 +283,14 @@
     <Compile Include="Migrations\201802282052051_addCssDescDisertante.Designer.cs">
       <DependentUpon>201802282052051_addCssDescDisertante.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803050225056_orderPlanimetry.cs" />
+    <Compile Include="Migrations\201803050225056_orderPlanimetry.Designer.cs">
+      <DependentUpon>201803050225056_orderPlanimetry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803050421519_Status_Planimetry.cs" />
+    <Compile Include="Migrations\201803050421519_Status_Planimetry.Designer.cs">
+      <DependentUpon>201803050421519_Status_Planimetry.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ModelApi\Disertante\CssDisertanteMob.cs" />
     <Compile Include="Models\ModelApi\Disertante\DescripcionDisertanteMob.cs" />
@@ -1171,6 +1179,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201802282052051_addCssDescDisertante.resx">
       <DependentUpon>201802282052051_addCssDescDisertante.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803050225056_orderPlanimetry.resx">
+      <DependentUpon>201803050225056_orderPlanimetry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803050421519_Status_Planimetry.resx">
+      <DependentUpon>201803050421519_Status_Planimetry.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

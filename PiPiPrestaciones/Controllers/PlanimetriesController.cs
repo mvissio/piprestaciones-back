@@ -160,9 +160,18 @@ namespace PiPiPrestaciones.Controllers
         }
 
 
+        public ActionResult ChangePlanimetry(int planimetryId, int appId)
+        {
+            Planimetry planimetry = db.Planimetry.Where(a=>a.PlanimetryId==planimetryId).FirstOrDefault();
+            planimetry.Status = !planimetry.Status;
+            db.SaveChanges();
+            return PartialView("_ListPlanimetria", db.Planimetry.Where(a => a.AplicacionId == appId).ToList());
+        }
         public ActionResult RemovePlanimetry(int planimetryId, int appId)
         {
-            var planimetry = db.Planimetry.Find(planimetryId);
+            List<DetailsPlanimetry> detailsPlanimetry = db.DetailsPlanimetry.Where(d => d.PlanimetryId == planimetryId).ToList();
+            Planimetry planimetry = db.Planimetry.Where(p => p.PlanimetryId == planimetryId).FirstOrDefault();
+            db.DetailsPlanimetry.RemoveRange(detailsPlanimetry);
             db.Planimetry.Remove(planimetry);
             db.SaveChanges();
             return PartialView("_ListPlanimetria", db.Planimetry.Where(a => a.AplicacionId == appId).ToList());

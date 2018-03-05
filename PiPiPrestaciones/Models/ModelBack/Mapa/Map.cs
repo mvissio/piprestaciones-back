@@ -18,7 +18,7 @@ namespace PiPiPrestaciones.Models
         public string Lat { get; set; }
         public string Lng { get; set; }
         public int? Zoom { get; set; }
-
+        public bool Status { get; set; }
         public int? CssModelMapId { get; set; }
         [ForeignKey("CssModelMapId")]
         public virtual CssModel CssModelMap { get; set; }

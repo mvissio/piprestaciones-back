@@ -16,6 +16,7 @@ namespace PiPiPrestaciones.Models
 
         [Column("PageTitle")]
         public string PageTitle { get; set; }
+        public bool Status { get; set; }
 
         public virtual List<StaticContent> StaticContentList { get; set; }
 

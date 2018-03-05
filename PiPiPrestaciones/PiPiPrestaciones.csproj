@@ -309,7 +309,7 @@
     <Compile Include="Models\ModelBack\Planimetry\DetailsPlanimetry.cs" />
     <Compile Include="Models\ModelBack\Planimetry\Planimetry.cs" />
     <Compile Include="Models\ModelBack\IdentityModels.cs" />
-    <Compile Include="Controllers\ImagesController.cs" />
+    <Compile Include="Controllers\FilesController.cs" />
     <Compile Include="Models\ModelBack\Image.cs" />
     <Compile Include="Models\ModelBack\Menus\Menu.cs" />
     <Compile Include="Models\PiPiPrestacionesDBContext.cs" />

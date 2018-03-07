@@ -138,10 +138,18 @@ namespace PiPiPrestaciones.Controllers
             if (ModelState.IsValid)
             {
                 var plan = new Planimetry(planimetry);
+
+                var order = db.Planimetry.Where(a => a.Status).ToList().Count;
+               plan.OrderPlanimetry = order;
+                
+                
+
                 db.Planimetry.Add(plan);
 
                 db.SaveChanges();
 
+                var app = new AplicacionesController();
+                app.UpdateVersion(Convert.ToInt32(plan.AplicacionId));
 
 
                 return PartialView("_ListPlanimetria", db.Planimetry.Where(a=>a.AplicacionId == planimetry.AplicacionId).ToList());
@@ -165,6 +173,9 @@ namespace PiPiPrestaciones.Controllers
             Planimetry planimetry = db.Planimetry.Where(a=>a.PlanimetryId==planimetryId).FirstOrDefault();
             planimetry.Status = !planimetry.Status;
             db.SaveChanges();
+            var app = new AplicacionesController();
+            app.UpdateVersion(Convert.ToInt32(planimetry.AplicacionId));
+
             return PartialView("_ListPlanimetria", db.Planimetry.Where(a => a.AplicacionId == appId).ToList());
         }
         public ActionResult RemovePlanimetry(int planimetryId, int appId)
@@ -174,6 +185,8 @@ namespace PiPiPrestaciones.Controllers
             db.DetailsPlanimetry.RemoveRange(detailsPlanimetry);
             db.Planimetry.Remove(planimetry);
             db.SaveChanges();
+            var app = new AplicacionesController();
+            app.UpdateVersion(Convert.ToInt32(appId));
             return PartialView("_ListPlanimetria", db.Planimetry.Where(a => a.AplicacionId == appId).ToList());
         }
     }

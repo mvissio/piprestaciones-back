@@ -291,6 +291,10 @@
     <Compile Include="Migrations\201803050421519_Status_Planimetry.Designer.cs">
       <DependentUpon>201803050421519_Status_Planimetry.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803062011543_BugFixedOrderPlanimetry.cs" />
+    <Compile Include="Migrations\201803062011543_BugFixedOrderPlanimetry.Designer.cs">
+      <DependentUpon>201803062011543_BugFixedOrderPlanimetry.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ModelApi\Disertante\CssDisertanteMob.cs" />
     <Compile Include="Models\ModelApi\Disertante\DescripcionDisertanteMob.cs" />
@@ -1185,6 +1189,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803050421519_Status_Planimetry.resx">
       <DependentUpon>201803050421519_Status_Planimetry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803062011543_BugFixedOrderPlanimetry.resx">
+      <DependentUpon>201803062011543_BugFixedOrderPlanimetry.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

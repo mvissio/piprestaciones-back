@@ -252,3 +252,6 @@ C:\Users\Matías\Documents\Sites\PiPrestaciones-back\piprestaciones-back\PiPiPre
 C:\Users\Matías\Documents\Sites\PiPrestaciones-back\piprestaciones-back\PiPiPrestaciones\obj\Debug\PiPiPrestaciones.dll
 C:\Users\Matías\Documents\Sites\PiPrestaciones-back\piprestaciones-back\PiPiPrestaciones\obj\Debug\PiPiPrestaciones.pdb
 C:\Users\Matías\Documents\Sites\PiPrestaciones-back\piprestaciones-back\PiPiPrestaciones\obj\Debug\PiPiPrestaciones.Migrations.addCssDescDisertante.resources
+C:\Users\Matías\Documents\Sites\PiPrestaciones-back\piprestaciones-back\PiPiPrestaciones\obj\Debug\PiPiPrestaciones.Migrations.orderPlanimetry.resources
+C:\Users\Matías\Documents\Sites\PiPrestaciones-back\piprestaciones-back\PiPiPrestaciones\obj\Debug\PiPiPrestaciones.Migrations.Status_Planimetry.resources
+C:\Users\Matías\Documents\Sites\PiPrestaciones-back\piprestaciones-back\PiPiPrestaciones\obj\Debug\PiPiPrestaciones.Migrations.BugFixedOrderPlanimetry.resources

@@ -15,7 +15,7 @@ namespace PiPiPrestaciones.Models
         public string TitlePlanimetry { get; set; }
         public string FooterPlanimetry { get; set; }
         public string UrlImagePlanimetry { get; set; }
-        public bool? OrderPlanimetry { get; set; }
+        public int OrderPlanimetry { get; set; }
         public bool Status { get; set; }
         public int? CssModelPlanimetryId { get; set; }
         [ForeignKey("CssModelPlanimetryId")]
